@@ -156,3 +156,17 @@
    footer h5 {
        color: var(--rojo);
    }
+
+   .inicioSesion {
+       background-image: url('../images/Vestibulo.png');
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-position: center;
+   }
+
+   #sessionStart {
+       background-color: white;
+       width: 100%;
+       max-width: 400px;
+       box-sizing: content-box;
+   }
