@@ -20,13 +20,31 @@
        background-color: var(--negro);
    }
 
+   .logo-img {
+       height: 50px;
+       width: auto;
+       display: block;
+   }
+
+   .img-footer {
+       height: 50px;
+       width: auto;
+      
+   }
+
+   @media (max-width: 768px) {
+       .logo-img {
+           height: 40px;
+       }
+   }
+
    .navbar-brand {
        color: var(--rojo) !important;
    }
 
    .hero {
        height: 100vh;
-       background-image:url('../images/Hotel.png');
+       background-image: url('../images/Hotel.png');
        background-size: cover;
        background-position: center;
        display: flex;
@@ -41,7 +59,8 @@
    }
 
    .search-box {
-       background: var(--blanco);
+       background: rgba(255,255,255,0.4);
+       backdrop-filter: blur(1px);
        padding: 20px;
        border-radius: 10px;
    }
