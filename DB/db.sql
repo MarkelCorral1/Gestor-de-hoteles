@@ -1,20 +1,20 @@
 CREATE DATABASE hoteles_schumacher;
 USE hoteles_schumacher;
 
-CREATE TABLE usuarios (
+CREATE TABLE usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     tipo ENUM('normal', 'admin') NOT NULL
-);
+);	
 
-CREATE TABLE hoteles (
+CREATE TABLE hotel (
     id_hotel INT AUTO_INCREMENT PRIMARY KEY,
     ciudad VARCHAR(100) NOT NULL,
     pais VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE categorias (
+CREATE TABLE categoria (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
     nombre ENUM('stroll', 'lando', 'alonso', 'senna', 'schumacher') NOT NULL,
     balcon BOOLEAN, 
@@ -26,29 +26,29 @@ CREATE TABLE categorias (
     precio_base DECIMAL(10,2) NOT NULL
 );
 
-CREATE TABLE habitaciones (
+CREATE TABLE habitacion (
     id_habitacion INT AUTO_INCREMENT PRIMARY KEY,
     id_hotel INT NOT NULL,
     id_categoria INT NOT NULL,
     metros_cuadrados INT NOT NULL,
     camas INT NOT NULL,
-    FOREIGN KEY (id_hotel) REFERENCES hoteles(id_hotel),
-    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
-);
+    FOREIGN KEY (id_hotel) REFERENCES hotel(id_hotel),
+    FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
+);	
 
-CREATE TABLE reservas (
+CREATE TABLE reserva (
     id_reserva INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_habitacion INT NOT NULL,
     fecha_inicio DATE NOT NULL,
     fecha_final DATE NOT NULL,
     numero_personas INT NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
-    FOREIGN KEY (id_habitacion) REFERENCES habitaciones(id_habitacion),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_habitacion) REFERENCES habitacion(id_habitacion),
     CHECK (fecha_final > fecha_inicio)
 );
 
-INSERT INTO categorias (nombre,
+INSERT INTO categoria (nombre,
 	balcon, yakushi, spa, mayordomo, limusina, helicoptero, precio_base
 ) VALUES
 ('stroll', FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 12.00),
@@ -58,7 +58,7 @@ INSERT INTO categorias (nombre,
 ('schumacher', TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 160.00);
 
 -- HOTELES
-INSERT INTO hoteles (ciudad, pais) VALUES 
+INSERT INTO hotel (ciudad, pais) VALUES 
 ('Madrid', 'España'),
 ('Barcelona', 'España'),
 ('París', 'Francia'),
@@ -76,7 +76,7 @@ INSERT INTO hoteles (ciudad, pais) VALUES
 ('Copenhague', 'Dinamarca');
 
 -- Insertar Habitaciones
-INSERT INTO habitaciones (id_hotel, id_categoria, metros_cuadrados, camas) VALUES
+INSERT INTO habitacion (id_hotel, id_categoria, metros_cuadrados, camas) VALUES
 -- Madrid, España
 (1, 1, 25, 2),
 (1, 2, 30, 2),
@@ -245,8 +245,8 @@ INSERT INTO habitaciones (id_hotel, id_categoria, metros_cuadrados, camas) VALUE
 (14, 4, 45, 3),
 (14, 5, 50, 4);
 
-INSERT INTO usuarios (username, password_hash, tipo) VALUES
-('alejandro', 'alejandro', 'admin'),
-('markel', 'markel', 'admin'),
-('eli', 'eli', 'admin'),
-('unai', 'unai', 'admin');
+INSERT INTO usuario (username, password_hash, tipo) VALUES
+('alejandro', '$2y$10$YDPv2YaTk0qcqeLY92.Dfe4BH5L7m714ODm8lDESIkPDMeezKNX86', 'admin'),
+('markel', '$2y$10$OsaU/zhjCbo34swdOQX53OXibvKq/UrphsDKB/tXdLLV99VHaikhK', 'admin'),
+('eli', '$2y$10$/8AYuxWjhY8vXIMWdQ0qqeqzIVItnhlgYqPjjbGB.2E26v4EVdStW', 'admin'),
+('unai', '$2y$10$hQybb9tCI75J46pl6bfmN.9aVwN7g1OYiCV4lrNBsJzl7MwHN6SOq', 'admin');
