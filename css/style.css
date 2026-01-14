@@ -74,53 +74,71 @@
        transform: translateY(-5px);
    }
 
-    /* Ajuste para que las imágenes mantengan su proporción circular */
-    .object-fit-cover {
-        object-fit: cover;
-    }
-    #acercadelRestaurante {
-        background-color: #000 !important; /* Negro puro */
-    }
+   /* Ajuste para que las imágenes mantengan su proporción circular */
+   .object-fit-cover {
+       object-fit: cover;
+   }
 
-       /* Animación de flotación suave */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
+   #acercadelRestaurante {
+       background-color: #000 !important;
+       /* Negro puro */
+   }
 
-        .img-container-floating {
-            position: relative;
-            height: 450px;
-            width: 100%;
-        }
+   /* Animación de flotación suave */
+   @keyframes float {
+       0% {
+           transform: translateY(0px);
+       }
 
-        .hover-card {
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            cursor: pointer;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
+       50% {
+           transform: translateY(-20px);
+       }
 
-        /* Efecto Hover: Zoom y rotación suave */
-        .hover-card:hover {
-            transform: scale(1.05) rotate(2deg) !important;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-            z-index: 10 !important;
-        }
+       100% {
+           transform: translateY(0px);
+       }
+   }
 
-        .hover-card img {
-            transition: transform 0.5s ease;
-        }
+   .img-container-floating {
+       position: relative;
+       height: 450px;
+       width: 100%;
+   }
 
-        .hover-card:hover img {
-            transform: scale(1.1);
-        }
+   .hover-card {
+       transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+       cursor: pointer;
+       overflow: hidden;
+       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+   }
 
-        /* Asignación de animaciones con diferentes tiempos para naturalidad */
-        .float-1 { animation: float 6s ease-in-out infinite; }
-        .float-2 { animation: float 5s ease-in-out infinite 1s; }
-        .float-3 { animation: float 7s ease-in-out infinite 0.5s; }
+   /* Efecto Hover: Zoom y rotación suave */
+   .hover-card:hover {
+       transform: scale(1.05) rotate(2deg) !important;
+       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+       z-index: 10 !important;
+   }
+
+   .hover-card img {
+       transition: transform 0.5s ease;
+   }
+
+   .hover-card:hover img {
+       transform: scale(1.1);
+   }
+
+   /* Asignación de animaciones con diferentes tiempos para naturalidad */
+   .float-1 {
+       animation: float 6s ease-in-out infinite;
+   }
+
+   .float-2 {
+       animation: float 5s ease-in-out infinite 1s;
+   }
+
+   .float-3 {
+       animation: float 7s ease-in-out infinite 0.5s;
+   }
 
    .subtitle {
        color: var(--rojo);
@@ -169,4 +187,27 @@
        width: 100%;
        max-width: 400px;
        box-sizing: content-box;
+   }
+
+   .card {
+       border: 1px solid black;
+   }
+
+   .btn-hotel {
+       color: black !important;
+       font-size: 20px;
+       font-weight: 500;
+       padding: 0.5em 1.2em;
+       background: transparent;
+       border: 2px solid;
+       border-color: #ac3131;
+       transition: all 0.3s ease;
+       position: relative;
+   }
+
+   .btn-hotel:hover {
+       background: #ff2800;
+       color: #fff !important;
+       cursor: pointer;
+       
    }
