@@ -1,3 +1,9 @@
+<?php
+if ($_COOKIE["usuario"]) {
+    header('Location: index.html');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +20,7 @@
 
 <body class="inicioSesion">
     <div class="container-session d-flex justify-content-center align-items-center min-vh-100">
-        <form class="session p-4 border rounded shadow-sm" id="sessionStart">
-
+        <form class="session p-4 border rounded shadow-sm" id="sessionStart" action="../PHP/iniciarSesion.php" method="post">
             <h3 class="text-center mb-4">Iniciar Sesión</h3>
 
             <div class="mb-3">
@@ -28,10 +33,10 @@
                 <input type="password" class="form-control" id="password" name="password">
             </div>
             <div class=" text-center mb-4">
-                <button type="button" class="btn btn-dark">Inicio Sesión</button>
-                <button type="button" class="btn btn-dark">Registrarse</button>
+                <button type="submit" class="btn btn-dark">Inicio Sesión</button>
+                <button type="submit" class="btn btn-dark">Registrarse</button>
             </div>
-
+            
             <div class="d-flex justify-content-center mt-4">
                 <img src="../images/Logo/Logo.png" class="rounded" alt="Logotipo" width="60">
             </div>
