@@ -1,5 +1,5 @@
 <?php
-if ($_COOKIE["usuario"]) {
+if (isset($_COOKIE["usuario"])) {
     header('Location: index.html');
     exit();
 }
@@ -18,30 +18,35 @@ if ($_COOKIE["usuario"]) {
     <title>Schumacher Hotels</title>
 </head>
 
-<body class="inicioSesion">
-    <div class="container-session d-flex justify-content-center align-items-center min-vh-100">
-        <form class="session p-4 border rounded shadow-sm" id="sessionStart" action="../PHP/iniciarSesion.php" method="post">
-            <h3 class="text-center mb-4">Iniciar Sesión</h3>
+<body class="inicioSesion vh-100">
+    <div class="container-session border rounded shadow-sm justify-content-center align-items-center p-4 mt-5">
+        <h3 class="text-center mb-4">Iniciar Sesión</h3>
+        <form class="session" id="sessionStart">
 
             <div class="mb-3">
                 <label for="username" class="form-label">Nombre de usuario</label>
-                <input type="text" class="form-control" id="username" name="username">
+                <input type="text" class="form-control" id="username" name="username" required>
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <div class=" text-center mb-4">
+
+            <div class="text-center">
                 <button type="submit" class="btn btn-dark">Inicio Sesión</button>
-                <button type="submit" class="btn btn-dark">Registrarse</button>
             </div>
             
-            <div class="d-flex justify-content-center mt-4">
-                <img src="../images/Logo/Logo.png" class="rounded" alt="Logotipo" width="60">
-            </div>
         </form>
+        <div class="text-center mb-4 mt-5">
+            <button type="button" class="btn btn-dark"><a href="registro.php">Registrarse</a></button>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <img src="../images/Logo/Logo.png" class="rounded" alt="Logotipo" width="60">
+        </div>
+        <div id="respuesta-form" class="text-center bg-opacity-25 rounded"></div>
     </div>
+    <script src="../JS/inicioSesion.js"></script>
 </body>
 
 </html>
