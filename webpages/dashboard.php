@@ -58,16 +58,16 @@ $hoteles = $entityManager->getRepository('Hotel')->findAll();
         <div class="container">
             <div class="row">
                 <?php foreach ($hoteles as $hotel): ?>
-                    <div class="col-lg-4 col-md-4 p-2">
-                        <div class="card">
+                    <div class="col-lg-3 col-md-4 p-2">
+                        <div class="card h-100">
                             <img src="../images/Carrousel/Hotel.png" class="card-img-top">
-                            <div class="card-body">
-                                <p class="card-text"><?php //echo $hotel->getDescripcion() ?></p>
+                            <div class="card-body d-flex flex-column">
+                                <p class="card-text descripcion"><?php echo $hotel->getDescripcion() ?></p>
                                 <p class="card-text">Ciudad: <?php echo $hotel->getCiudad() ?> </p>
                                 <p class="card-text">País: <?php echo $hotel->getPais() ?> </p>
                                 <form action="" method="POST">
                                     <input type="hidden" id="id_hotel">
-                                    <input type="submit" value="Ver Hotel" class="btn btn-hotel"></input>
+                                    <input type="submit" value="Ver Hotel" class="btn btn-hotel w-100 mt-auto"></input>
                                 </form>
                             </div>
                         </div>

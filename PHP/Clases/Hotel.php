@@ -11,6 +11,8 @@ class Hotel {
     private $ciudad;
     /** @ORM\Column(type="string") */
     private $pais;
+    /** @ORM\Column(type="text") */
+    private $descripcion;
     
     
     public function getId_hotel(): int {
@@ -22,6 +24,10 @@ class Hotel {
     public function getPais(): string {
         return $this->pais;
     }
+    public function getDescripcion(): string {
+        return $this->descripcion;
+
+    }
 
     public function setCiudad($ciudad): void {
         $this->ciudad = $ciudad;
@@ -29,4 +35,8 @@ class Hotel {
     public function setPais($pais): void {
         $this->pais = $pais;
     }
+    public function setDescripcion($descripcion): void {
+        $this->descripcion = $descripcion;
+    }
+
 }

@@ -165,68 +165,71 @@
        color: var(--rojo);
    }
 
-       /* Estilos de Animación */
-    .apex-gallery-container {
-        display: flex;
-        gap: 15px;
-        width: 100%;
-        height: 500px;
-    }
+   /* Estilos de Animación */
+   .apex-gallery-container {
+       display: flex;
+       gap: 15px;
+       width: 100%;
+       height: 500px;
+   }
 
-    .apex-card {
-        position: relative;
-        flex: 1; /* Todas empiezan iguales */
-        overflow: hidden;
-        border-radius: 20px;
-        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        cursor: pointer;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+   .apex-card {
+       position: relative;
+       flex: 1;
+       /* Todas empiezan iguales */
+       overflow: hidden;
+       border-radius: 20px;
+       transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+       cursor: pointer;
+       border: 1px solid rgba(255, 255, 255, 0.1);
+   }
 
-    /* Efecto Expandir al Hover */
-    .apex-card:hover {
-        flex: 3; /* Se expande */
-        filter: brightness(1.1);
-    }
+   /* Efecto Expandir al Hover */
+   .apex-card:hover {
+       flex: 3;
+       /* Se expande */
+       filter: brightness(1.1);
+   }
 
-    /* Difuminar las que NO están en hover */
-    .apex-gallery-container:hover .apex-card:not(:hover) {
-        filter: blur(4px) grayscale(0.5);
-        opacity: 0.6;
-    }
+   /* Difuminar las que NO están en hover */
+   .apex-gallery-container:hover .apex-card:not(:hover) {
+       filter: blur(4px) grayscale(0.5);
+       opacity: 0.6;
+   }
 
-    .apex-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s ease;
-    }
+   .apex-card img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       transition: transform 0.8s ease;
+   }
 
-    .apex-card:hover img {
-        transform: scale(1.05);
-    }
+   .apex-card:hover img {
+       transform: scale(1.05);
+   }
 
-    /* Overlay de texto con Glassmorphism */
-    .apex-card-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 30px;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        color: white;
-        opacity: 0;
-        transition: opacity 0.4s ease 0.2s; /* Delay para que el texto aparezca tras expandirse */
-    }
+   /* Overlay de texto con Glassmorphism */
+   .apex-card-content {
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       padding: 30px;
+       background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+       color: white;
+       opacity: 0;
+       transition: opacity 0.4s ease 0.2s;
+       /* Delay para que el texto aparezca tras expandirse */
+   }
 
-    .apex-card:hover .apex-card-content {
-        opacity: 1;
-    }
+   .apex-card:hover .apex-card-content {
+       opacity: 1;
+   }
 
-    .text-outline-white {
-        -webkit-text-stroke: 1px rgba(255,255,255,0.5);
-        color: transparent;
-    }
+   .text-outline-white {
+       -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+       color: transparent;
+   }
 
    footer {
        background-color: var(--negro);
@@ -255,6 +258,22 @@
 
    .card {
        border: 1px solid black;
+       transition: all 0.3s ease;
+   }
+
+   .card:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+       cursor: pointer;
+   }
+
+   .descripcion {
+       min-height: 4.5em;
+       display: -webkit-box;
+       -webkit-line-clamp: 3;
+       -webkit-box-orient: vertical;
+       overflow: hidden;
+       margin-bottom: 1rem;
    }
 
    .btn-hotel {
@@ -273,7 +292,7 @@
        background: #ff2800;
        color: #fff !important;
        cursor: pointer;
-       
+
    }
 
    /*Grid Syst Contacto */
@@ -302,8 +321,8 @@
        grid-area: cabecera;
        display: flex;
        text-align: center;
-        justify-content: center; 
-        align-items: center;
+       justify-content: center;
+       align-items: center;
    }
 
    .formulario {
@@ -335,4 +354,6 @@
        align-items: center;
    }
 
-    textarea { resize:none; }
+   textarea {
+       resize: none;
+   }
