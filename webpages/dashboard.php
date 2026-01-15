@@ -1,3 +1,14 @@
+<?php
+
+require_once "../bootstrap.php";
+require_once "../PHP/Clases/Hotel.php";
+require_once "../PHP/Clases/HotelRepository.php";
+
+
+$hoteles = $entityManager->getRepository('Hotel')->findAll();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,23 +57,22 @@
     <section class="py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="card">
-                        <img src="../images/Carrousel/Hotel.png" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Nombre</h5>
-                            <p class="card-text"></p>
-                            <p class="card-text">Ciudad: </p>
-                            <p class="card-text">País: </p>
-                            <form action="" method="POST">
-                                <input type="hidden" id="id_hotel">
-                                <input type="submit" value="Ver Hotel" class="btn btn-hotel"></input>
-                            </form>
-
-
+                <?php foreach ($hoteles as $hotel): ?>
+                    <div class="col-lg-4 col-md-4 p-2">
+                        <div class="card">
+                            <img src="../images/Carrousel/Hotel.png" class="card-img-top">
+                            <div class="card-body">
+                                <p class="card-text"><?php //echo $hotel->getDescripcion() ?></p>
+                                <p class="card-text">Ciudad: <?php echo $hotel->getCiudad() ?> </p>
+                                <p class="card-text">País: <?php echo $hotel->getPais() ?> </p>
+                                <form action="" method="POST">
+                                    <input type="hidden" id="id_hotel">
+                                    <input type="submit" value="Ver Hotel" class="btn btn-hotel"></input>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
