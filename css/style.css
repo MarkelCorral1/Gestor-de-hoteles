@@ -275,3 +275,64 @@
        cursor: pointer;
        
    }
+
+   /*Grid Syst Contacto */
+
+   .contactogrid {
+       display: grid;
+       grid-template-areas:
+           "cabecera cabecera"
+           "formulario card1"
+           "formulario card1"
+           "formulario card2"
+           "formulario card2"
+           "footer1 footer1";
+       grid-template-columns: 1fr 1fr;
+       grid-template-rows: 0px 200px;
+       color: white;
+       background-image: url('../images/Carrousel/Zona\ de\ trofeos.png');
+       background-repeat: no-repeat;
+       background-position: center;
+       background-size: cover;
+       overflow: hidden;
+
+   }
+
+   .cabecera {
+       grid-area: cabecera;
+       display: flex;
+       text-align: center;
+        justify-content: center; 
+        align-items: center;
+   }
+
+   .formulario {
+       grid-area: formulario;
+   }
+
+   .card1 {
+       grid-area: card1;
+       padding: 10px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+
+   .card2 {
+       grid-area: card2;
+       padding: 10px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+
+   .footer1 {
+       grid-area: footer1;
+       background-color: black;
+       padding: 10px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+
+    textarea { resize:none; }
