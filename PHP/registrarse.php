@@ -1,4 +1,6 @@
 <?php
+require_once '../config/config.php';
+
 require_once '../bootstrap.php';
 require_once '../PHP/Clases/Usuario.php';
 
