@@ -1,3 +1,6 @@
+<?php
+    require_once '../config/config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,41 +22,11 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
             rel="stylesheet">
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="<?= CSS_URL ?>/style.css">
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
-            <div class="container">
-                <a class="navbar-brand brand" href="#"><img src="../images/Logo/Logo.png" alt="Logo"
-                        class="logo-img"></a>
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="menu">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Hoteles</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item">Madrid</a></li>
-                                <li><a class="dropdown-item">París</a></li>
-                                <li><a class="dropdown-item">Dubái</a></li>
-                                <li><a class="dropdown-item">Maldivas</a></li>
-                                <li><a class="dropdown-item">Nueva York</a></li>
-                                <li><a class="dropdown-item">Tokio</a></li>
-                                <li><a class="dropdown-item">Zúrich</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="#experiencias">Experiencias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#estandar">Estándar 7</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-                    </ul>
-                    <button class="btn btn-danger ms-lg-3" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                        Reservar
-                    </button>
-                </div>
-            </div>
-        </nav>
+        <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
 
         <section class="hero-container position-relative">
             <!-- Carrusel de Fondo -->
@@ -61,41 +34,41 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="3000">
                         <div class="hero-slide"
-                            style="background-image: url('../images/Carrousel/Gym\ Shumaccer.png');"></div>
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Gym\ Shumaccer.png');"></div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <div class="hero-slide" style="background-image: url('../images/Carrousel/Hotel.png');"></div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="hero-slide"
-                            style="background-image: url('../images/Carrousel/Restaurante\ shumacker.png');"></div>
+                        <div class="hero-slide" style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Hotel.png');"></div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
                         <div class="hero-slide"
-                            style="background-image: url('../images/Carrousel/Spa\ Shumacker.png');"></div>
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Restaurante\ shumacker.png');"></div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
                         <div class="hero-slide"
-                            style="background-image: url('../images/Carrousel/Trayectoria\ Schumaccer.png');">
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Spa\ Shumacker.png');"></div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="hero-slide"
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Trayectoria\ Schumaccer.png');">
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <div class="hero-slide" style="background-image: url('../images/Carrousel/Vestibulo.png');">
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="hero-slide"
-                            style="background-image: url('../images/Carrousel/Zona\ de\ estar\ Shumacer.png');">
+                        <div class="hero-slide" style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Vestibulo.png');">
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
                         <div class="hero-slide"
-                            style="background-image: url('../images/Carrousel/Zona\ de\ simuladores.png');">
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Zona\ de\ estar\ Shumacer.png');">
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
                         <div class="hero-slide"
-                            style="background-image: url('../images/Carrousel/Zona\ de\ trofeos.png');">
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Zona\ de\ simuladores.png');">
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="hero-slide"
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Zona\ de\ trofeos.png');">
                         </div>
                     </div>
                 </div>
@@ -184,19 +157,19 @@
             <div class="col-md-6 position-relative d-flex justify-content-center align-items-center">
                 <!-- Imagen Principal -->
                 <div class="rounded-circle overflow-hidden shadow-lg border border-3 border-secondary" style="width: 350px; height: 350px;">
-                    <img src="../images/Restaurante/comida1.webp" class="w-100 h-100 object-fit-cover" alt="Restaurante">
+                    <img src="<?= IMAGES_URL ?>/Restaurante/comida1.webp" class="w-100 h-100 object-fit-cover" alt="Restaurante">
                 </div>
                 <!-- Imagen Decorativa Flotante (Opcional para dar estilo) -->
                 <div class="rounded-circle overflow-hidden position-absolute border border-4 border-dark shadow d-none d-lg-block" 
                     style="width: 150px; height: 150px; bottom: -20px; right: 50px;">
-                    <img src="../images/Restaurante/comida2.png" class="w-100 h-100 object-fit-cover" alt="Plato">
+                    <img src="<?= IMAGES_URL ?>/Restaurante/comida2.png" class="w-100 h-100 object-fit-cover" alt="Plato">
                 </div>
             </div>
 
             <!-- Lado Derecho: Contenido -->
             <div class="col-md-6 p-lg-5 text-start">
                 <h3 class="display-3 fw-bold text-white">Gastronomia de excepción.</h3>
-                <img src="../images/Restaurante/michellin.png" alt="michellin" class="img-fluid" width="65px">
+                <img src="<?= IMAGES_URL ?>/Restaurante/michellin.png" alt="michellin" class="img-fluid" width="65px">
                 <p class="lead fw-normal text-secondary mb-4">
                     Descubre la esencia culinaria detrás de Apex. Cocina de vanguardia diseñada para paladares exigentes.
                     Perfeccion tecnica y sabores incomparables en cada plato.
@@ -233,19 +206,19 @@
                     <!-- Imagen Principal (Centro) -->
                     <div class="hover-card float-1 rounded-circle border border-3 border-white" 
                         style="width: 320px; height: 320px; z-index: 5;">
-                        <img src="../images/Brunch/desayuno4.png" class="w-100 h-100 object-fit-cover" alt="Plato Principal">
+                        <img src="<?= IMAGES_URL ?>/Brunch/desayuno4.png" class="w-100 h-100 object-fit-cover" alt="Plato Principal">
                     </div>
 
                     <!-- Imagen 2 (Arriba Izquierda) -->
                     <div class="hover-card float-2 rounded-circle position-absolute border border-4 border-white d-none d-lg-block" 
                         style="width: 160px; height: 160px; top: 10%; left: 5%; z-index: 4;">
-                        <img src="../images/Brunch/desayuno2.png" class="w-100 h-100 object-fit-cover" alt="Detalle 1">
+                        <img src="<?= IMAGES_URL ?>/Brunch/desayuno2.png" class="w-100 h-100 object-fit-cover" alt="Detalle 1">
                     </div>
 
                     <!-- Imagen 3 (Abajo Derecha) -->
                     <div class="hover-card float-3 rounded-circle position-absolute border border-4 border-white d-none d-lg-block" 
                         style="width: 180px; height: 180px; bottom: 5%; right: 5%; z-index: 6;">
-                        <img src="../images/Brunch/desayuno3.png" class="w-100 h-100 object-fit-cover" alt="Detalle 2">
+                        <img src="<?= IMAGES_URL ?>/Brunch/desayuno3.png" class="w-100 h-100 object-fit-cover" alt="Detalle 2">
                     </div>
                 </div>
             </div>
@@ -267,7 +240,7 @@
         <div class="apex-gallery-container">
             
             <div class="apex-card">
-                <img src="../images/salas/salas1.jpg" alt="Summit Hall">
+                <img src="<?= IMAGES_URL ?>/salas/salas1.jpg" alt="Summit Hall">
                 <div class="apex-card-content">
                     <h4 class="fw-bold">Summit Hall</h4>
                     <p class="small text-secondary">Con la mejor tecnología del mercado</p>
@@ -276,7 +249,7 @@
             </div>
  
             <div class="apex-card">
-                <img src="../images/salas/videojuegos.jpg" alt="The Boardroom">
+                <img src="<?= IMAGES_URL ?>/salas/videojuegos.jpg" alt="The Boardroom">
                 <div class="apex-card-content">
                     <h4 class="fw-bold">Sala de videojuegos</h4>
                     <p class="small text-secondary">Totalmente equipada con todo lo que te puedes imaginar</p>
@@ -284,7 +257,7 @@
             </div>
 
             <div class="apex-card">
-                <img src="../images/salas/casino.jpg" alt="Apex Lounge">
+                <img src="<?= IMAGES_URL ?>/salas/casino.jpg" alt="Apex Lounge">
                 <div class="apex-card-content">
                     <h4 class="fw-bold">Apex Casino</h4>
                     <p class="small text-secondary"> </p>
@@ -309,7 +282,7 @@
             
             <!-- Tarjeta 1: Cine Interior -->
             <div class="apex-card shadow-lg">
-                <img src="../images/cinema/interior1.PNG" alt="Indoor Cinema">
+                <img src="<?= IMAGES_URL ?>/cinema/interior1.PNG" alt="Indoor Cinema">
                 <div class="apex-card-content">
                     <h3 class="fw-bold">Indoor Luxury</h3>
                     <p>Sonido Dolby Atmos y asientos de cuero calefactados.</p>
@@ -319,7 +292,7 @@
 
             <!-- Tarjeta 2: Cine Exterior -->
             <div class="apex-card shadow-lg">
-                <img src="../images/cinema/exterior3.jpg" alt="Outdoor Cinema">
+                <img src="<?= IMAGES_URL ?>/cinema/exterior3.jpg" alt="Outdoor Cinema">
                 <div class="apex-card-content">
                     <h3 class="fw-bold">Sky Cinema</h3>
                     <p>Cine bajo las estrellas con servicio de catering gourmet.</p>
@@ -346,14 +319,8 @@
             </div>
         </section>
 
-        <footer id="contacto" class="py-4">
-            <div class="container text-center">
-                <h5><img src="../images/Logo/Logo.png" alt="Logo" class="img-footer"></h5>
-                <p>Madrid · París · Dubái · Maldivas · Nueva York · Tokio · Zúrich</p>
-                <p> info@schumacherhotels.com | +34 912 345 678</p>
-                <p class="small">© 2026 Schumacher – Colección Privada</p>
-            </div>
-        </footer>
+        <?php include INCLUDES_PATH  . '/footer.php'; ?> <!-- FOOTER -->
+        
         <div class="modal fade" id="bookingModal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">

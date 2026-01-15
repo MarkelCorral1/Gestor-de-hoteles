@@ -17,7 +17,7 @@ require_once '../PHP/Clases/Usuario.php';
     if (password_verify($password, $usuario[0]->getPassword_hash())) {
         setcookie("usuario", $usuario[0]->getUsername(), time() + 86400 * 30, "/");
 
-        echo json_encode(['estado' => 'correcto', 'redireccion' => '../webpages/index.html']);
+        echo json_encode(['estado' => 'correcto', 'redireccion' => '../webpages/index.php']);
         exit();
     } else {
         echo json_encode(['estado' => 'error', 'mensaje' => 'Contraseña incorrecta']);

@@ -1,22 +1,24 @@
 <?php
+require_once '../config/config.php';
+
 require_once "../bootstrap.php";
-require_once "../PHP/Clases/Usuario.php";
-require_once "../PHP/Clases/UsuarioRepository.php";
-require_once "../PHP/Clases/Reserva.php";
-require_once "../PHP/Clases/ReservaRepository.php";
-require_once "../PHP/Clases/Habitacion.php";
-require_once "../PHP/Clases/HabitacionRepository.php";
-require_once "../PHP/Clases/Hotel.php";
-require_once "../PHP/Clases/HotelRepository.php";
-require_once "../PHP/Clases/Categoria.php";
-require_once "../PHP/Clases/CategoriaRepository.php";
+require_once PHP_URL . "/Clases/Usuario.php";
+require_once PHP_URL . "/Clases/UsuarioRepository.php";
+require_once PHP_URL . "/Clases/Reserva.php";
+require_once PHP_URL . "/Clases/ReservaRepository.php";
+require_once PHP_URL . "/Clases/Habitacion.php";
+require_once PHP_URL . "/Clases/HabitacionRepository.php";
+require_once PHP_URL . "/Clases/Hotel.php";
+require_once PHP_URL . "/Clases/HotelRepository.php";
+require_once PHP_URL . "/Clases/Categoria.php";
+require_once PHP_URL . "/Clases/CategoriaRepository.php";
 
 // Buscar el usuario en la base de datos y comprobar si es admin
 $usuario = $entityManager->getRepository('Usuario')
     ->findBy(['tipo' => 'admin', 'username' => $_COOKIE["usuario"]]);
 
 if (!$usuario) { // si no es admin
-    header('Location: index.html');
+    header('Location: index.php');
     exit();
 }
 ?>
@@ -30,7 +32,7 @@ if (!$usuario) { // si no es admin
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="<?= CSS_URL ?>/style.css">
 </head>
 <style>
     .admin-user {
@@ -45,7 +47,9 @@ if (!$usuario) { // si no es admin
     }
 </style>
 <body>
-    <div class="container">
+    <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
+
+    <div class="container min-vh-100">
         <h1>Gestión de Usuarios</h1>
         <div class="row">
             <?php
@@ -78,6 +82,9 @@ if (!$usuario) { // si no es admin
         </div>
             
     </div>
+
+    <?php include INCLUDES_PATH  . '/footer.php'; ?> <!-- FOOTER -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
