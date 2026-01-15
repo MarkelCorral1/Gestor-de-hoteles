@@ -1,5 +1,8 @@
 <?php
 if (isset($_COOKIE["usuario"])) {
+    setcookie("usuario", "", time() - 3600, "/");
+}
+if (isset($_COOKIE["usuario"])) {
     header('Location: index.html');
     exit();
 }
