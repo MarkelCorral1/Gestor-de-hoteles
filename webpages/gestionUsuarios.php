@@ -2,16 +2,16 @@
 require_once '../config/config.php';
 
 require_once "../bootstrap.php";
-require_once PHP_URL . "/Clases/Usuario.php";
-require_once PHP_URL . "/Clases/UsuarioRepository.php";
-require_once PHP_URL . "/Clases/Reserva.php";
-require_once PHP_URL . "/Clases/ReservaRepository.php";
-require_once PHP_URL . "/Clases/Habitacion.php";
-require_once PHP_URL . "/Clases/HabitacionRepository.php";
-require_once PHP_URL . "/Clases/Hotel.php";
-require_once PHP_URL . "/Clases/HotelRepository.php";
-require_once PHP_URL . "/Clases/Categoria.php";
-require_once PHP_URL . "/Clases/CategoriaRepository.php";
+require_once PHP_PATH . "/Clases/Usuario.php";
+require_once PHP_PATH . "/Clases/UsuarioRepository.php";
+require_once PHP_PATH . "/Clases/Reserva.php";
+require_once PHP_PATH . "/Clases/ReservaRepository.php";
+require_once PHP_PATH . "/Clases/Habitacion.php";
+require_once PHP_PATH . "/Clases/HabitacionRepository.php";
+require_once PHP_PATH . "/Clases/Hotel.php";
+require_once PHP_PATH . "/Clases/HotelRepository.php";
+require_once PHP_PATH . "/Clases/Categoria.php";
+require_once PHP_PATH . "/Clases/CategoriaRepository.php";
 
 // Buscar el usuario en la base de datos y comprobar si es admin
 $usuario = $entityManager->getRepository('Usuario')

@@ -1,3 +1,4 @@
+<?php require_once '../config/config.php'; ?>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
     <div class="container">
         <a class="navbar-brand brand" href="index.php"><img src="<?= IMAGES_URL ?>/Logo/Logo.png" alt="Logo"
@@ -15,12 +16,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><?= $_COOKIE["usuario"] ?></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item">Cerrar sesion</a></li> <!--  FALTA HACER LOGICA PARA CERRAR SESION -->
+                            <li><a class="dropdown-item" href="../PHP/cerrarSesion.php">Cerrar sesion</a></li>
 
                             <?php // SI ES ADMIN
                             require_once '../bootstrap.php';
-                            require_once PHP_URL . '/Clases/Usuario.php';
-                            require_once PHP_URL . '/Clases/UsuarioRepository.php';
+                            require_once PHP_PATH . '/Clases/Usuario.php';
+                            require_once PHP_PATH . '/Clases/UsuarioRepository.php';
 
                             $usuario = $entityManager->getRepository('Usuario')
                                 ->findBy(['tipo' => 'admin', 'username' => $_COOKIE["usuario"]]);

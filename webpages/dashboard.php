@@ -2,8 +2,8 @@
 require_once '../config/config.php';
 
 require_once "../bootstrap.php";
-require_once PHP_URL . "/Clases/Hotel.php";
-require_once PHP_URL . "/Clases/HotelRepository.php";
+require_once PHP_PATH . "/Clases/Hotel.php";
+require_once PHP_PATH . "/Clases/HotelRepository.php";
 
 
 $hoteles = $entityManager->getRepository('Hotel')->findAll();
