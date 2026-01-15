@@ -336,3 +336,8 @@
    }
 
     textarea { resize:none; }
+    .sin-puntos {
+        list-style: none; 
+        padding-left: 0; 
+        margin-left: 0; 
+    }
