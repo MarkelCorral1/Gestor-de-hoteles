@@ -146,4 +146,3 @@ INSERT INTO usuario (username, password_hash, tipo) VALUES
 ('markel', '$2y$10$OsaU/zhjCbo34swdOQX53OXibvKq/UrphsDKB/tXdLLV99VHaikhK', 'admin'),
 ('eli', '$2y$10$/8AYuxWjhY8vXIMWdQ0qqeqzIVItnhlgYqPjjbGB.2E26v4EVdStW', 'admin'),
 ('unai', '$2y$10$hQybb9tCI75J46pl6bfmN.9aVwN7g1OYiCV4lrNBsJzl7MwHN6SOq', 'admin');
-
