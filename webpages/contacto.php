@@ -91,9 +91,10 @@
                 </div>
             </div>
         </div>
+                <div class="footer1">
 
         <?php include INCLUDES_PATH  . '/footer.php'; ?> <!-- FOOTER -->
-
+    </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 
