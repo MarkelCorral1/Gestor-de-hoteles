@@ -165,68 +165,71 @@
        color: var(--rojo);
    }
 
-       /* Estilos de Animación */
-    .apex-gallery-container {
-        display: flex;
-        gap: 15px;
-        width: 100%;
-        height: 500px;
-    }
+   /* Estilos de Animación */
+   .apex-gallery-container {
+       display: flex;
+       gap: 15px;
+       width: 100%;
+       height: 500px;
+   }
 
-    .apex-card {
-        position: relative;
-        flex: 1; /* Todas empiezan iguales */
-        overflow: hidden;
-        border-radius: 20px;
-        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        cursor: pointer;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+   .apex-card {
+       position: relative;
+       flex: 1;
+       /* Todas empiezan iguales */
+       overflow: hidden;
+       border-radius: 20px;
+       transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+       cursor: pointer;
+       border: 1px solid rgba(255, 255, 255, 0.1);
+   }
 
-    /* Efecto Expandir al Hover */
-    .apex-card:hover {
-        flex: 3; /* Se expande */
-        filter: brightness(1.1);
-    }
+   /* Efecto Expandir al Hover */
+   .apex-card:hover {
+       flex: 3;
+       /* Se expande */
+       filter: brightness(1.1);
+   }
 
-    /* Difuminar las que NO están en hover */
-    .apex-gallery-container:hover .apex-card:not(:hover) {
-        filter: blur(4px) grayscale(0.5);
-        opacity: 0.6;
-    }
+   /* Difuminar las que NO están en hover */
+   .apex-gallery-container:hover .apex-card:not(:hover) {
+       filter: blur(4px) grayscale(0.5);
+       opacity: 0.6;
+   }
 
-    .apex-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s ease;
-    }
+   .apex-card img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       transition: transform 0.8s ease;
+   }
 
-    .apex-card:hover img {
-        transform: scale(1.05);
-    }
+   .apex-card:hover img {
+       transform: scale(1.05);
+   }
 
-    /* Overlay de texto con Glassmorphism */
-    .apex-card-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 30px;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        color: white;
-        opacity: 0;
-        transition: opacity 0.4s ease 0.2s; /* Delay para que el texto aparezca tras expandirse */
-    }
+   /* Overlay de texto con Glassmorphism */
+   .apex-card-content {
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       padding: 30px;
+       background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+       color: white;
+       opacity: 0;
+       transition: opacity 0.4s ease 0.2s;
+       /* Delay para que el texto aparezca tras expandirse */
+   }
 
-    .apex-card:hover .apex-card-content {
-        opacity: 1;
-    }
+   .apex-card:hover .apex-card-content {
+       opacity: 1;
+   }
 
-    .text-outline-white {
-        -webkit-text-stroke: 1px rgba(255,255,255,0.5);
-        color: transparent;
-    }
+   .text-outline-white {
+       -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+       color: transparent;
+   }
 
    footer {
        background-color: var(--negro);
@@ -255,6 +258,22 @@
 
    .card {
        border: 1px solid black;
+       transition: all 0.3s ease;
+   }
+
+   .card:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+       cursor: pointer;
+   }
+
+   .descripcion {
+       min-height: 4.5em;
+       display: -webkit-box;
+       -webkit-line-clamp: 3;
+       -webkit-box-orient: vertical;
+       overflow: hidden;
+       margin-bottom: 1rem;
    }
 
    .btn-hotel {
@@ -273,7 +292,7 @@
        background: #ff2800;
        color: #fff !important;
        cursor: pointer;
-       
+
    }
 
    /*Grid Syst Contacto */
@@ -302,8 +321,8 @@
        grid-area: cabecera;
        display: flex;
        text-align: center;
-        justify-content: center; 
-        align-items: center;
+       justify-content: center;
+       align-items: center;
    }
 
    .formulario {
@@ -340,4 +359,186 @@
         list-style: none; 
         padding-left: 0; 
         margin-left: 0; 
-    }
+    }/* Quienes somos */
+  /* Contenedor Principal */
+#quienes-somos {
+    background-color: #f8f9fa;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+/* Subtítulo rojo */
+.subtitulo-herencia {
+    color: #dc3545; /* text-danger */
+    letter-spacing: 3px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+/* Título Principal */
+.titulo-quienes {
+    font-family: 'Playfair Display', serif;
+}
+/* Párrafos */
+.parrafo-quienesSomos {
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+    font-size: 1.25rem;
+}
+.descripcion-quienesSomos {
+    font-family: 'Montserrat', sans-serif;
+    color: #424242;
+}
+/* Botón Personalizado */
+.btn-custom-danger {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s ease;
+   
+}
+.btn-custom-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+/* Contenedor de Imagen */
+.img-container {
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* --- APARTADO SALUD Y BIENESTAR PREMIUM --- */
+.seccion-bienestar {
+    padding: 60px 0;
+    background-color: #000; /* Fondo oscuro para resaltar las fotos */
+}
+
+.bienestar-card {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    transition: all 0.4s ease;
+}
+
+/* Grid asimétrico de 2 imágenes */
+.bienestar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* mismo tamaño para las imagenes */
+    gap: 10px; /*Espacio entre imagenes */
+    height: 320px; /* Altura controlada */
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.bienestar-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%); /* Efecto visual sofisticado */
+    transition: all 0.6s ease;
+}
+
+.bienestar-grid img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Tipografía y detalles */
+.bienestar-content {
+    padding-top: 20px;
+}
+
+.bienestar-content h4 {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+/* Línea roja estilo Schumacher */
+.bienestar-line {
+    width: 50px;
+    height: 2px;
+    background-color: #dc3545; /* Rojo corporativo */
+    margin-bottom: 15px;
+    transition: width 0.4s ease;
+}
+
+.bienestar-card:hover .bienestar-line {
+    width: 80px;
+}
+
+.bienestar-content p {
+    color: #b0b0b0 !important;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* --- Estilo del Separador --- */
+.separador-lujo {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, rgba(220, 53, 69, 0.5), transparent);
+    width: 60%;
+    margin: 0 auto;
+    opacity: 1;
+}
+
+/* --- Estilo de Testimonios --- */
+.testimonios-section {
+    background-color: #000;
+}
+
+.subtitulosTestimonios {
+    color: #dc3545;
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.testimonio-card {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: #dc3545;
+    display: block;
+    line-height: 1;
+    margin-bottom: -10px;
+}
+
+.testimonio-text {
+    font-size: 1.25rem;
+    color: #f8f9fa;
+    font-style: italic;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.testimonio-autor h5 {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+/* Ajuste de los indicadores del carrusel */
+.carousel-indicators [button] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #dc3545;
+}
+
+.carousel-item {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
