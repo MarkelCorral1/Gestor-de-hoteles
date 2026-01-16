@@ -1,5 +1,5 @@
 <?php
-    require_once '../config/config.php';
+require_once '../config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,28 +77,37 @@
                 <div class="card">
                     <div class="card-body">
                         <h5>Examp</h5>
+                        <h5>Horario</h5>
+                        <p>Aquí ira la imnformación de contacto del hotel</p>
+                        <h5>Dirección</h5>
+                        <p>Aquí ira la imnformación de contacto del hotel</p>
+                        <h5>Teléfono</h5>
+                        <p>Aquí ira la imnformación de contacto del hotel</p>
+                        <h5>Email</h5>
                         <p>Aquí ira la imnformación de contacto del hotel</p>
                     </div>
                 </div>
             </div>
             <div class="card2">
-                <h1>Información general</h1>
+                <h1 class="">Información general</h1>
                 <div class="card">
                     <div class="card-body">
                         <h5>Example</h5>
                         <p>Aquí ira la imnformación de contacto del hotel</p>
+                        <ul class="sin-puntos">
+                            <li>Condiciones de reserva</li>
+                            <li>Política de cancelación</li>
+                            <li>Servicios incluidos en la estancia</li>
+                            <li>Programa de fidelización</li>
+                            <li>Ofertas y paquetes especiales</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-                <div class="footer1">
+            <div class="footer1">
 
-        <?php include INCLUDES_PATH  . '/footer.php'; ?> <!-- FOOTER -->
-    </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                <?php include INCLUDES_PATH  . '/footer.php'; ?> <!-- FOOTER -->
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
-
-    </html>
-</body>
-
-</html>
+ </html>
