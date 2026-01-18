@@ -1,0 +1,35 @@
+@use '../variables' as *;
+
+body {
+    font-family: $font-primary;
+    background-color: $blanco;
+}
+
+h1,
+h2,
+h3,
+.brand {
+    font-family: $font-secondary;
+}
+
+/* Ajuste para que las imágenes mantengan su proporción circular */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.subtitle {
+    color: $rojo;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+}
+
+.sin-puntos {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.text-outline-white {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    color: transparent;
+}

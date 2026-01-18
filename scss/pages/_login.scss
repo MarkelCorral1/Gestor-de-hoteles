@@ -1,0 +1,17 @@
+@use '../variables' as *;
+
+.inicioSesion {
+    background-image: url("../images/Carrousel/Vestibulo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container-session {
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    max-width: 400px;
+    box-sizing: content-box;
+}

@@ -1,0 +1,28 @@
+@use '../variables' as *;
+
+.navbar {
+    background-color: $negro;
+
+    &-brand {
+        color: $rojo !important;
+    }
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+
+    @media (max-width: 768px) {
+        height: 40px;
+    }
+}
+
+/* Pagina de la historia, he puesto el navbar diferente para que sea transparente */ 
+.home-page {
+    .navbar {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: blur(5px); // Cristal suave para que se lea el menú
+    }
+}

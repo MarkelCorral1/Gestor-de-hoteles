@@ -1,0 +1,323 @@
+@use '../variables' as *;
+
+/* Hero Section */
+.hero-historia {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    /* Removed background property to use video element instead */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+    .hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    .hero-historia::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 1;
+        /* Ensure overlay is above video but below content */
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: $blanco;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-historia h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 5rem;
+        font-weight: 900;
+        letter-spacing: 5px;
+        margin-bottom: 20px;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-subtitle {
+        color: $rojo;
+        letter-spacing: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        40% {
+            transform: translateX(-50%) translateY(-20px);
+        }
+
+        60% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+    }
+
+    .scroll-indicator span {
+        display: block;
+        width: 30px;
+        height: 50px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50px;
+        position: relative;
+    }
+
+    .scroll-indicator span::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background: $blanco;
+        border-radius: 50%;
+        animation: scroll 2s infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 1;
+            top: 10px;
+        }
+
+        100% {
+            opacity: 0;
+            top: 30px;
+        }
+    }
+
+    /* Timeline Section */
+    .timeline-section {
+        background: $negro;
+        padding: 100px 0;
+        position: relative;
+    }
+
+    .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, $rojo, $rojo);
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 100px;
+        animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .timeline-content {
+        background: $negro;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        position: relative;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-right: 55%;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 55%;
+    }
+
+    .timeline-year {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: $rojo;
+        color: $blanco;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border: 5px solid #000;
+        box-shadow: 0 0 30px rgba(166, 0, 0, 0.5);
+    }
+
+    .timeline-content h3 {
+        font-family: 'Playfair Display', serif;
+        color: $blanco;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .timeline-content p {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+    }
+
+    /* Vision Section */
+    .vision-section {
+        background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .vision-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(166, 0, 0, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .vision-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 50px;
+        text-align: center;
+        transition: all 0.4s ease;
+        height: 100%;
+    }
+
+    .vision-card:hover {
+        transform: translateY(-10px);
+        border-color: $rojo;
+    }
+
+    .vision-icon {
+        font-size: 4rem;
+        color: $rojo;
+        margin-bottom: 30px;
+    }
+
+    .vision-card h4 {
+        font-family: 'Playfair Display', serif;
+        color: $blanco;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .vision-card p {
+        color: rgba($blanco, 0.7);
+        line-height: 1.8;
+    }
+
+    /* Founder Section */
+    .founder-section {
+        background: $negro;
+        padding: 100px 0;
+    }
+
+    .founder-img-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+
+    .founder-img-container img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        filter: grayscale(20%);
+        transition: all 0.6s ease;
+    }
+
+    .founder-img-container:hover img {
+        transform: scale(1.05);
+        filter: grayscale(0%);
+    }
+
+    .founder-quote {
+        background: $negro;
+        border-left: 5px solid $rojo;
+        padding: 30px;
+        margin: 30px 0;
+        font-style: italic;
+        color: $blanco;
+        font-size: 1.3rem;
+        line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+        .hero-historia h1 {
+            font-size: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content,
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .timeline-line {
+            left: 20px;
+        }
+
+        .timeline-year {
+            left: 20px;
+        }
+    }

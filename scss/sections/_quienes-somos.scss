@@ -1,0 +1,41 @@
+/* Quienes somos */
+/* Contenedor Principal */
+#quienes-somos {
+    background-color: $blanco;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+/* Subtítulo rojo */
+.subtitulo-herencia {
+    color: $rojo;
+    /* text-danger */
+    letter-spacing: 3px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Título Principal */
+.titulo-quienes {
+    font-family: $font-secondary;
+}
+
+/* Párrafos */
+.parrafo-quienesSomos {
+    font-family: $font-primary;
+    color: $color-text;
+    font-size: 1.25rem;
+}
+
+.descripcion-quienesSomos {
+    font-family: $font-primary;
+    color: $color-text;
+}
+
+/* Contenedor de Imagen */
+.img-container {
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}

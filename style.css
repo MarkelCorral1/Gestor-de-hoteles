@@ -1,0 +1,834 @@
+@charset "UTF-8";
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+.brand {
+  font-family: "Playfair Display", serif;
+}
+
+/* Ajuste para que las imágenes mantengan su proporción circular */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.subtitle {
+  color: #a60000;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+}
+
+.sin-puntos {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.text-outline-white {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  color: transparent;
+}
+
+.navbar {
+  background-color: #000000;
+}
+.navbar-brand {
+  color: #a60000 !important;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+@media (max-width: 768px) {
+  .logo-img {
+    height: 40px;
+  }
+}
+
+/* Pagina de la historia, he puesto el navbar diferente para que sea transparente */
+.home-page .navbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(5px);
+}
+
+.img-footer {
+  height: 50px;
+  width: auto;
+}
+
+footer {
+  background-color: #000000;
+  color: #ccc;
+}
+footer h5 {
+  color: #a60000;
+}
+
+.btn-hotel {
+  color: black !important;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.5em 1.2em;
+  background: transparent;
+  border: 2px solid;
+  border-color: #ac3131;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.btn-hotel:hover {
+  background: #ff2800;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+.btn-custom-danger {
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.btn-custom-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.card {
+  border: 1px solid black;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  cursor: pointer;
+}
+
+.hover-card {
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  /* Efecto Hover: Zoom y rotación suave */
+}
+.hover-card:hover {
+  transform: scale(1.05) rotate(2deg) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  z-index: 10 !important;
+}
+.hover-card:hover img {
+  transform: scale(1.1);
+}
+.hover-card img {
+  transition: transform 0.5s ease;
+}
+
+.apex-card {
+  position: relative;
+  flex: 1;
+  /* Todas empiezan iguales */
+  overflow: hidden;
+  border-radius: 20px;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Efecto Expandir al Hover */
+}
+.apex-card:hover {
+  flex: 3;
+  /* Se expande */
+  filter: brightness(1.1);
+}
+.apex-card:hover img {
+  transform: scale(1.05);
+}
+.apex-card:hover .apex-card-content {
+  opacity: 1;
+}
+.apex-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.apex-card {
+  /* Overlay de texto con Glassmorphism */
+}
+.apex-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.2s;
+  /* Delay para que el texto aparezca tras expandirse */
+}
+
+.apex-gallery-container {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  height: 500px;
+  /* Difuminar las que NO están en hover */
+}
+.apex-gallery-container:hover .apex-card:not(:hover) {
+  filter: blur(4px) grayscale(0.5);
+  opacity: 0.6;
+}
+
+/* Room Image - Extra */
+.room-img {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.descripcion {
+  min-height: 4.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Ajuste de las imágenes del carrusel */
+.hero-slide {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.7);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Ajuste de los indicadores del carrusel */
+.carousel-indicators [button] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #a60000;
+}
+
+.carousel-item {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.exp-icon {
+  font-size: 2.5rem;
+  color: #a60000;
+}
+
+.search-box {
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(1px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.search-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Quienes somos */
+/* Contenedor Principal */
+#quienes-somos {
+  background-color: #ffffff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Subtítulo rojo */
+.subtitulo-herencia {
+  color: #a60000;
+  /* text-danger */
+  letter-spacing: 3px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Título Principal */
+.titulo-quienes {
+  font-family: "Playfair Display", serif;
+}
+
+/* Párrafos */
+.parrafo-quienesSomos {
+  font-family: "Montserrat", sans-serif;
+  color: #424242;
+  font-size: 1.25rem;
+}
+
+.descripcion-quienesSomos {
+  font-family: "Montserrat", sans-serif;
+  color: #424242;
+}
+
+/* Contenedor de Imagen */
+.img-container {
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+}
+
+#acercadelRestaurante {
+  background-color: #000000 !important;
+  /* Negro puro */
+}
+
+/* Animación de flotación suave */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.img-container-floating {
+  position: relative;
+  height: 450px;
+  width: 100%;
+}
+
+/* Asignación de animaciones con diferentes tiempos para naturalidad */
+.float-1 {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-2 {
+  animation: float 5s ease-in-out infinite 1s;
+}
+
+.float-3 {
+  animation: float 7s ease-in-out infinite 0.5s;
+}
+
+/* --- APARTADO SALUD Y BIENESTAR PREMIUM --- */
+.seccion-bienestar {
+  padding: 60px 0;
+  background-color: #000000;
+  /* Fondo oscuro para resaltar las fotos */
+}
+
+/* Grid asimétrico de 2 imágenes */
+.bienestar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* mismo tamaño para las imagenes */
+  gap: 10px;
+  /*Espacio entre imagenes */
+  height: 320px;
+  /* Altura controlada */
+  overflow: hidden;
+  border-radius: 5px;
+}
+.bienestar-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  /* Efecto visual sofisticado */
+  transition: all 0.6s ease;
+}
+.bienestar-grid img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Tipografía y detalles */
+.bienestar-content {
+  padding-top: 20px;
+}
+.bienestar-content h4 {
+  font-family: "Playfair Display", serif;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+.bienestar-content p {
+  color: #ffffff !important;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Línea roja estilo Schumacher */
+.bienestar-line {
+  width: 50px;
+  height: 2px;
+  background-color: #a60000;
+  /* Rojo corporativo */
+  margin-bottom: 15px;
+  transition: width 0.4s ease;
+}
+
+.bienestar-card {
+  background: transparent;
+  border: none;
+  padding: 10px;
+  transition: all 0.4s ease;
+}
+.bienestar-card:hover .bienestar-line {
+  width: 80px;
+}
+
+/* --- Estilo del Separador --- */
+.separador-lujo {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, rgba(220, 53, 69, 0.5), transparent);
+  width: 60%;
+  margin: 0 auto;
+  opacity: 1;
+}
+
+/* --- Estilo de Testimonios --- */
+.testimonios-section {
+  background-color: #000000;
+}
+
+.subtitulosTestimonios {
+  color: #a60000;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.testimonio-card {
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.quote-mark {
+  font-family: "Playfair Display", serif;
+  font-size: 5rem;
+  color: #a60000;
+  display: block;
+  line-height: 1;
+  margin-bottom: -10px;
+}
+
+.testimonio-text {
+  font-size: 1.25rem;
+  color: #ffffff;
+  font-style: italic;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+.testimonio-autor h5 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+/* Hero Section */
+.hero-historia {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  /* Removed background property to use video element instead */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-historia::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 1;
+  /* Ensure overlay is above video but below content */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-historia h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.hero-subtitle {
+  color: #a60000;
+  letter-spacing: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-20px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+.scroll-indicator span {
+  display: block;
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  position: relative;
+}
+
+.scroll-indicator span::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    top: 10px;
+  }
+  100% {
+    opacity: 0;
+    top: 30px;
+  }
+}
+/* Timeline Section */
+.timeline-section {
+  background: #000000;
+  padding: 100px 0;
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #a60000, #a60000);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 100px;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.timeline-content {
+  background: #000000;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-right: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: 55%;
+}
+
+.timeline-year {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #a60000;
+  color: #ffffff;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 5px solid #000;
+  box-shadow: 0 0 30px rgba(166, 0, 0, 0.5);
+}
+
+.timeline-content h3 {
+  font-family: "Playfair Display", serif;
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.timeline-content p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+/* Vision Section */
+.vision-section {
+  background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(166, 0, 0, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.vision-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 50px;
+  text-align: center;
+  transition: all 0.4s ease;
+  height: 100%;
+}
+
+.vision-card:hover {
+  transform: translateY(-10px);
+  border-color: #a60000;
+}
+
+.vision-icon {
+  font-size: 4rem;
+  color: #a60000;
+  margin-bottom: 30px;
+}
+
+.vision-card h4 {
+  font-family: "Playfair Display", serif;
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.vision-card p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+/* Founder Section */
+.founder-section {
+  background: #000000;
+  padding: 100px 0;
+}
+
+.founder-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.founder-img-container img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: all 0.6s ease;
+}
+
+.founder-img-container:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.founder-quote {
+  background: #000000;
+  border-left: 5px solid #a60000;
+  padding: 30px;
+  margin: 30px 0;
+  font-style: italic;
+  color: #ffffff;
+  font-size: 1.3rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .hero-historia h1 {
+    font-size: 3rem;
+  }
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .timeline-line {
+    left: 20px;
+  }
+  .timeline-year {
+    left: 20px;
+  }
+}
+.inicioSesion {
+  background-image: url("../images/Carrousel/Vestibulo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container-session {
+  background-color: white;
+  width: 100%;
+  margin: auto;
+  max-width: 400px;
+  box-sizing: content-box;
+}
+
+/*Grid Syst Contacto */
+.contactogrid {
+  display: grid;
+  grid-template-areas: "cabecera cabecera" "formulario card1" "formulario card1" "formulario card2" "formulario card2" "footer1 footer1";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0px 200px;
+  color: white;
+  background-image: url("../images/Carrousel/Zona de trofeos.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.cabecera {
+  grid-area: cabecera;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.card1 {
+  grid-area: card1;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card2 {
+  grid-area: card2;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer1 {
+  grid-area: footer1;
+  background-color: black;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  grid-area: formulario;
+}
+
+textarea {
+  resize: none;
+}
+
+/*# sourceMappingURL=style.css.map */
