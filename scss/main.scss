@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+// Base
+@use 'base/base';
+
+// Layout
+@use 'layout/navbar';
+@use 'layout/footer';
+
+// Components
+@use 'components/buttons';
+@use 'components/cards';
+
+// Sections
+@use 'sections/hero';
+@use 'sections/about';
+@use 'sections/wellness';
+@use 'sections/testimonios';
+@use 'sections/historia';
+
+// Pages
+@use 'pages/login';
+@use 'pages/contacto';

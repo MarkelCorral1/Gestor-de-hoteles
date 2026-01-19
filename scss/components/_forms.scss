@@ -1,0 +1,22 @@
+.search-box {
+    transition: transform 0.3s ease;
+}
+
+.search-box:hover {
+    transform: translateY(-5px);
+}
+
+.search-box {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(1px);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.formulario {
+    grid-area: formulario;
+}
+
+textarea {
+    resize: none;
+}

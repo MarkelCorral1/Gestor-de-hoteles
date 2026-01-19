@@ -1,0 +1,33 @@
+@use '../variables' as *;
+
+.btn-hotel {
+    color: black !important;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0.5em 1.2em;
+    background: transparent;
+    border: 2px solid;
+    border-color: #ac3131; 
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+        background: #ff2800;
+        color: #fff !important;
+        cursor: pointer;
+    }
+}
+
+.btn-custom-danger {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s ease;
+
+    &:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+}

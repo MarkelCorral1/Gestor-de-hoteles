@@ -1,0 +1,38 @@
+#acercadelRestaurante {
+    background-color: $negro!important;
+    /* Negro puro */
+}
+
+/* Animación de flotación suave */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.img-container-floating {
+    position: relative;
+    height: 450px;
+    width: 100%;
+}
+
+/* Asignación de animaciones con diferentes tiempos para naturalidad */
+.float-1 {
+    animation: float 6s ease-in-out infinite;
+}
+
+.float-2 {
+    animation: float 5s ease-in-out infinite 1s;
+}
+
+.float-3 {
+    animation: float 7s ease-in-out infinite 0.5s;
+}

@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+.img-footer {
+    height: 50px;
+    width: auto;
+}
+
+footer {
+    background-color: $negro;
+    color: #ccc;
+
+    h5 {
+        color: $rojo;
+    }
+}

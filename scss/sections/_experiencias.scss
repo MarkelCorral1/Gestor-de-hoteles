@@ -1,0 +1,20 @@
+@use '../variables' as *;
+
+.exp-icon {
+    font-size: 2.5rem;
+    color: $rojo;
+}
+
+/* Estilos de Animación */
+.apex-gallery-container {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    height: 500px;
+}
+
+/* Difuminar las que NO están en hover */
+.apex-gallery-container:hover .apex-card:not(:hover) {
+    filter: blur(4px) grayscale(0.5);
+    opacity: 0.6;
+}
