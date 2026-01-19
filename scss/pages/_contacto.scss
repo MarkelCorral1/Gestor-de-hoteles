@@ -6,8 +6,8 @@
     grid-template-areas: "cabecera cabecera" "formulario card1" "formulario card1" "formulario card2" "formulario card2" "footer1 footer1";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0px 200px;
-    color: white;
-    background-image: url("../images/Carrousel/Zona de trofeos.png");
+    color: $blanco;
+    background-image: url("#{$image-url}/Carrousel/Zona de trofeos.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -40,7 +40,7 @@
 
 .footer1 {
     grid-area: footer1;
-    background-color: black;
+    background-color: $negro;
     padding: 10px;
     display: flex;
     justify-content: center;
