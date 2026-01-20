@@ -1,0 +1,106 @@
+// scss/components/_gallery.scss
+
+$gallery-height-mobile: 250px; // Solo lo necesitamos para móvil
+
+.gallery {
+    &__main-img {
+        // Quitamos min/max-height fijos porque lo controla el row padre (400px)
+        object-fit: cover;
+        // Mantenemos solo el borde redondeado izquierdo
+        border-radius: var(--bs-border-radius-lg, 0.5rem) 0 0 var(--bs-border-radius-lg, 0.5rem);
+
+        @media (max-width: 768px) {
+            // En móvil si necesitamos altura fija porque el row deja de tenerla
+            min-height: $gallery-height-mobile;
+            max-height: $gallery-height-mobile;
+            border-radius: var(--bs-border-radius-lg, 0.5rem) var(--bs-border-radius-lg, 0.5rem) 0 0;
+        }
+    }
+
+    &__side-img {
+        // Ya no ponemos height: 50% aquí, lo heredan del div padre h-50
+        object-fit: cover;
+
+        // Ajustes de bordes
+        // Nota: ya no usamos margin-bottom aquí, lo hace el gap-2 del HTML
+
+        // La imagen superior (dentro del primer div)
+        // Como no podemos seleccionar "el primer div", aplicamos reglas generales
+        // pero necesitamos el border-radius correcto.
+        // TRUCO: Como en HTML están en divs separados, usamos clases o selectores de contexto
+    }
+}
+
+// CORRECCIÓN PARA BORDES LATERALES
+// Como ahora las img están dentro de divs, el selector &:first-child directo no funciona igual.
+// Lo arreglamos así:
+
+.col-md-4>div:first-child .gallery__side-img {
+    border-radius: 0 var(--bs-border-radius-lg, 0.5rem) 0 0; // Arriba derecha
+}
+
+.col-md-4>div:last-child .gallery__side-img {
+    border-radius: 0 0 var(--bs-border-radius-lg, 0.5rem) 0; // Abajo derecha
+}
+
+
+// --- Miniaturas (esto se queda igual que antes, estaba bien) ---
+.gallery__thumb {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: var(--bs-border-radius, 0.375rem);
+    cursor: pointer;
+    transition: filter 0.2s ease-in-out;
+
+    &:hover {
+        filter: brightness(0.85);
+    }
+}
+
+.gallery__more-link {
+    position: relative;
+    display: block;
+    height: 100px;
+    border-radius: var(--bs-border-radius, 0.375rem);
+    overflow: hidden;
+    cursor: pointer;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+        backdrop-filter: blur(2px);
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
+}
+
+// AJUSTE RESPONSIVE FINAL
+@media (max-width: 768px) {
+
+    // Forzamos que en móvil los contenedores laterales se reseteen
+    .col-md-4.h-100 {
+        height: auto !important;
+    }
+
+    .col-md-4>div {
+        // Los divs h-50
+        height: 200px !important; // Altura decente en móvil
+    }
+
+    .gallery__side-img {
+        border-radius: 0 !important; // Sin bordes raros en móvil
+    }
+}
