@@ -37,7 +37,10 @@ class Reserva {
         return $this->fecha_final;
     }
 
-    public function setId_categoria($id_habitacion): void {
+    public function setId_usuario($id_usuario): void {
+        $this->id_usuario = $id_usuario;
+    }
+    public function setId_habitacion($id_habitacion): void {
         $this->id_habitacion = $id_habitacion;
     }
     public function setFecha_inicio($fecha_inicio): void {
