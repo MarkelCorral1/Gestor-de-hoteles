@@ -52,49 +52,78 @@ if (!$usuario) { // si no es admin
 <body>
     <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
 
-    <div class="container min-vh-100">
-        <h1>Gestión de Usuarios</h1>
-        <div class="row">
-            <?php
-            $usuarios = $entityManager->getRepository('Usuario')->findAll();
-            foreach ($usuarios as $usuario) :
-                $tipoUsuario = $usuario->getTipo() === 'admin' ? 'admin-user' : 'normal-user';
-            ?>
-                <div class="usuario <?= $tipoUsuario ?> col-lg-3 col-md-4 col-sm-6 p-3 border rounded">
-                    <h2><?= $usuario->getUsername() ?></h2>
-                    <p class="tipo"><?= $usuario->getTipo() ?></p>
-                    <button
-                        class="btn btn-primary btn-editar"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editarUsuarioModal"
-                        data-id="<?= $usuario->getId_usuario() ?>"
-                        data-username="<?= $usuario->getUsername() ?>"
-                        data-tipo="<?= $usuario->getTipo() ?>">
-                        Editar
-                    </button>
-                    <button
-                        class="btn btn-secondary"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#reservas-<?= $usuario->getId_usuario() ?>">
-                        Ver reservas
-                    </button>
-                    <div id="reservas-<?= $usuario->getId_usuario() ?>" class="collapse reservas rounded mt-3 p-2">
-                        <?php
-                        $reservas = $entityManager->getRepository('Reserva')->findBy(['id_usuario' => $usuario->getId_usuario()]);
-                        foreach ($reservas as $reserva) :
-                        ?>
-                            <p>ID habitacion: <?= $reserva->getId_habitacion()->getId_habitacion() ?></p>
-                            <p>Fecha inicio: <?= $reserva->getFecha_inicio()->format('Y-m-d') ?></p>
-                            <p>Fecha final: <?= $reserva->getFecha_final()->format('Y-m-d') ?></p>
-                        <?php endforeach; ?>
+        <div class="container min-vh-100">
+            <h1>Gestión de Usuarios</h1>
+            <div class="row">
+                <?php
+                $usuarios = $entityManager->getRepository('Usuario')->findAll();
+                foreach ($usuarios as $usuario) :
+                    $tipoUsuario = $usuario->getTipo() === 'admin' ? 'admin-user' : 'normal-user';
+                ?>
+                    <div class="usuario <?= $tipoUsuario ?> col-lg-3 col-md-4 col-sm-6 p-3 border rounded">
+                        <h2><?= $usuario->getUsername() ?></h2>
+                        <p class="tipo"><?= $usuario->getTipo() ?></p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-3">
+                            <button
+                                class="btn btn-primary btn-editar w-50"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editarUsuarioModal"
+                                data-id="<?= $usuario->getId_usuario() ?>"
+                                data-username="<?= $usuario->getUsername() ?>"
+                                data-tipo="<?= $usuario->getTipo() ?>">
+                                Editar
+                            </button>
+                            
+                            <div class="w-50">
+                                <form action="<?= PHP_URL ?>/eliminarUsuario.php" method="post">
+                                    <input type="hidden" name="id_usuario" value="<?= $usuario->getId_usuario() ?>">
+                                    <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <button
+                            class="btn btn-secondary w-100"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#reservas-<?= $usuario->getId_usuario() ?>">
+                            Ver reservas
+                        </button>
+
+                        <div id="reservas-<?= $usuario->getId_usuario() ?>" class="collapse reservas rounded mt-3 p-2">
+                            <?php
+                            $reservas = $entityManager->getRepository('Reserva')->findBy(['id_usuario' => $usuario->getId_usuario()]);
+                            foreach ($reservas as $reserva) :
+                            ?>
+                                <p>ID habitacion: <?= $reserva->getId_habitacion()->getId_habitacion() ?></p>
+                                <p>Fecha inicio: <?= $reserva->getFecha_inicio()->format('Y-m-d') ?></p>
+                                <p>Fecha final: <?= $reserva->getFecha_final()->format('Y-m-d') ?></p>
+                                <div class="d-flex justify-content-center gap-2 mb-3">
+                                    <button
+                                        class="btn btn-primary btn-editar w-50"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editarReservaModal"
+                                        data-id="<?= $reserva->getId_reserva() ?>"
+                                        data-fecha_inicio="<?= $reserva->getFecha_inicio()->format('Y-m-d') ?>"
+                                        data-fecha_fin="<?= $reserva->getFecha_final()->format('Y-m-d') ?>">
+                                        Editar
+                                    </button>
+                                    <div class="w-50">
+                                        <form action="<?= PHP_URL ?>/eliminarReserva.php" method="post">
+                                            <input type="hidden" name="id_reserva" value="<?= $reserva->getId_reserva() ?>">
+                                            <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+
         </div>
 
-    </div>
-
-    <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <form method="POST" action="<?= PHP_URL ?>/editarUsuario.php" class="modal-content">
                 <div class="modal-header">
@@ -104,7 +133,7 @@ if (!$usuario) { // si no es admin
 
                 <div class="modal-body">
 
-                    <input type="hidden" name="id_usuario" id="edit-id">
+                    <input type="hidden" name="id_usuario" id="id_usuario">
 
                     <div class="mb-3">
                         <label class="form-label">Nombre de usuario</label>
@@ -131,12 +160,47 @@ if (!$usuario) { // si no es admin
             </form>
         </div>
     </div>
+    <div class="modal fade" id="editarReservaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="POST" action="<?= PHP_URL ?>/editarReserva.php" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" name="id_reserva" id="id_reserva">
+
+                    <div class="mb-3">
+                        <label class="form-label">Fecha inicio</label>
+                        <input type="date" name="fecha_inicio" id="edit-fecha_inicio" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Fecha fin</label>
+                        <input type="date" name="fecha_fin" id="edit-fecha_fin" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Guardar cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
     <?php include INCLUDES_PATH  . '/footer.php'; ?> <!-- FOOTER -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= JS_URL ?>/rellenarModalUsuario.js"></script>
+    <script src="<?= JS_URL ?>/rellenarModalReserva.js"></script>
 </body>
 
 </html>
