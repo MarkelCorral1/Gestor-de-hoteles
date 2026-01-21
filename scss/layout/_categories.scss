@@ -1,0 +1,115 @@
+// VARIABLES (Si no las tienes ya globales)
+$brand-color: #dc3545;
+$text-color: #6c757d;
+$title-color: #adb5bd;
+$font-stack: 'Montserrat', sans-serif;
+
+// CONTENEDOR PRINCIPAL DEL MENÚ
+.categories-nav {
+
+    // --- NUEVO BLOQUE: Centrado Vertical y Altura Fija ---
+    // Esto hace que el menú mida lo mismo que la galería (600px) y se centre
+    @media (min-width: 768px) {
+        height: 600px; // Misma altura que el Grid
+        display: flex; // Activamos Flexbox
+        flex-direction: column; // Elementos en columna
+        justify-content: center; // CENTRADO VERTICAL (Lo que buscabas)
+    }
+
+    // En móvil reseteamos para que no ocupe espacio extra
+    @media (max-width: 767.98px) {
+        height: auto !important;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    // -----------------------------------------------------
+
+    .single-categories {
+        @media (min-width: 768px) {
+            gap: 1.5rem !important;
+        }
+    }
+
+    .category-label {
+        font-family: $font-stack;
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #495057;
+        margin-bottom: 1.5rem;
+        padding-left: 1rem;
+        text-transform: uppercase;
+        display: none;
+
+        @media (min-width: 768px) {
+            display: block;
+        }
+    }
+
+    .categorie-item {
+        position: relative;
+        font-family: $font-stack;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: $text-color;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0.4rem 0.5rem;
+
+        @media (min-width: 768px) and (max-width: 1200px) {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            padding-left: 0.5rem;
+        }
+
+        &:hover,
+        &.active {
+            color: $brand-color;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: $brand-color;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        &:hover::after,
+        &.active::after {
+            width: 80%;
+        }
+
+        @media (min-width: 768px) {
+            padding-left: 1rem;
+
+            &::after {
+                content: none;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 3px;
+                height: 0;
+                background-color: $brand-color;
+                transform: translateY(-50%);
+                transition: height 0.3s ease;
+            }
+
+            &:hover::before,
+            &.active::before {
+                height: 100%;
+            }
+        }
+    }
+}

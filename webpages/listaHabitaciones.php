@@ -1,6 +1,7 @@
 <?php
 require_once '../config/config.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,7 @@ require_once '../config/config.php';
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="<?= CSS_URL ?>">
-    <title>Document</title>
+    <title>Habitaciones</title>
 </head>
 
 <body>
@@ -20,52 +21,68 @@ require_once '../config/config.php';
     <?php include INCLUDES_PATH . '/navbar.php'; ?>
 
     <div class="container my-4">
-        <!-- Fila Superior: Altura forzada 400px para evitar huecos -->
-        <!-- 'overflow-hidden' evita que si una imagen es muy grande rompa el redondeado -->
-        <div class="row g-2 mb-2 overflow-hidden" style="height: 400px;">
+        <div class="row">
 
-            <!-- Imagen Principal (Izquierda) -->
-            <div class="col-md-8 h-100">
-                <!-- h-100 y w-100 para que llene su celda -->
-                <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_1.png" class="gallery__main-img h-100 w-100"
-                    alt="Vista Principal">
-            </div>
-
-            <!-- Columna Derecha (2 imágenes apiladas) -->
-            <div class="col-md-4 h-100 d-flex flex-column gap-2">
-
-                <!-- Foto lateral superior (50% altura) -->
-                <!-- Metemos la img en un div h-50 para controlar mejor el overflow -->
-                <div class="h-50 w-100 overflow-hidden">
-                    <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_2.png" class="gallery__side-img h-100 w-100"
-                        alt="Detalle 1">
+            <aside class="col-12 col-md-2 mb-4 mb-md-0 categories-nav d-flex flex-column justify-content-center" >
+                <div class="w-100">
+                    <h6 class="category-label">Categorías</h6>
+                    <ul class="single-categories list-unstyled m-0 p-0 
+                           d-flex flex-row flex-md-column 
+                           justify-content-center align-items-center align-items-md-start 
+                           gap-3">
+                        <li class="categorie-item active">Stroll</li>
+                        <li class="categorie-item">Lando</li>
+                        <li class="categorie-item">Alonso</li>
+                        <li class="categorie-item">Senna</li>
+                        <li class="categorie-item">Schumacher</li>
+                    </ul>
                 </div>
 
-                <!-- Foto lateral inferior (50% altura) -->
-                <div class="h-50 w-100 overflow-hidden">
-                    <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_3.png" class="gallery__side-img h-100 w-100"
-                        alt="Detalle 2">
+            </aside>
+
+            <main class="col-12 col-md-10">
+
+                <div class="d-grid gap-2"
+                    style="display: grid; grid-template-columns: repeat(5, 1fr); /* 5 columnas iguales */ grid-template-rows: repeat(4, 1fr);    /* 4 filas iguales de altura */height: 600px; /* Altura TOTAL fija para escritorio */ ">
+                    <div class="rounded-2 overflow-hidden position-relative"
+                        style="grid-column: span 4; grid-row: span 3;">
+                        <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_1.png"
+                            class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Main">
+                    </div>
+
+                    <div class="d-flex flex-column gap-2" style="grid-column: span 1; grid-row: span 3;">
+                        <div class="flex-fill rounded-2 overflow-hidden position-relative">
+                            <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_2.png"
+                                class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Side 1">
+                        </div>
+                        <div class="flex-fill rounded-2 overflow-hidden position-relative">
+                            <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_3.png"
+                                class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Side 2">
+                        </div>
+                    </div>
+
+                    <div class="rounded-2 overflow-hidden position-relative" style="grid-row: 4;">
+                        <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_4.png"
+                            class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Thumb 1">
+                    </div>
+                    <div class="rounded-2 overflow-hidden position-relative" style="grid-row: 4;">
+                        <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_2.png"
+                            class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Thumb 2">
+                    </div>
+                    <div class="rounded-2 overflow-hidden position-relative" style="grid-row: 4;">
+                        <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_3.png"
+                            class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Thumb 3">
+                    </div>
+                    <div class="rounded-2 overflow-hidden position-relative" style="grid-row: 4;">
+                        <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_1.png"
+                            class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Thumb 4">
+                    </div>
+                    <div class="rounded-2 overflow-hidden position-relative" style="grid-row: 4;">
+                        <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_2.png"
+                            class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Thumb 5">
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Fila Inferior: Tira de miniaturas -->
-        <!-- row-cols-5 asegura distribución exacta en 5 columnas -->
-        <div class="row g-2 row-cols-5">
-            <div class="col">
-                <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_4.png" class="gallery__thumb" alt="Vista baño">
-            </div>
-            <div class="col">
-                <!-- Repetimos imagen o ponemos otra diferente -->
-                <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_2.png" class="gallery__thumb" alt="Vista cama">
-            </div>
-            <div class="col">
-                <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_3.png" class="gallery__thumb" alt="Detalle escritorio">
-            </div>
-            <div class="col">
-                <img src="<?= IMAGES_URL ?>/habitaciones/Stroll_1.png" class="gallery__thumb" alt="Vista terraza">
-            </div>
-
+            </main>
         </div>
     </div>
 

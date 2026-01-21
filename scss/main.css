@@ -73,6 +73,101 @@ footer h5 {
   color: #a60000;
 }
 
+@media (min-width: 768px) {
+  .categories-nav {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (max-width: 767.98px) {
+  .categories-nav {
+    height: auto !important;
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .categories-nav .single-categories {
+    gap: 1.5rem !important;
+  }
+}
+.categories-nav .category-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #495057;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  text-transform: uppercase;
+  display: none;
+}
+@media (min-width: 768px) {
+  .categories-nav .category-label {
+    display: block;
+  }
+}
+.categories-nav .categorie-item {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.4rem 0.5rem;
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .categories-nav .categorie-item {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding-left: 0.5rem;
+  }
+}
+.categories-nav .categorie-item:hover, .categories-nav .categorie-item.active {
+  color: #dc3545;
+}
+.categories-nav .categorie-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #dc3545;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.categories-nav .categorie-item:hover::after, .categories-nav .categorie-item.active::after {
+  width: 80%;
+}
+@media (min-width: 768px) {
+  .categories-nav .categorie-item {
+    padding-left: 1rem;
+  }
+  .categories-nav .categorie-item::after {
+    content: none;
+  }
+  .categories-nav .categorie-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 0;
+    background-color: #dc3545;
+    transform: translateY(-50%);
+    transition: height 0.3s ease;
+  }
+  .categories-nav .categorie-item:hover::before, .categories-nav .categorie-item.active::before {
+    height: 100%;
+  }
+}
+
 .btn-hotel {
   color: black !important;
   font-size: 20px;
