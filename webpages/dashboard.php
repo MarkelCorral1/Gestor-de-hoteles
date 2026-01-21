@@ -37,10 +37,9 @@ $hoteles = $entityManager->getRepository('Hotel')->findAll();
                                 <p class="card-text descripcion"><?php echo $hotel->getDescripcion() ?></p>
                                 <p class="card-text">Ciudad: <?php echo $hotel->getCiudad() ?> </p>
                                 <p class="card-text">País: <?php echo $hotel->getPais() ?> </p>
-                                <form action="listaHabitaciones.php" method="POST">
-                                    <input type="hidden" id="<?php echo $hotel->getId_hotel() ?>">
-                                    <input type="submit" value="Ver Hotel" class="btn btn-hotel w-100 mt-auto"></input>
-                                </form>
+                                <a href="listaHabitaciones.php?id_hotel=<?= $hotel->getId_hotel() ?>" class="btn btn-hotel w-100 mt-auto">
+                                    Ver Hotel
+                                </a>
                             </div>
                         </div>
                     </div>
