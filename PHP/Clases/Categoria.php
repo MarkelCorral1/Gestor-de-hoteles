@@ -23,6 +23,10 @@ class Categoria {
     private $helicoptero;
     /** @ORM\Column(type="integer") */
     private $precio_base;
+    /** @ORM\Column(type="integer") */
+    private $metros_cuadrados;
+    /** @ORM\Column(type="integer") */
+    private $camas;
     
     
     public function getId_categoria(): int {
@@ -52,6 +56,12 @@ class Categoria {
     public function getPrecio_base(): int {
         return $this->precio_base;
     }
+    public function getMetros_cuadrados(): int {
+        return $this->metros_cuadrados;
+    }
+    public function getCamas(): int {
+        return $this->camas;
+    }
 
     public function setNombre($nombre): void {
         $this->nombre = $nombre;
@@ -73,5 +83,14 @@ class Categoria {
     }
     public function setHelicoptero($helicoptero): void {
         $this->helicoptero = $helicoptero;
+    }
+    public function setPrecio_base($precio_base): void {
+        $this->precio_base = $precio_base;
+    }
+    public function setMetros_cuadrados($metros_cuadrados): void {
+        $this->metros_cuadrados = $metros_cuadrados;
+    }
+    public function setCamas($camas): void {
+        $this->camas = $camas;
     }
 }
