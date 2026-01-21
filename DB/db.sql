@@ -38,7 +38,7 @@ CREATE TABLE habitacion (
     id_categoria INT NOT NULL,
     metros_cuadrados INT NOT NULL,
     camas INT NOT NULL,
-    FOREIGN KEY (id_hotel) REFERENCES hotel(id_hotel),
+    FOREIGN KEY (id_hotel) REFERENCES hotel(id_hotel)  ON DELETE CASCADE,
     FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
 
@@ -50,6 +50,7 @@ CREATE TABLE reserva (
     fecha_inicio DATE NOT NULL,
     fecha_final DATE NOT NULL,
     numero_personas INT NOT NULL,
+    precio_total INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_habitacion) REFERENCES habitacion(id_habitacion),
     CHECK (fecha_final > fecha_inicio)

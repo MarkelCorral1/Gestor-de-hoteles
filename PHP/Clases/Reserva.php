@@ -21,6 +21,8 @@ class Reserva {
     private $fecha_final;
     /** @ORM\Column(type="integer") */
     private $numero_personas;
+    /** @ORM\Column(type="integer") */
+    private $precio_total;
     
     
     public function getId_reserva(): int {
@@ -41,6 +43,9 @@ class Reserva {
     public function getNumero_personas(): int {
         return $this->numero_personas;
     }
+    public function getPrecio_total(): int {
+        return $this->precio_total;
+    }
 
     public function setId_usuario($id_usuario): void {
         $this->id_usuario = $id_usuario;
@@ -56,5 +61,8 @@ class Reserva {
     }
     public function setNumero_personas($numero_personas): void {
         $this->numero_personas = $numero_personas;
+    }
+    public function setPrecio_total($precio_total): void {
+        $this->precio_total = $precio_total;
     }
 }

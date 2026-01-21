@@ -98,6 +98,7 @@ if (!$usuario) { // si no es admin
                                 <p>ID habitacion: <?= $reserva->getId_habitacion()->getId_habitacion() ?></p>
                                 <p>Fecha inicio: <?= $reserva->getFecha_inicio()->format('Y-m-d') ?></p>
                                 <p>Fecha final: <?= $reserva->getFecha_final()->format('Y-m-d') ?></p>
+                                <p>Precio total: <?= $reserva->getPrecio_total() ?>€</p>
                                 <div class="d-flex justify-content-center gap-2 mb-3">
                                     <button
                                         class="btn btn-primary btn-editar w-50"
@@ -105,7 +106,8 @@ if (!$usuario) { // si no es admin
                                         data-bs-target="#editarReservaModal"
                                         data-id="<?= $reserva->getId_reserva() ?>"
                                         data-fecha_inicio="<?= $reserva->getFecha_inicio()->format('Y-m-d') ?>"
-                                        data-fecha_fin="<?= $reserva->getFecha_final()->format('Y-m-d') ?>">
+                                        data-fecha_fin="<?= $reserva->getFecha_final()->format('Y-m-d') ?>"
+                                        data-precio_total="<?= $reserva->getPrecio_total() ?>">
                                         Editar
                                     </button>
                                     <div class="w-50">
@@ -180,6 +182,11 @@ if (!$usuario) { // si no es admin
                     <div class="mb-3">
                         <label class="form-label">Fecha fin</label>
                         <input type="date" name="fecha_fin" id="edit-fecha_fin" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Precio total</label>
+                        <input type="number" name="precio_total" id="edit-precio_total" class="form-control" required>
                     </div>
                 </div>
 

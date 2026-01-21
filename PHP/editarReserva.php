@@ -17,6 +17,7 @@ require_once '../PHP/Clases/ReservaRepository.php';
 $id = $_POST['id_reserva'] ?? '';
 $fecha_inicio = new DateTime($_POST['fecha_inicio']) ?? '';
 $fecha_fin = new DateTime($_POST['fecha_fin']) ?? '';
+$precio_total = $_POST['precio_total'] ?? '';
 
 // Validar que la fecha de inicio sea anterior a la fecha de fin
 if ($fecha_inicio >= $fecha_fin) {
@@ -27,6 +28,7 @@ if ($fecha_inicio >= $fecha_fin) {
 $reserva = $entityManager->find('Reserva', $id);
 $reserva->setFecha_inicio($fecha_inicio);
 $reserva->setFecha_final($fecha_fin);
+$reserva->setPrecio_total($precio_total);
 
 $entityManager->flush();
 
