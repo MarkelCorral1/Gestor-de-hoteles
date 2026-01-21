@@ -49,7 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // TODO: Habra que crear una columna precio_total en la tabla reserva y calcular el precio segun: precio_base de categoria * metros_cuadrados * 0.1 * noches
+    // El precio total se calcula como: precio_base_categoria * metros_cuadrados * 0.1 * numero_dias
+    $precio_total = $habitacion->getId_categoria()->getPrecio_base()
+        * $habitacion->getMetros_cuadrados()
+        * 0.1
+        * $fecha_inicio->diff($fecha_final)->days;
     
     $reserva = new Reserva();
     $reserva->setId_usuario($usuario);
@@ -57,9 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $reserva->setFecha_inicio($fecha_inicio);
     $reserva->setFecha_final($fecha_final);
     $reserva->setNumero_personas($numero_personas);
+    $reserva->setPrecio_total($precio_total);
     $entityManager->persist($reserva);
     $entityManager->flush();
 
-    header('Location: prueba.php');
+    header('Location: index.php');
     exit();
 }
