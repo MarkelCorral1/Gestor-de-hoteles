@@ -22,11 +22,11 @@ document.getElementById('sessionStart').addEventListener('submit', (e) => {
             
             if (data.estado === 'error') {
                 respuestaForm.innerHTML = data.mensaje;
-                respuestaForm.classList.add('text-danger', 'bg-danger', 'border-danger', 'mt-3', 'p-2', 'border');
+                respuestaForm.classList.add('bg-danger', 'border-danger', 'mt-3', 'p-2', 'border');
                 
                 setTimeout(() => {
                     respuestaForm.innerHTML = '';
-                    respuestaForm.classList.remove('text-danger', 'bg-danger', 'border-danger', 'mt-3', 'p-2', 'border');
+                    respuestaForm.classList.remove('bg-danger', 'border-danger', 'mt-3', 'p-2', 'border');
                 }, 3000);
             } else if (data.estado === 'correcto') {
                 window.location.href = data.redireccion;

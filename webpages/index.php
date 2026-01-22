@@ -163,7 +163,7 @@
                 <p class="descripcion-quienesSomos">
                     Esta franquicia fue establecida en las 7 capitales estratégicas del mundo para ofrecer una red global de exclusividad técnica. Cada hotel es una pieza de ingeniería arquitectónica diseñada para quienes no se conforman con el lujo convencional, uniendo la velocidad del mundo moderno con la calma absoluta de un refugio privado.
                 </p>
-                <a href="quienes-somos.html" class="btn btn-custom-danger mt-3">
+                <a href="quienesSomos.php" class="btn btn-custom-danger mt-3">
                     SABER MÁS
                 </a>
             </div>
