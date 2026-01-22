@@ -1003,7 +1003,7 @@ textarea {
 /* 3. Configuración para Escritorio */
 @media (min-width: 768px) {
   .contactogrid {
-    grid-template-areas: "cabecera cabecera" "formulario card1" "formulario card2" "footer1 footer1";
+    grid-template-areas: "cabecera cabecera" "formulario card1" "formulario card1" "footer1 footer1";
     grid-template-columns: 1fr 1fr;
     padding: 0; /* Eliminado el padding global para que el footer llegue al borde */
   }
