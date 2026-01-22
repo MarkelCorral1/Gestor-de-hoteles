@@ -128,21 +128,21 @@
                         <div class="p-4 bg-white shadow-sm rounded">
                             <div class="exp-icon">♡</div>
                             <h5 class="mt-3">Escapadas Privadas</h5>
-                            <p>Diseñadas a medida en cualquiera de nuestros destinos.</p>
+                            <p style="font-size: 12px;">Diseñadas a medida en cualquiera de nuestros destinos.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="p-4 bg-white shadow-sm rounded">
                             <div class="exp-icon">✈</div>
                             <h5 class="mt-3">Traslados Exclusivos</h5>
-                            <p>Jets privados y helicópteros a disposición.</p>
+                            <p style="font-size: 12px;">Jets privados y helicópteros a disposición.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="p-4 bg-white shadow-sm rounded">
                             <div class="exp-icon">☆</div>
                             <h5 class="mt-3">Experiencias 7</h5>
-                            <p>Acceso a eventos y servicios irrepetibles.</p>
+                            <p style="font-size: 12px;">Acceso a eventos y servicios irrepetibles.</p>
                         </div>
                     </div>
                 </div>

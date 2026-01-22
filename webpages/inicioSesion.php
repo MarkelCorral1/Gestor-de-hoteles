@@ -26,7 +26,7 @@ if (isset($_COOKIE["usuario"])) {
         <!-- Fallback: si el video no carga, se se muestra una imagen -->
         <img src="<?= IMAGES_URL ?>/Carrousel/Zona de trofeos.png" alt="Fondo de inicio">
     </video>
-        <div class="login-container">
+    <div class="login-container">
         <div class="login-card">
             <div class="logo-container">
             <a href="index.php">
@@ -38,8 +38,6 @@ if (isset($_COOKIE["usuario"])) {
             <h1 class="login-title">Bienvenido</h1>
             <p class="login-subtitle">Acceso Exclusivo</p>
 
-
-    <section >
         <div class="login-form">
             <h3 class="text-center text-white mb-4">Iniciar Sesión</h3>
             <form class="session" id="sessionStart">
@@ -80,11 +78,6 @@ if (isset($_COOKIE["usuario"])) {
             <div id="respuesta-form" class="mt-3 text-center"></div>
         </div>
     </div>
-
-    </section>
-
-
-
     <script src="<?= JS_URL ?>/inicioSesion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
