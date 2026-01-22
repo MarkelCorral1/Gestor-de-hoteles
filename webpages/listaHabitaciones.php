@@ -116,7 +116,7 @@ $hotel = $entityManager->find('Hotel', $id_hotel);
                         <div class="col-12">
                             <h5 class="fw-bold mb-3">Servicios Incluidos</h5>
                             <!-- Servicios -->
-                            <div id="servicios-lista" class="d-flex flex-wrap gap-4">
+                            <div id="servicios-lista" class="d-flex flex-wrap align-items-center justify-content-evenly gap-2">
                                 
                             </div>
                         </div>
