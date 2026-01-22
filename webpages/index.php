@@ -1,5 +1,9 @@
 <?php
     require_once '../config/config.php';
+
+    require_once "../bootstrap.php";
+    require_once PHP_PATH . "/Clases/Hotel.php";
+    require_once PHP_PATH . "/Clases/HotelRepository.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,29 +92,28 @@
                         style="background-color: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
                         <form class="row g-2">
                             <div class="col-md-3">
-                                <select class="form-select bg-white">
-                                    <option>Destino</option>
-                                    <option>Madrid</option>
-                                    <option>París</option>
-                                    <option>Dubái</option>
-                                    <option>Maldivas</option>
-                                    <option>Nueva York</option>
-                                    <option>Tokio</option>
-                                    <option>Zúrich</option>
+                                <select class="form-select bg-white" id="form-destino">
+                                    <?php
+                                    $hoteles = $entityManager->getRepository('Hotel')->findAll();
+
+                                    foreach ($hoteles as $hotel) {
+                                        echo "<option value='" . $hotel->getId_hotel() . "'>" . ucfirst($hotel->getCiudad()) . "</option>"; // ucfirst = primera letra mayus
+                                    }
+                                    ?>
                                 </select>
                             </div>
-                            <div class="col-md-2"><input type="date" class="form-control"></div>
-                            <div class="col-md-2"><input type="date" class="form-control"></div>
+                            <div class="col-md-2"><input type="date" class="form-control" id="form-fecha-entrada"></div>
+                            <div class="col-md-2"><input type="date" class="form-control" id="form-fecha-salida"></div>
                             <div class="col-md-2">
-                                <select class="form-select">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4+</option>
+                                <select class="form-select" id="form-personas">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <button class="btn btn-danger w-100">Buscar Disponibilidad</button>
+                                <button type="submit" class="btn btn-danger w-100">Buscar Disponibilidad</button>
                             </div>
                         </form>
                     </div>
@@ -488,6 +491,7 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="cdn.jsdelivr.net"></script>
+        <script src="<?= JS_URL ?>/formReservaIndex.js"></script>
     
 
     </body>
