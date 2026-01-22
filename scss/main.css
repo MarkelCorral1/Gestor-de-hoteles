@@ -651,6 +651,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Checkbox personalizado */
 }
 .inicioSesion .video-bg {
   position: absolute;
@@ -662,8 +663,7 @@ textarea {
      object-fit: cover;
   z-index: -1;
 }
-
-.login-container {
+.inicioSesion .login-container {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -673,8 +673,7 @@ textarea {
   align-items: center;
   padding: 40px 20px;
 }
-
-.login-card {
+.inicioSesion .login-card {
   background: rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(70px);
           backdrop-filter: blur(70px);
@@ -686,7 +685,6 @@ textarea {
   animation: abrirCard 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   opacity: 0;
 }
-
 @keyframes abrirCard {
   0% {
     opacity: 0;
@@ -697,17 +695,15 @@ textarea {
     transform: scale(1) translateY(0);
   }
 }
-.logo-container {
+.inicioSesion .logo-container {
   text-align: center;
   margin-bottom: 40px;
 }
-
-.logo-container img {
+.inicioSesion .logo-container img {
   height: 80px;
   animation: pulse 3s ease-in-out infinite;
 }
-
-.login-title {
+.inicioSesion .login-title {
   font-family: "Playfair Display", serif;
   color: #ffffff;
   font-size: 2.5rem;
@@ -715,8 +711,7 @@ textarea {
   margin-bottom: 15px;
   letter-spacing: 2px;
 }
-
-.login-subtitle {
+.inicioSesion .login-subtitle {
   color: #a60000;
   text-align: center;
   text-transform: uppercase;
@@ -725,8 +720,7 @@ textarea {
   font-weight: 600;
   margin-bottom: 40px;
 }
-
-.btn-login {
+.inicioSesion .btn-login {
   width: 100%;
   padding: 18px;
   background: linear-gradient(135deg, #a60000, #a60000);
@@ -743,8 +737,7 @@ textarea {
   overflow: hidden;
   margin-top: 20px;
 }
-
-.btn-login::before {
+.inicioSesion .btn-login::before {
   content: "";
   position: absolute;
   top: 0;
@@ -754,56 +747,47 @@ textarea {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   transition: left 0.6s ease;
 }
-
-.btn-login:hover::before {
+.inicioSesion .btn-login:hover::before {
   left: 100%;
 }
-
-.btn-login:hover {
+.inicioSesion .btn-login:hover {
   transform: translateY(-3px);
 }
-
-.divider {
+.inicioSesion .divider {
   display: flex;
   align-items: center;
   text-align: center;
   margin: 35px 0;
 }
-
-.divider::before,
-.divider::after {
+.inicioSesion .divider::before,
+.inicioSesion .divider::after {
   content: "";
   flex: 1;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
-
-.divider span {
+.inicioSesion .divider span {
   padding: 0 15px;
   color: #ffffff;
   font-size: 0.85rem;
 }
-
-.form-control {
+.inicioSesion .form-control {
   background: rgba(255, 255, 255, 0.27);
   border: 2px solid rgba(255, 255, 255, 0.1);
   font-size: 1rem;
   transition: all 0.3s ease;
 }
-
-.registrarse-link {
+.inicioSesion .registrarse-link {
   text-align: center;
   margin-top: 30px;
 }
-
-.registrarse-link a {
+.inicioSesion .registrarse-link a {
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   position: relative;
 }
-
-.registrarse-link a::after {
+.inicioSesion .registrarse-link a::after {
   content: "";
   position: absolute;
   bottom: -3px;
@@ -813,59 +797,50 @@ textarea {
   background: #a60000;
   transition: width 0.3s ease;
 }
-
-.registrarse-link a:hover::after {
+.inicioSesion .registrarse-link a:hover::after {
   width: 100%;
 }
-
-.registrarse-link span {
+.inicioSesion .registrarse-link span {
   color: rgba(255, 255, 255, 0.6);
 }
-
-.forgot-password {
+.inicioSesion .forgot-password {
   text-align: right;
   margin-top: 15px;
 }
-
-.forgot-password a {
+.inicioSesion .forgot-password a {
   color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
-
-.forgot-password a:hover {
+.inicioSesion .forgot-password a:hover {
   color: #a60000;
 }
-
-/* Checkbox personalizado */
-.remember-me {
+.inicioSesion .remember-me {
   display: flex;
   align-items: center;
   margin-top: 20px;
 }
-
-.remember-me input[type=checkbox] {
+.inicioSesion .remember-me input[type=checkbox] {
   width: 20px;
   height: 20px;
   margin-right: 10px;
   accent-color: #a60000;
 }
-
-.remember-me label {
+.inicioSesion .remember-me label {
   color: #ffffff;
   font-size: 0.9rem;
   cursor: pointer;
 }
-
 @media (max-width: 768px) {
-  .login-card {
+  .inicioSesion .login-card {
     padding: 40px 30px;
   }
-  .login-title {
+  .inicioSesion .login-title {
     font-size: 2rem;
   }
 }
+
 /* 1. Reset inicial */
 * {
   margin: 0;
