@@ -86,21 +86,3 @@ $gallery-height-mobile: 250px; // Solo lo necesitamos para móvil
         }
     }
 }
-
-// AJUSTE RESPONSIVE FINAL
-@media (max-width: 768px) {
-
-    // Forzamos que en móvil los contenedores laterales se reseteen
-    .col-md-4.h-100 {
-        height: auto !important;
-    }
-
-    .col-md-4>div {
-        // Los divs h-50
-        height: 200px !important; // Altura decente en móvil
-    }
-
-    .gallery__side-img {
-        border-radius: 0 !important; // Sin bordes raros en móvil
-    }
-}
