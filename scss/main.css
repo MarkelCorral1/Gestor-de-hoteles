@@ -979,57 +979,125 @@ textarea {
   box-sizing: content-box;
 }
 
-/*Grid Syst Contacto */
+/* 1. Reset inicial */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Contenedor Principal (Grid) */
 .contactogrid {
   display: grid;
-  grid-template-areas: "cabecera cabecera" "formulario card1" "formulario card1" "formulario card2" "formulario card2" "footer1 footer1";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0px 200px;
+  /* Móvil primero */
+  grid-template-areas: "cabecera" "formulario" "card1" "card2" "footer1";
+  grid-template-columns: 1fr;
   color: #ffffff;
-  background-image: url("http://localhost//DAW/Gestor-de-hoteles/images/Carrousel/Zona de trofeos.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("http://localhost//DAW/Gestor-de-hoteles/images/Carrousel/Zona de trofeos.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  overflow: hidden;
+  background-attachment: fixed;
 }
 
+/* 3. Configuración para Escritorio */
+@media (min-width: 768px) {
+  .contactogrid {
+    grid-template-areas: "cabecera cabecera" "formulario card1" "formulario card2" "footer1 footer1";
+    grid-template-columns: 1fr 1fr;
+    padding: 0; /* Eliminado el padding global para que el footer llegue al borde */
+  }
+  /* Aplicamos el padding de 50px solo a las secciones de contenido */
+  .cabecera,
+  .formulario,
+  .card1,
+  .card2 {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+/* 4. Áreas del Grid */
 .cabecera {
   grid-area: cabecera;
-  display: flex;
   text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.card1 {
-  grid-area: card1;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card2 {
-  grid-area: card2;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer1 {
-  grid-area: footer1;
-  background-color: #000000;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .formulario {
   grid-area: formulario;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.formulario .container-form {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.card1 {
+  grid-area: card1;
+}
+
+.card2 {
+  grid-area: card2;
+}
+
+.card1, .card2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.card1 h1, .card2 h1 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+/* 5. Tarjetas y Elementos */
+.contactogrid .card {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #000;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 textarea {
   resize: none;
+}
+
+/* 6. Footer (Ancho completo) */
+.footer1 {
+  grid-area: footer1;
+  background-color: #000000; /* Usamos tu variable de color negro */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos específicos del componente footer (sin tocar el PHP) */
+footer {
+  background-color: #000000;
+  color: #ccc;
+  width: 100%;
+}
+footer h5 {
+  color: #a60000;
+}
+
+.img-footer {
+  height: 50px;
+  width: auto;
 }/*# sourceMappingURL=main.css.map */
