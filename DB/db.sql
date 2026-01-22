@@ -28,6 +28,8 @@ CREATE TABLE categoria (
     mayordomo BOOLEAN,
     limusina BOOLEAN,
     helicoptero BOOLEAN,
+	metros_cuadrados INT NOT NULL,
+    camas INT NOT NULL,
     precio_base DECIMAL(10,2) NOT NULL
 );
 
@@ -36,9 +38,7 @@ CREATE TABLE habitacion (
     id_habitacion INT AUTO_INCREMENT PRIMARY KEY,
     id_hotel INT NOT NULL,
     id_categoria INT NOT NULL,
-    metros_cuadrados INT NOT NULL,
-    camas INT NOT NULL,
-    FOREIGN KEY (id_hotel) REFERENCES hotel(id_hotel),
+    FOREIGN KEY (id_hotel) REFERENCES hotel(id_hotel)  ON DELETE CASCADE,
     FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
 
@@ -50,6 +50,7 @@ CREATE TABLE reserva (
     fecha_inicio DATE NOT NULL,
     fecha_final DATE NOT NULL,
     numero_personas INT NOT NULL,
+    precio_total DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_habitacion) REFERENCES habitacion(id_habitacion),
     CHECK (fecha_final > fecha_inicio)
@@ -58,12 +59,12 @@ CREATE TABLE reserva (
 -- INSERTAR DATOS
 
 -- Categorías
-INSERT INTO categoria (nombre, balcon, yakushi, spa, mayordomo, limusina, helicoptero, precio_base) VALUES
-('stroll', FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 12.00),
-('lando', TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 25.00),
-('alonso', TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 60.00),
-('senna', TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, 100.00),
-('schumacher', TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 160.00);
+INSERT INTO categoria (nombre, balcon, yakushi, spa, mayordomo, limusina, helicoptero, metros_cuadrados, camas, precio_base) VALUES
+('stroll', FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 30, 2, 500.00),
+('lando', TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 30, 2, 900.00),
+('alonso', TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 35, 3, 1500.00),
+('senna', TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, 45, 3, 2500.00),
+('schumacher', TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 50, 4, 4500.00);
 
 -- Hoteles (Con descripciones integradas y orden corregido)
 INSERT INTO hotel (ciudad, pais, descripcion) VALUES 
@@ -83,62 +84,62 @@ INSERT INTO hotel (ciudad, pais, descripcion) VALUES
 ('Copenhague', 'Dinamarca', 'Cerca de los Jardines de Tivoli y el puerto de Nyhavn, perfecto para disfrutar del ambiente hygge.');
 
 -- Habitaciones
-INSERT INTO habitacion (id_hotel, id_categoria, metros_cuadrados, camas) VALUES
+INSERT INTO habitacion (id_hotel, id_categoria) VALUES
 -- Madrid (ID 1)
-(1, 1, 25, 2), (1, 2, 30, 2), (1, 3, 35, 3), (1, 4, 45, 3), (1, 5, 50, 4),
-(1, 1, 25, 2), (1, 2, 30, 2), (1, 3, 35, 3), (1, 4, 45, 3), (1, 5, 50, 4),
+(1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
+(1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
 
 -- Barcelona (ID 2)
-(2, 1, 25, 2), (2, 2, 30, 2), (2, 3, 35, 3), (2, 4, 45, 3), (2, 5, 50, 4),
-(2, 1, 25, 2), (2, 2, 30, 2), (2, 3, 35, 3), (2, 4, 45, 3), (2, 5, 50, 4),
+(2, 1), (2, 2), (2, 3), (2, 4), (2, 5),
+(2, 1), (2, 2), (2, 3), (2, 4), (2, 5),
 
 -- París (ID 3)
-(3, 1, 25, 2), (3, 2, 30, 2), (3, 3, 35, 3), (3, 4, 45, 3), (3, 5, 50, 4),
-(3, 1, 25, 2), (3, 2, 30, 2), (3, 3, 35, 3), (3, 4, 45, 3), (3, 5, 50, 4),
+(3, 1), (3, 2), (3, 3), (3, 4), (3, 5),
+(3, 1), (3, 2), (3, 3), (3, 4), (3, 5),
 
 -- Londres (ID 4)
-(4, 1, 25, 2), (4, 2, 30, 2), (4, 3, 35, 3), (4, 4, 45, 3), (4, 5, 50, 4),
-(4, 1, 25, 2), (4, 2, 30, 2), (4, 3, 35, 3), (4, 4, 45, 3), (4, 5, 50, 4),
+(4, 1), (4, 2), (4, 3), (4, 4), (4, 5),
+(4, 1), (4, 2), (4, 3), (4, 4), (4, 5),
 
 -- Roma (ID 5)
-(5, 1, 25, 2), (5, 2, 30, 2), (5, 3, 35, 3), (5, 4, 45, 3), (5, 5, 50, 4),
-(5, 1, 25, 2), (5, 2, 30, 2), (5, 3, 35, 3), (5, 4, 45, 3), (5, 5, 50, 4),
+(5, 1), (5, 2), (5, 3), (5, 4), (5, 5),
+(5, 1), (5, 2), (5, 3), (5, 4), (5, 5),
 
 -- Ámsterdam (ID 6)
-(6, 1, 25, 2), (6, 2, 30, 2), (6, 3, 35, 3), (6, 4, 45, 3), (6, 5, 50, 4),
-(6, 1, 25, 2), (6, 2, 30, 2), (6, 3, 35, 3), (6, 4, 45, 3), (6, 5, 50, 4),
+(6, 1), (6, 2), (6, 3), (6, 4), (6, 5),
+(6, 1), (6, 2), (6, 3), (6, 4), (6, 5),
 
 -- Berlín (ID 7)
-(7, 1, 25, 2), (7, 2, 30, 2), (7, 3, 35, 3), (7, 4, 45, 3), (7, 5, 50, 4),
-(7, 1, 25, 2), (7, 2, 30, 2), (7, 3, 35, 3), (7, 4, 45, 3), (7, 5, 50, 4),
+(7, 1), (7, 2), (7, 3), (7, 4), (7, 5),
+(7, 1), (7, 2), (7, 3), (7, 4), (7, 5),
 
 -- Lisboa (ID 8)
-(8, 1, 25, 2), (8, 2, 30, 2), (8, 3, 35, 3), (8, 4, 45, 3), (8, 5, 50, 4),
-(8, 1, 25, 2), (8, 2, 30, 2), (8, 3, 35, 3), (8, 4, 45, 3), (8, 5, 50, 4),
+(8, 1), (8, 2), (8, 3), (8, 4), (8, 5),
+(8, 1), (8, 2), (8, 3), (8, 4), (8, 5),
 
 -- Bruselas (ID 9)
-(9, 1, 25, 2), (9, 2, 30, 2), (9, 3, 35, 3), (9, 4, 45, 3), (9, 5, 50, 4),
-(9, 1, 25, 2), (9, 2, 30, 2), (9, 3, 35, 3), (9, 4, 45, 3), (9, 5, 50, 4),
+(9, 1), (9, 2), (9, 3), (9, 4), (9, 5),
+(9, 1), (9, 2), (9, 3), (9, 4), (9, 5),
 
 -- Viena (ID 10)
-(10, 1, 25, 2), (10, 2, 30, 2), (10, 3, 35, 3), (10, 4, 45, 3), (10, 5, 50, 4),
-(10, 1, 25, 2), (10, 2, 30, 2), (10, 3, 35, 3), (10, 4, 45, 3), (10, 5, 50, 4),
+(10, 1), (10, 2), (10, 3), (10, 4), (10, 5),
+(10, 1), (10, 2), (10, 3), (10, 4), (10, 5),
 
 -- Praga (ID 11)
-(11, 1, 25, 2), (11, 2, 30, 2), (11, 3, 35, 3), (11, 4, 45, 3), (11, 5, 50, 4),
-(11, 1, 25, 2), (11, 2, 30, 2), (11, 3, 35, 3), (11, 4, 45, 3), (11, 5, 50, 4),
+(11, 1), (11, 2), (11, 3), (11, 4), (11, 5),
+(11, 1), (11, 2), (11, 3), (11, 4), (11, 5),
 
 -- Zurich (ID 12)
-(12, 1, 25, 2), (12, 2, 30, 2), (12, 3, 35, 3), (12, 4, 45, 3), (12, 5, 50, 4),
-(12, 1, 25, 2), (12, 2, 30, 2), (12, 3, 35, 3), (12, 4, 45, 3), (12, 5, 50, 4),
+(12, 1), (12, 2), (12, 3), (12, 4), (12, 5),
+(12, 1), (12, 2), (12, 3), (12, 4), (12, 5),
 
 -- Estocolmo (ID 13)
-(13, 1, 25, 2), (13, 2, 30, 2), (13, 3, 35, 3), (13, 4, 45, 3), (13, 5, 50, 4),
-(13, 1, 25, 2), (13, 2, 30, 2), (13, 3, 35, 3), (13, 4, 45, 3), (13, 5, 50, 4),
+(13, 1), (13, 2), (13, 3), (13, 4), (13, 5),
+(13, 1), (13, 2), (13, 3), (13, 4), (13, 5),
 
 -- Copenhague (ID 14)
-(14, 1, 25, 2), (14, 2, 30, 2), (14, 3, 35, 3), (14, 4, 45, 3), (14, 5, 50, 4),
-(14, 1, 25, 2), (14, 2, 30, 2), (14, 3, 35, 3), (14, 4, 45, 3), (14, 5, 50, 4);
+(14, 1), (14, 2), (14, 3), (14, 4), (14, 5),
+(14, 1), (14, 2), (14, 3), (14, 4), (14, 5);
 
 -- Usuarios
 INSERT INTO usuario (username, password_hash, tipo) VALUES

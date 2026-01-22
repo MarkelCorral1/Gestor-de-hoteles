@@ -19,6 +19,10 @@ class Reserva {
     private $fecha_inicio;
     /** @ORM\Column(type="date") */
     private $fecha_final;
+    /** @ORM\Column(type="integer") */
+    private $numero_personas;
+    /** @ORM\Column(type="integer") */
+    private $precio_total;
     
     
     public function getId_reserva(): int {
@@ -36,8 +40,17 @@ class Reserva {
     public function getFecha_final(): DateTime {
         return $this->fecha_final;
     }
+    public function getNumero_personas(): int {
+        return $this->numero_personas;
+    }
+    public function getPrecio_total(): int {
+        return $this->precio_total;
+    }
 
-    public function setId_categoria($id_habitacion): void {
+    public function setId_usuario($id_usuario): void {
+        $this->id_usuario = $id_usuario;
+    }
+    public function setId_habitacion($id_habitacion): void {
         $this->id_habitacion = $id_habitacion;
     }
     public function setFecha_inicio($fecha_inicio): void {
@@ -45,5 +58,11 @@ class Reserva {
     }
     public function setFecha_final($fecha_final): void {
         $this->fecha_final = $fecha_final;
+    }
+    public function setNumero_personas($numero_personas): void {
+        $this->numero_personas = $numero_personas;
+    }
+    public function setPrecio_total($precio_total): void {
+        $this->precio_total = $precio_total;
     }
 }
