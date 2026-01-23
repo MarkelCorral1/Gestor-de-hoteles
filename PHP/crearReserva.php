@@ -42,6 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         // Obtener usuario y habitacion
         $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(['username' => $usuario]);
+        if (!$usuario) {
+            header('Location: ' . PAGINAS_URL . '/inicioSesion.php?error=usuario_no_encontrado');
+            exit();
+        }
+
         $habitacion = $entityManager->find(Habitacion::class, $id_habitacion);
     
         // Comprobar que hay suficientes camas en la habitacion
