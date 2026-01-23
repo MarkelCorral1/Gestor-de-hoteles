@@ -20,4 +20,22 @@ class ReservaRepository extends EntityRepository{
 
         return count($resultado) === 0;
     }
+
+    public function disponibilidadHotelCategoria($fechaInicio, $fechaFin, $id_hotel, $id_categoria) {
+        $resultado = $this->getEntityManager()->createQuery(
+            'SELECT r FROM Reserva r
+            JOIN r.id_habitacion h
+            WHERE h.id_hotel = :id_hotel
+            AND h.id_categoria = :id_categoria
+            AND r.fecha_inicio < :fechaFinal
+            AND r.fecha_final > :fechaInicio')
+           ->setParameter('id_hotel', $id_hotel)
+           ->setParameter('id_categoria', $id_categoria)
+           ->setParameter('fechaFinal', $fechaFin)
+           ->setParameter('fechaInicio', $fechaInicio);
+
+        $resultado = $resultado->getResult();
+
+        return count($resultado) === 0;
+    }
 }

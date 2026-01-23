@@ -30,6 +30,15 @@ $hotel = $entityManager->find('Hotel', $id_hotel);
 
     <?php include INCLUDES_PATH . '/navbar.php'; ?>
 
+    <!-- Boton modal reserva -->
+    <button 
+    type="button" 
+    class="btn btn-primary" 
+    data-bs-toggle="modal" 
+    data-bs-target="#modal-reserva"
+    style="position: fixed; bottom: 20px; left: 20px; z-index: 1050;">
+    Reservar
+</button>
     <div class="container my-4">
         <h3 class="text-center display-5 fw-bold text-uppercase my-4"><?= $hotel->getCiudad() ?>, <?= $hotel->getPais() ?></h3>
         <div class="row">
@@ -126,9 +135,49 @@ $hotel = $entityManager->find('Hotel', $id_hotel);
         </div>
     </div>
 
+    <!-- Modal reserva -->
+    <div class="modal fade" id="modal-reserva" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Reserva - <?= $hotel->getCiudad() ?>, <?= $hotel->getPais() ?></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+            <div class="modal-body">
+                <form id="form-reserva">
+                    <input type="hidden" name="id_hotel" id="reserva-id-hotel" value="<?= $hotel->getId_hotel() ?>">
+                    <input type="hidden" name="id_categoria" id="reserva-id-categoria" value="1">
+                    <label for="reserva-fecha-entrada">Fecha de entrada</label>
+                    <div class="mb-3"><input type="date" name="fecha_inicio" class="form-control" id="reserva-fecha-entrada"></div>
+                    <label for="reserva-fecha-salida">Fecha de salida</label>
+                    <div class="mb-3"><input type="date" name="fecha_final" class="form-control" id="reserva-fecha-salida"></div>
+                    <label for="reserva-personas">Número de personas</label>
+                    <div class="mb-3">
+                        <select name="numero_personas" class="form-select" id="reserva-personas">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Comprobar disponibilidad</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <h3 id="reserva-total"></h3>
+                <form action="<?= PHP_URL ?>/crearReserva.php" method="post">
+                    <button type="submit" class="btn btn-primary">Reservar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <?php include INCLUDES_PATH . '/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= JS_URL ?>/datosCategorias.js"></script>
+    <script src="<?= JS_URL ?>/modalReserva.js"></script>
 </body>
 
 </html>

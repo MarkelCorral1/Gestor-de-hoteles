@@ -14,12 +14,12 @@ require_once '../PHP/Clases/Reserva.php';
 require_once '../PHP/Clases/ReservaRepository.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // TODO: EL ID_USUARIO HABRA QUE OBTENERLO DE LA SESION
-    $id_usuario = $_POST['id_usuario'] ?? ''; // TEMPORAL
-    $id_habitacion = $_POST['id_habitacion'] ?? '';
-    $fecha_inicio = $_POST['fecha_inicio'] ?? '';
-    $fecha_final = $_POST['fecha_final'] ?? '';
-    $numero_personas = $_POST['numero_personas'] ?? '1';
+    // TODO: Mirar errores
+    $id_usuario = $_COOKIE['usuario'] ?? ''; // TEMPORAL
+    $id_habitacion = $_COOKIE['id_habitacion'] ?? '';
+    $fecha_inicio = $_COOKIE['fecha_inicio'] ?? '';
+    $fecha_final = $_COOKIE['fecha_final'] ?? '';
+    $numero_personas = $_COOKIE['numero_personas'] ?? '1';
 
     // Pasar fechas a formato DateTime
     $fecha_inicio = new DateTime($fecha_inicio);
@@ -44,15 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $habitacion = $entityManager->find(Habitacion::class, $id_habitacion);
 
     // Comprobar que hay suficientes camas en la habitacion
-    if ($numero_personas > $habitacion->getCamas()) {
+    if ($numero_personas > $categoria->getCamas()) {
         header('Location: index.php');
         exit();
     }
 
-    // El precio total se calcula como: precio_base_categoria * metros_cuadrados * 0.1 * numero_dias
+    // El precio total se calcula como: precio_base_categoria * numero_dias
     $precio_total = $habitacion->getId_categoria()->getPrecio_base()
-        * $habitacion->getMetros_cuadrados()
-        * 0.1
         * $fecha_inicio->diff($fecha_final)->days;
     
     $reserva = new Reserva();
