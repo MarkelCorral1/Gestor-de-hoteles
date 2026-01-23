@@ -69,4 +69,5 @@ class Contacto
     public function setTelefono($telefono) { $this->telefono = $telefono; }
     
     public function setMensaje($mensaje) { $this->mensaje = $mensaje; }
+    
 }

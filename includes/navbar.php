@@ -30,6 +30,7 @@
                             ?>
                                 <li><a class="dropdown-item" href="gestionUsuarios.php">Gestion usuarios</a></li>
                                 <li><a class="dropdown-item" href="gestionHoteles.php">Gestion hoteles</a></li>
+                                <li><a class="dropdown-item" href="admin_contacto.php">Ver mensajes</a></li>
                             <?php endif ?>
                         </ul>
                     </li>
