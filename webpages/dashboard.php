@@ -37,7 +37,7 @@ $hoteles = $entityManager->getRepository('Hotel')->findAll();
                                 <p class="card-text descripcion"><?php echo $hotel->getDescripcion() ?></p>
                                 <p class="card-text">Ciudad: <?php echo $hotel->getCiudad() ?> </p>
                                 <p class="card-text">País: <?php echo $hotel->getPais() ?> </p>
-                                <a href="listaHabitaciones.php?id_hotel=<?= $hotel->getId_hotel() ?>" class="btn btn-hotel w-100 mt-auto">
+                                <a href="listaHabitaciones.php?id_hotel=<?= $hotel->getId_hotel() ?>" data-id="<?= $hotel->getId_hotel() ?>" class="btn btn-hotel w-100 mt-auto">
                                     Ver Hotel
                                 </a>
                             </div>
@@ -49,6 +49,22 @@ $hoteles = $entityManager->getRepository('Hotel')->findAll();
     </section>
     <?php include INCLUDES_PATH . '/footer.php'; ?> <!-- FOOTER -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const botonesVer = document.querySelectorAll('.btn-hotel');
+
+            let datosReserva = JSON.parse(sessionStorage.getItem('datos-reserva'));
+
+            botonesVer.forEach(boton => {
+                boton.addEventListener('click', function(e) {
+                    const idHotel = this.getAttribute('data-id');
+
+                    datosReserva.destino = idHotel;
+                    sessionStorage.setItem('datos-reserva', JSON.stringify(datosReserva));
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
