@@ -1,3 +1,6 @@
+//JSON con los datos de la reserva
+let datosReserva = JSON.parse(sessionStorage.getItem("datos-reserva"))
+
 let form = document.querySelector('.search-box > form')
 
 let inputDestino = document.getElementById('form-destino')
@@ -19,22 +22,6 @@ if (sessionStorage.getItem("datos-reserva")) {
 inputFechaEntrada.setAttribute("min", new Date().toISOString().slice(0, 10))
 inputFechaSalida.setAttribute("min", new Date().toISOString().slice(0, 10))
 
-//JSON con los datos de la reserva
-let datosReserva = {}
-if (!sessionStorage.getItem("datos-reserva")) {
-    datosReserva = {
-        destino: '',
-        fechaEntrada: '',
-        fechaSalida: '',
-        categoria: 'stroll',
-        personas: 1
-    }
-
-    sessionStorage.setItem("datos-reserva", JSON.stringify(datosReserva))
-
-} else {
-    datosReserva = JSON.parse(sessionStorage.getItem("datos-reserva"))
-}
 
 // Actualizar los datos de la reserva al enviar el formulario
 form.addEventListener('submit', (e) => {

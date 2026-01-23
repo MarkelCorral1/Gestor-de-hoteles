@@ -163,7 +163,7 @@ $hotel = $entityManager->find('Hotel', $id_hotel);
                                 <option value="4">4</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Comprobar disponibilidad</button>
+                        <button type="button" class="btn btn-primary" onclick="fetchDisponibilidad()">Comprobar disponibilidad</button>
                     </form>
                     <div id="respuesta-reserva" class="mt-3"></div>
                 </div>
@@ -205,6 +205,7 @@ $hotel = $entityManager->find('Hotel', $id_hotel);
 
     <?php include INCLUDES_PATH . '/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= JS_URL ?>/reservaSesion.js"></script>
     <script src="<?= JS_URL ?>/datosCategorias.js"></script>
     <script src="<?= JS_URL ?>/modalReserva.js"></script>
 </body>

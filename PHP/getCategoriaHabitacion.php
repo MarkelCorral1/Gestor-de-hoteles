@@ -19,6 +19,7 @@ try {
     if ($categoria) {
         $data = [
             'status' => 'success',
+            'id' => $categoria->getId_categoria(),
             'nombre' => $categoria->getNombre(),
             'metros' => $categoria->getMetros_cuadrados(),
             'camas' => $categoria->getCamas(),

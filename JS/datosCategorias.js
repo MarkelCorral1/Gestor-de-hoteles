@@ -43,6 +43,9 @@ function fetchCategoria(catNombre) {
                 document.getElementById('cat-metros').innerText = data.metros;
                 document.getElementById('cat-camas').innerText = data.camas;
 
+                // Actualizarlo en el modal de reserva
+                document.getElementById('reserva-id-categoria').value = data.id;
+                volverAPaso1();
 
                 let servicios  = document.getElementById('servicios-lista');
                 // Wifi, Parking, Desayuno, Piscina, Gimnasio, Cine, Sala conferencias, Sala juegos, casino incluidos

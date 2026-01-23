@@ -1,3 +1,6 @@
+//JSON con los datos de la reserva
+let datosReserva = JSON.parse(sessionStorage.getItem("datos-reserva"))
+
 let formModal = document.getElementById("reserva-reserva-index")
 
 let inputIdHotel = document.getElementById('reserva-id-hotel')
@@ -6,24 +9,11 @@ let inputFechaInicio = document.getElementById('reserva-fecha-inicio')
 let inputFechaFinal = document.getElementById('reserva-fecha-final')
 let inputPersonas = document.getElementById('reserva-personas')
 
-
-
-let datosReserva = {}
-if (sessionStorage.getItem("datos-reserva")) {
-    datosReserva = JSON.parse(sessionStorage.getItem("datos-reserva"))
-    console.log("datosReserva:", datosReserva);
-
-    inputFechaInicio.value = datosReserva.fechaEntrada
-    inputFechaFinal.value = datosReserva.fechaSalida
-    inputPersonas.value = datosReserva.personas
-} else {
-    datosReserva = {
-        destino: '',
-        fechaEntrada: '',
-        fechaSalida: '',
-        categoria: 'stroll',
-        personas: 1
-    }
+// Rellenar automáticamente los campos con datos de sessionStorage si existen
+if (datosReserva) {
+    inputFechaInicio.value = datosReserva.fechaEntrada;
+    inputFechaFinal.value = datosReserva.fechaSalida;
+    inputPersonas.value = datosReserva.personas;
 }
 
 // Establecer la fecha mínima como la fecha actual
@@ -50,11 +40,6 @@ function fechaEntradaMaxima() {
     
     inputFechaInicio.setAttribute("max", fechaSalida.toISOString().slice(0, 10))
 }
-
-document.getElementById('form-reserva').addEventListener('submit', (e) => {
-    e.preventDefault()
-    fetchDisponibilidad()
-})
 
 function fetchDisponibilidad() {
     let id_hotel = encodeURIComponent(inputIdHotel.value)
