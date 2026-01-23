@@ -23,35 +23,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Pasar fechas a formato DateTime
     $fecha_inicio = new DateTime($fecha_inicio);
     $fecha_final = new DateTime($fecha_final);
-
+    // Comprobar que la fecha de inicio es anterior a la fecha final
     if ($fecha_inicio >= $fecha_final) {
         echo json_encode(['estado' => 'error', 'mensaje' => 'La fecha de salida debe ser posterior a la fecha de entrada.']);
         exit();
     }
 
     // Comprobar si la habitacion ya esta reservada en esas fechas
-    $disponible = $entityManager->getRepository(Reserva::class)
-        ->disponibilidadHotelCategoria($fecha_inicio->format('Y-m-d'), $fecha_final->format('Y-m-d'), $id_hotel, $id_categoria);
+    $habitacionDisponible = $entityManager->getRepository(Reserva::class)
+        ->obtenerHabitacionDisponible($fecha_inicio->format('Y-m-d'), $fecha_final->format('Y-m-d'), $id_hotel, $id_categoria);
 
-    if (!$disponible) {
+    if (!$habitacionDisponible) {
         echo json_encode(['estado' => 'error', 'mensaje' => 'Reserva no disponible en las fechas seleccionadas.']);
         exit();
     }
 
-    $habitacion = $entityManager->getRepository(Habitacion::class)
-        ->findOneBy(['id_hotel' => $id_hotel, 'id_categoria' => $id_categoria]);
-
     // Comprobar que hay suficientes camas en la habitacion
-    if ($numero_personas > $habitacion->getId_categoria()->getCamas()) {
+    if ($numero_personas > $habitacionDisponible->getId_categoria()->getCamas()) {
         echo json_encode(['estado' => 'error', 'mensaje' => 'Número de personas mayor a capacidad de la habitación.']);
         exit();
     }
 
-    $precio_total = $habitacion->getId_categoria()->getPrecio_base()
+    $precio_total = $habitacionDisponible->getId_categoria()->getPrecio_base()
         * $fecha_inicio->diff($fecha_final)->days;
 
-    setcookie("id_hotel", $id_hotel, time() + 86400 * 30, "/");
-    setcookie("id_categoria", $id_categoria, time() + 86400 * 30, "/");
+    setcookie("id_habitacion", $habitacionDisponible->getId_habitacion(), time() + 86400 * 30, "/");
     setcookie("fecha_inicio", $fecha_inicio->format('Y-m-d'), time() + 86400 * 30, "/");
     setcookie("fecha_final", $fecha_final->format('Y-m-d'), time() + 86400 * 30, "/");
     setcookie("numero_personas", $numero_personas, time() + 86400 * 30, "/");
