@@ -16,7 +16,7 @@
 
         <div class="formulario">
             <div class="container-form">
-                <form>
+                <form action="<?= PHP_URL ?>/procesar_contacto.php" method="POST">
                     <div class="mb-3">
                         <div>
                             <h1>Escríbenos</h1>
@@ -26,22 +26,22 @@
                     <div class="mb-3">
                         <b>Nombre</b>
                         <label for="nombre" class="form-label"><b class="text-danger">*</b></label>
-                        <input type="text" class="form-control" id="nombre" required>
+                        <input type="text" name="nombre" class="form-control" id="nombre" required>
                     </div>
                     <div class="mb-3">
                         <b>Email</b>
                         <label for="email" class="form-label"><b class="text-danger">*</b></label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" name="email" class="form-control" id="email" required>
                     </div>
                     <div class="mb-3">
                         <b>Número de teléfono</b>
                         <label for="phone" class="form-label"></label>
-                        <input type="tel" class="form-control" id="phone">
+                        <input type="tel" name="phone" class="form-control" id="phone">
                     </div>
                     <div class="form-group">
                         <b>Cuéntanos</b>
                         <label for="cuentanos"><b class="text-danger">*</b></label>
-                        <textarea class="form-control" id="cuentanos" rows="6"></textarea>
+                        <textarea class="form-control" name="cuentanos" id="cuentanos" rows="6"></textarea>
                     </div>
                     <div class="mb-3 form-check"><br>
                         <input type="checkbox" class="form-check-input" id="check" required>

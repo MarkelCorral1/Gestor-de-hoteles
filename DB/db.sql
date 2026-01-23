@@ -56,6 +56,14 @@ CREATE TABLE reserva (
     CHECK (fecha_final > fecha_inicio)
 );
 
+CREATE TABLE contacto (
+    id_contacto INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    mensaje TEXT NOT NULL,
+    fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 -- INSERTAR DATOS
 
 -- Categorías
