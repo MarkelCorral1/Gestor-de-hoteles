@@ -13,9 +13,6 @@
     <?php include INCLUDES_PATH . '/navbar.php'; ?>
 
     <div class="contactogrid">
-        <div class="cabecera">
-            <h1 class="text-danger">Contacto</h1>
-        </div>
 
         <div class="formulario">
             <div class="container-form">
@@ -61,21 +58,21 @@
 
         <div class="card1 container pt-5">
             <div class="card py-2">
-                <h1 class="py-2 text-danger text-center">Datos de contacto</h1>
+                <h1 class="py-2 text-white text-center">Datos de contacto</h1>
                 <div class="card-body">
-                    <h5>Horario</h5>
+                    <h5 class="text-white">Horario</h5>
                     <p>Abierto todos los días del año.</p></p> Check-in: 15:00h | Check-out: 12:00h.</p>
 
-                    <h5 class="pt-1">Recepción</h5>
+                    <h5 class="text-white pt-1">Recepción</h5>
                     <p>Servicio de atención multilingüe disponible las 24 horas.</p>
 
-                    <h5 class="pt-1">Dirección</h5>
+                    <h5 class="text-white pt-1">Dirección</h5>
                     <p>Calle del Gran Premio, 12, Ciudad de la Velocidad, 28005 Madrid, España.</p>
 
-                    <h5 class="pt-1">Teléfono</h5>
+                    <h5 class="text-white pt-1">Teléfono</h5>
                     <p>+34 912 345 678 | Reservas: +34 912 345 670</p>
 
-                    <h5 class="pt-1">Email</h5>
+                    <h5 class="text-white pt-1">Email</h5>
                     <p>contacto@hotelschumacher.com | reservas@hotelschumacher.com</p>
                 </div>
             </div>
