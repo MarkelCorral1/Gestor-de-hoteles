@@ -144,29 +144,58 @@ $hotel = $entityManager->find('Hotel', $id_hotel);
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
             <div class="modal-body">
-                <form id="form-reserva">
-                    <input type="hidden" name="id_hotel" id="reserva-id-hotel" value="<?= $hotel->getId_hotel() ?>">
-                    <input type="hidden" name="id_categoria" id="reserva-id-categoria" value="1">
-                    <label for="reserva-fecha-entrada">Fecha de entrada</label>
-                    <div class="mb-3"><input type="date" name="fecha_inicio" class="form-control" id="reserva-fecha-entrada"></div>
-                    <label for="reserva-fecha-salida">Fecha de salida</label>
-                    <div class="mb-3"><input type="date" name="fecha_final" class="form-control" id="reserva-fecha-salida"></div>
-                    <label for="reserva-personas">Número de personas</label>
-                    <div class="mb-3">
-                        <select name="numero_personas" class="form-select" id="reserva-personas">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
+
+            <!-- PASO 1 -->
+                <div id="reserva-paso-1">
+                    <form id="form-reserva">
+                        <input type="hidden" name="id_hotel" id="reserva-id-hotel" value="<?= $hotel->getId_hotel() ?>">
+                        <input type="hidden" name="id_categoria" id="reserva-id-categoria" value="1">
+                        <label for="reserva-fecha-inicio">Fecha de entrada</label>
+                        <div class="mb-3"><input type="date" name="fecha_inicio" class="form-control" id="reserva-fecha-inicio" required></div>
+                        <label for="reserva-fecha-final">Fecha de salida</label>
+                        <div class="mb-3"><input type="date" name="fecha_final" class="form-control" id="reserva-fecha-final" required></div>
+                        <label for="reserva-personas">Número de personas</label>
+                        <div class="mb-3">
+                            <select name="numero_personas" class="form-select" id="reserva-personas" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Comprobar disponibilidad</button>
+                    </form>
+                    <div id="respuesta-reserva" class="mt-3"></div>
+                </div>
+
+                <!-- PASO 2 -->
+                <div id="reserva-paso-2" style="display: none;">
+                    <div class="alert alert-success">¡Disponibilidad confirmada!</div>
+                    <div class="p-3 mb-3">
+                        <p><b>Hotel:</b> <?= $hotel->getCiudad() ?></p>
+                        <p><b>Fecha inicio:</b> <span id="resumen-fecha-inicio"></span></p>
+                        <p><b>Fecha final:</b> <span id="resumen-fecha-fin"></span></p>
+                        <p><b>Personas:</b> <span id="resumen-personas"></span></p>
+                        <hr>
+                        <h4 class="text-end">Total: <span id="resumen-precio-total"></span>€</h4>
                     </div>
-                    <button type="submit" class="btn btn-primary">Comprobar disponibilidad</button>
-                </form>
+                    <form action="<?= PHP_URL ?>/crearReserva.php" method="post">
+                        <input type="hidden" name="id_hotel" value="<?= $hotel->getId_hotel() ?>">
+                        <input type="hidden" name="fecha_inicio" id="final-inicio">
+                        <input type="hidden" name="fecha_final" id="final-final">
+                        <input type="hidden" name="num_personas" id="final-personas">
+                        
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-outline-secondary" onclick="volverAPaso1()">Modificar</button>
+                            <button type="submit" class="btn btn-success flex-grow-1">Confirmar y Reservar</button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <h3 id="reserva-total"></h3>
                 <form action="<?= PHP_URL ?>/crearReserva.php" method="post">
-                    <button type="submit" class="btn btn-primary">Reservar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </form>
             </div>

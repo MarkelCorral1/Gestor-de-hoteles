@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $fecha_final = new DateTime($fecha_final);
 
     if ($fecha_inicio >= $fecha_final) {
-        echo json_encode(['status' => 'error', 'message' => 'La fecha de salida debe ser posterior a la fecha de entrada.']);
+        echo json_encode(['estado' => 'error', 'mensaje' => 'La fecha de salida debe ser posterior a la fecha de entrada.']);
         exit();
     }
 
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         ->disponibilidadHotelCategoria($fecha_inicio->format('Y-m-d'), $fecha_final->format('Y-m-d'), $id_hotel, $id_categoria);
 
     if (!$disponible) {
-        echo json_encode(['status' => 'error', 'message' => 'Reserva no disponible en las fechas seleccionadas.']);
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Reserva no disponible en las fechas seleccionadas.']);
         exit();
     }
 
@@ -43,17 +43,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     // Comprobar que hay suficientes camas en la habitacion
     if ($numero_personas > $habitacion->getId_categoria()->getCamas()) {
-        echo json_encode(['status' => 'error', 'message' => 'Número de personas mayor a capacidad de la habitación.']);
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Número de personas mayor a capacidad de la habitación.']);
         exit();
     }
 
-    setcookie("id_hotel", $id_hotel, time() + 86400 * 30, "/");
+    $precio_total = $habitacion->getId_categoria()->getPrecio_base()
+        * $fecha_inicio->diff($fecha_final)->days;
+
     setcookie("id_hotel", $id_hotel, time() + 86400 * 30, "/");
     setcookie("id_categoria", $id_categoria, time() + 86400 * 30, "/");
     setcookie("fecha_inicio", $fecha_inicio->format('Y-m-d'), time() + 86400 * 30, "/");
     setcookie("fecha_final", $fecha_final->format('Y-m-d'), time() + 86400 * 30, "/");
     setcookie("numero_personas", $numero_personas, time() + 86400 * 30, "/");
 
-    echo json_encode(['status' => 'success', 'message' => 'Reserva disponible.']);
+    echo json_encode(['estado' => 'success',
+                            'mensaje' => 'Reserva disponible.',
+                            'reserva' => [
+                                'fecha_inicio' => $fecha_inicio->format('Y-m-d'),
+                                'fecha_final' => $fecha_final->format('Y-m-d'),
+                                'numero_personas' => $numero_personas,
+                                'precio_total' => $precio_total
+                                ]
+                            ]);
     exit();
 }
