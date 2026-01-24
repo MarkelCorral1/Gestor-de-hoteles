@@ -15,7 +15,8 @@
                 <?php if (isset($_COOKIE["usuario"])) : ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><?= $_COOKIE["usuario"] ?></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="misReservas.php">Mis reservas</a></li>
                             <li><a class="dropdown-item" href="../PHP/cerrarSesion.php">Cerrar sesion</a></li>
 
                             <?php // SI ES ADMIN
@@ -28,6 +29,8 @@
 
                             if ($usuario) :
                             ?>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><h6 class="dropdown-header">Admin</h6></li>
                                 <li><a class="dropdown-item" href="gestionUsuarios.php">Gestion usuarios</a></li>
                                 <li><a class="dropdown-item" href="gestionHoteles.php">Gestion hoteles</a></li>
                                 <li><a class="dropdown-item" href="admin_contacto.php">Ver mensajes</a></li>

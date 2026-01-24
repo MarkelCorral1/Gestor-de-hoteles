@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setcookie("fecha_final", "", time() - 3600, "/");
         setcookie("numero_personas", "", time() - 3600, "/");
     
-        header('Location: ' . PAGINAS_URL . '/index.php');
+        header('Location: ' . PAGINAS_URL . '/misReservas.php');
         exit();
     } catch (\Throwable $th) {
         header('Location: ' . PAGINAS_URL . '/listaHabitaciones.php');

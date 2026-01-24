@@ -1,0 +1,83 @@
+@use '../variables' as *;
+
+.reservas-container {
+    .reserva-card {
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+        border: 1px solid #404040;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        &.reserva-pasada {
+            opacity: 0.75;
+        }
+
+        .card-header {
+            background-color: #1a1a1a;
+            border-bottom: 2px solid $rojo;
+            padding: 1rem;
+
+            .reserva-ciudad {
+                color: $rojo;
+                font-weight: 600;
+                margin-bottom: 0.25rem;
+            }
+        }
+
+        .card-body {
+            .reserva-label {
+                color: #ffffff;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+
+            .reserva-dato {
+                color: #d0d0d0;
+                margin: 0;
+            }
+
+            .reserva-precio {
+                color: $rojo;
+                font-weight: bold;
+                font-size: 2rem;
+                margin: 0;
+            }
+
+            .reserva-estado {
+                color: #888;
+                margin-top: 1rem;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.reservas-vacio {
+    text-align: center;
+    padding: 3rem 1rem;
+
+    a {
+        color: $rojo;
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.reservas-error {
+    background-color: #fee;
+    border-left: 4px solid $rojo;
+}
+
+.reservas-titulo {
+    color: #2a2a2a;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
