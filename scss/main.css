@@ -1350,7 +1350,7 @@ footer h5 {
 
 .reservas-error {
   background-color: #fee;
-  border-left: 4px solid #a60000;
+  border: 1px solid #a60000;
 }
 
 .reservas-titulo {
