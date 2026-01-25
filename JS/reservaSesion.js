@@ -2,8 +2,8 @@ if (!sessionStorage.getItem("datos-reserva")) {
     // hoy + 7 dias
     let fechaEntrada = new Date()
     fechaEntrada.setDate(fechaEntrada.getDate() + 7)
-    let fechaSalida = new Date()
-    fechaSalida.setDate(fechaEntrada.getDate() + 14)
+    let fechaSalida = new Date(fechaEntrada)
+    fechaSalida.setDate(fechaSalida.getDate() + 7)
 
     datosReserva = {
         destino: '1',
