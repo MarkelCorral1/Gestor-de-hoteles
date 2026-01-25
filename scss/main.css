@@ -1316,6 +1316,24 @@ footer h5 {
   margin-top: 1rem;
   margin-bottom: 0;
 }
+.reservas-container .reserva-card .card-footer {
+  background-color: #1a1a1a;
+  border-top: 1px solid #404040;
+  padding: 1rem;
+}
+.reservas-container .reserva-card .card-footer .btn-cancelar {
+  background-color: #a60000;
+  color: #ffffff;
+  border: 1px solid #a60000;
+  width: 100%;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.reservas-container .reserva-card .card-footer .btn-cancelar:hover {
+  background-color: #730000;
+  border-color: #730000;
+  color: #ffffff;
+}
 
 .reservas-vacio {
   text-align: center;

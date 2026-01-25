@@ -53,6 +53,27 @@
                 margin-bottom: 0;
             }
         }
+
+        .card-footer {
+            background-color: #1a1a1a;
+            border-top: 1px solid #404040;
+            padding: 1rem;
+
+            .btn-cancelar {
+                background-color: $rojo;
+                color: $blanco;
+                border: 1px solid $rojo;
+                width: 100%;
+                font-weight: 500;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background-color: darken($rojo, 10%);
+                    border-color: darken($rojo, 10%);
+                    color: $blanco;
+                }
+            }
+        }
     }
 }
 

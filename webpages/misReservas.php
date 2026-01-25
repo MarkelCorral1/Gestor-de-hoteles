@@ -132,6 +132,11 @@ if (!isset($_COOKIE["usuario"])) {
 
                                 <p class="reserva-estado">${estadoTexto}</p>
                             </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-cancelar" onclick="cancelarReserva(${reserva.id_reserva})">
+                                    Cancelar reserva
+                                </button>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -144,6 +149,32 @@ if (!isset($_COOKIE["usuario"])) {
             const errorDiv = document.getElementById('mensajeError');
             errorDiv.textContent = mensaje;
             errorDiv.style.display = 'block';
+        }
+
+        function cancelarReserva(id_reserva) {
+            if (confirm('¿Estás seguro de que deseas cancelar esta reserva?')) {
+                fetch(`<?= PHP_URL ?>/cancelarReserva.php?id_reserva=${encodeURIComponent(id_reserva)}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data);
+                        
+                        if (data.estado === 'error') {
+                            mostrarError(data.mensaje);
+                            return;
+                        }
+                        
+                        cargarReservas();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        mostrarError('Error al cargar las reservas');
+                    });
+            }
         }
     </script>
 </body>
