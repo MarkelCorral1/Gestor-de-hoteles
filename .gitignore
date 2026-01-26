@@ -4,3 +4,4 @@ vendor/.*
 composer.json
 composer.phar
 *.mp4
+.env
