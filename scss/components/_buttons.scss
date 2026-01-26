@@ -7,7 +7,7 @@
     padding: 0.5em 1.2em;
     background: transparent;
     border: 2px solid;
-    border-color: #ac3131; 
+    border-color: #ac3131;
     transition: all 0.3s ease;
     position: relative;
 
@@ -24,6 +24,18 @@
     padding: 10px 25px;
     border-radius: 50px;
     text-decoration: none;
+    transition: 0.3s ease;
+
+    &:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+}
+
+.btn-book {
+    color: black;
+    border: 1px solid #dc3545;
+    border-radius: 50px;
     transition: 0.3s ease;
 
     &:hover {
