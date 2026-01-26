@@ -975,6 +975,11 @@ footer h5 {
   width: auto;
 }
 
+#boton-contacto {
+  background-color: #dc3545;
+  border-color: #000;
+}
+
 .video-story {
   position: absolute;
   top: 50%;
