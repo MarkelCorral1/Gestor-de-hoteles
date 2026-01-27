@@ -662,7 +662,6 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Checkbox personalizado */
 }
 .inicioSesion .video-bg {
   position: absolute;
@@ -678,11 +677,11 @@ textarea {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 3vh 20px;
 }
 .inicioSesion .login-card {
   background: rgba(255, 255, 255, 0.1);
@@ -690,9 +689,9 @@ textarea {
           backdrop-filter: blur(70px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
-  padding: 60px 40px;
-  max-width: 450px;
-  width: 70%;
+  padding: 3vh 35px 3vh 35px;
+  max-width: 420px;
+  width: 90%;
   animation: abrirCard 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   opacity: 0;
 }
@@ -708,18 +707,18 @@ textarea {
 }
 .inicioSesion .logo-container {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2vh;
 }
 .inicioSesion .logo-container img {
-  height: 80px;
+  height: 60px;
   animation: pulse 3s ease-in-out infinite;
 }
 .inicioSesion .login-title {
   font-family: "Playfair Display", serif;
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 0.5vh;
   letter-spacing: 2px;
 }
 .inicioSesion .login-subtitle {
@@ -727,18 +726,36 @@ textarea {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 2.5vh;
+}
+.inicioSesion .login-form h3 {
+  margin-bottom: 2vh !important;
+  font-size: 1.05rem;
+}
+.inicioSesion .mb-3 {
+  margin-bottom: 1.2vh !important;
+}
+.inicioSesion .form-label {
+  margin-bottom: 0.4vh;
+  font-size: 0.88rem;
+}
+.inicioSesion .form-control {
+  background: rgba(255, 255, 255, 0.27);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.92rem;
+  padding: 10px 12px;
+  transition: all 0.3s ease;
 }
 .inicioSesion .btn-login {
   width: 100%;
-  padding: 18px;
+  padding: 13px;
   background: linear-gradient(135deg, #a60000, #a60000);
   border: none;
   border-radius: 15px;
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0.98rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -746,32 +763,15 @@ textarea {
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
-  margin-top: 20px;
-}
-.inicioSesion .btn-login::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.6s ease;
-}
-.inicioSesion .btn-login:hover::before {
-  left: 100%;
-}
-.inicioSesion .btn-login:hover {
-  transform: translateY(-3px);
+  margin-top: 1.5vh;
 }
 .inicioSesion .divider {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 35px 0;
+  margin: 2vh 0;
 }
-.inicioSesion .divider::before,
-.inicioSesion .divider::after {
+.inicioSesion .divider::before, .inicioSesion .divider::after {
   content: "";
   flex: 1;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -779,17 +779,11 @@ textarea {
 .inicioSesion .divider span {
   padding: 0 15px;
   color: #ffffff;
-  font-size: 0.85rem;
-}
-.inicioSesion .form-control {
-  background: rgba(255, 255, 255, 0.27);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  font-size: 0.82rem;
 }
 .inicioSesion .registrarse-link {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 2vh;
 }
 .inicioSesion .registrarse-link a {
   color: #ffffff;
@@ -797,6 +791,7 @@ textarea {
   font-weight: 600;
   transition: all 0.3s ease;
   position: relative;
+  font-size: 0.9rem;
 }
 .inicioSesion .registrarse-link a::after {
   content: "";
@@ -813,15 +808,16 @@ textarea {
 }
 .inicioSesion .registrarse-link span {
   color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
 }
 .inicioSesion .forgot-password {
   text-align: right;
-  margin-top: 15px;
+  margin-top: 1vh;
 }
 .inicioSesion .forgot-password a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   transition: color 0.3s ease;
 }
 .inicioSesion .forgot-password a:hover {
@@ -830,25 +826,72 @@ textarea {
 .inicioSesion .remember-me {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 1.2vh;
 }
 .inicioSesion .remember-me input[type=checkbox] {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  width: 17px;
+  height: 17px;
+  margin-right: 8px;
   accent-color: #a60000;
 }
 .inicioSesion .remember-me label {
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   cursor: pointer;
 }
 @media (max-width: 768px) {
+  .inicioSesion .login-container {
+    padding: 2vh 15px;
+  }
   .inicioSesion .login-card {
-    padding: 40px 30px;
+    padding: 2.5vh 25px;
+    max-width: 95%;
   }
   .inicioSesion .login-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+  .inicioSesion .logo-container img {
+    height: 50px;
+  }
+}
+@media (max-width: 480px) {
+  .inicioSesion .login-card {
+    padding: 2vh 20px;
+    width: 95%;
+  }
+  .inicioSesion .login-title {
+    font-size: 1.6rem;
+  }
+  .inicioSesion .logo-container img {
+    height: 45px;
+  }
+  .inicioSesion .btn-login {
+    padding: 11px;
+    font-size: 0.92rem;
+  }
+}
+@media (max-height: 700px) {
+  .inicioSesion .logo-container img {
+    height: 50px;
+  }
+  .inicioSesion about:blank#blocked .login-title {
+    font-size: 1.7rem;
+  }
+  .inicioSesion .form-label,
+  .inicioSesion .remember-me label,
+  .inicioSesion .forgot-password a {
+    font-size: 0.8rem;
+  }
+}
+@media (min-height: 900px) {
+  .inicioSesion .login-card {
+    padding: 4vh 40px;
+  }
+  .inicioSesion .logo-container {
+    margin-bottom: 3vh;
+  }
+  .inicioSesion .logo-container img {
+    height: 70px;
   }
 }
 
