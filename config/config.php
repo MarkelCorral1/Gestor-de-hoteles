@@ -1,5 +1,8 @@
 <?php
-define('BASE_URL', 'http://localhost//DAW/Gestor-de-hoteles');
+// Detecta automáticamente la IP (192.Maquina Virtual) o localhost
+$host = $_SERVER['HTTP_HOST']; 
+
+define('BASE_URL', "http://" . $host . "/DAW/Gestor-de-hoteles");
 define('IMAGES_URL', BASE_URL . '/images');
 define('CSS_URL', BASE_URL . '/scss/main.css'); 
 define('JS_URL', BASE_URL . '/JS');
@@ -7,5 +10,5 @@ define('PAGINAS_URL', BASE_URL . '/webpages');
 define('PHP_URL', BASE_URL . '/PHP');
 
 define('ROOT_PATH', dirname(__DIR__)); 
-define('INCLUDES_PATH', ROOT_PATH . '/includes'); // navbar, footer, etc.
+define('INCLUDES_PATH', ROOT_PATH . '/includes');
 define('PHP_PATH', ROOT_PATH . '/PHP');
