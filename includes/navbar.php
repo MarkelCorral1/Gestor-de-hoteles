@@ -8,9 +8,9 @@
         </button>
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="dashboard.php">Hoteles</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacto.php">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= PAGINAS_URL ?>/index.php">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= PAGINAS_URL ?>/dashboard.php">Hoteles</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= PAGINAS_URL ?>/contacto.php">Contacto</a></li>
             </ul>
             <?php if (isset($_COOKIE["usuario"])): ?>
                 <li class="nav-item dropdown">
@@ -25,8 +25,8 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="misReservas.php">Mis reservas</a></li>
-                        <li><a class="dropdown-item" href="../PHP/cerrarSesion.php">Cerrar sesion</a></li>
+                        <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/misReservas.php">Mis reservas</a></li>
+                        <li><a class="dropdown-item" href="<?= PHP_URL ?>/cerrarSesion.php">Cerrar sesion</a></li>
 
                         <?php // SI ES ADMIN
                             require_once '../bootstrap.php';
@@ -44,9 +44,9 @@
                             <li>
                                 <h6 class="dropdown-header">Admin</h6>
                             </li>
-                            <li><a class="dropdown-item" href="gestionUsuarios.php">Gestion usuarios</a></li>
-                            <li><a class="dropdown-item" href="gestionHoteles.php">Gestion hoteles</a></li>
-                            <li><a class="dropdown-item" href="admin_contacto.php">Ver mensajes</a></li>
+                            <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/gestionUsuarios.php">Gestion usuarios</a></li>
+                            <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/gestionHoteles.php">Gestion hoteles</a></li>
+                            <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/admin_contacto.php">Ver mensajes</a></li>
                         <?php endif ?>
                     </ul>
                 </li>

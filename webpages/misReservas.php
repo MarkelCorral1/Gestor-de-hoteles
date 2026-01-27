@@ -32,7 +32,7 @@ if (!isset($_COOKIE["usuario"])) {
             <div id="reservasContainer" class="reservas-container row"></div>
             
             <div id="mensajeVacio" class="reservas-vacio" style="display: none;">
-                <h5>No tienes reservas aún. <a href="dashboard.php">Haz una reserva ahora</a></h5>
+                <h5>No tienes reservas aún. <a href="<?= PAGINAS_URL ?>/dashboard.php">Haz una reserva ahora</a></h5>
             </div>
 
         </div>

@@ -166,7 +166,7 @@
                 <p class="descripcion-quienesSomos">
                     Esta franquicia fue establecida en las 7 capitales estratégicas del mundo para ofrecer una red global de exclusividad técnica. Cada hotel es una pieza de ingeniería arquitectónica diseñada para quienes no se conforman con el lujo convencional, uniendo la velocidad del mundo moderno con la calma absoluta de un refugio privado.
                 </p>
-                <a href="quienesSomos.php" class="btn btn-custom-danger mt-3">
+                <a href="<?= PAGINAS_URL ?>/quienesSomos.php" class="btn btn-custom-danger mt-3">
                     SABER MÁS
                 </a>
             </div>
@@ -174,7 +174,7 @@
             <!-- Imagen -->
             <div class="col-lg-6">
                 <div class="img-container shadow-lg">
-                    <img src="../images/Schumacher/Schumacher.jpg" alt="Historia Schumacher" class="img-fluid">
+                    <img src="<?= IMAGES_URL ?>/Schumacher/Schumacher.jpg" alt="Historia Schumacher" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -351,8 +351,8 @@
             <div class="col-md-6 mb-4">
                 <div class="bienestar-card">
                     <div class="bienestar-grid">
-                        <img src="../images/Wellness/gimasiointerior.jpg" alt="gimansio">
-                        <img src="../images/Wellness/deportes2.jpg" alt="padel">
+                        <img src="<?= IMAGES_URL ?>/Wellness/gimasiointerior.jpg" alt="gimansio">
+                        <img src="<?= IMAGES_URL ?>/Wellness/deportes2.jpg" alt="padel">
                     </div>
                     <div class="bienestar-content">
                         <h4 class="fw-bold">Deportes</h4>
@@ -366,8 +366,8 @@
             <div class="col-md-6 mb-4">
                 <div class="bienestar-card">
                     <div class="bienestar-grid">
-                        <img src="../images/Wellness/pisinaexterior.jpg" alt="piscina">
-                        <img src="../images/Wellness/pisinainterior.jpg" alt="spa">
+                        <img src="<?= IMAGES_URL ?>/Wellness/pisinaexterior.jpg" alt="piscina">
+                        <img src="<?= IMAGES_URL ?>/Wellness/pisinainterior.jpg" alt="spa">
                     </div>
                     <div class="bienestar-content">
                         <h4 class="fw-bold">Piscina/Spa</h4>

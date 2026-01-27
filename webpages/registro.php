@@ -29,7 +29,7 @@ if (isset($_COOKIE["usuario"])) {
     <div class="login-container">
         <div class="login-card">
             <div class="logo-container">
-                <a href="index.php">
+                <a href="<?= PAGINAS_URL ?>/index.php">
                     <img src="<?= IMAGES_URL ?>/Logo/Logo.png" alt="Schumacher Logo">
                 </a>
             </div>
@@ -69,7 +69,7 @@ if (isset($_COOKIE["usuario"])) {
 
                 <div class="registrarse-link">
                     <span>¿Ya tienes cuenta?</span>
-                    <a href="inicioSesion.php"> Inicia Sesión</a>
+                    <a href="<?= PAGINAS_URL ?>/inicioSesion.php"> Inicia Sesión</a>
                 </div>
 
                 <div id="respuesta-form" class="mt-3 text-center"></div>

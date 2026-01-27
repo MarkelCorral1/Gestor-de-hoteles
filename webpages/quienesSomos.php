@@ -225,7 +225,7 @@ require_once '../config/config.php';
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <div class="founder-img-container">
-                            <img src="../images/Schumacher/Schumacher.jpg" alt="Michael Schumacher">
+                            <img src="<?= IMAGES_URL ?>/Schumacher/Schumacher.jpg" alt="Michael Schumacher">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -263,8 +263,8 @@ require_once '../config/config.php';
                     Experimenta el Estándar 7 en cualquiera de nuestras siete propiedades alrededor del mundo.
                 </p>
                 <div class="d-flex gap-3 justify-content-center">
-                    <a href="index.html" class="btn btn-light btn-lg px-5 rounded-pill">Explorar Hoteles</a>
-                    <a href="contacto.html" class="btn btn-outline-light btn-lg px-5 rounded-pill">Contactar</a>
+                    <a href="<?= PAGINAS_URL ?>/index.php" class="btn btn-light btn-lg px-5 rounded-pill">Explorar Hoteles</a>
+                    <a href="<?= PAGINAS_URL ?>/contacto.php" class="btn btn-outline-light btn-lg px-5 rounded-pill">Contactar</a>
                 </div>
             </div>
         </section>
