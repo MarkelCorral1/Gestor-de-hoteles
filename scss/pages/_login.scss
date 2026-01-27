@@ -1,6 +1,5 @@
 @use '../variables' as *;
 
-
 .inicioSesion {
     position: relative;
     width: 100%;
@@ -16,19 +15,19 @@
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover; // Reemplaza al background-size: cover
-        z-index: -1; // Para mantenerlo detras del formulario
+        object-fit: cover;
+        z-index: -1;
     }
 
     .login-container {
         position: relative;
         z-index: 1;
         width: 100%;
-        min-height: 100vh;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 40px 20px;
+        padding: 3vh 20px; // Padding dinámico 
     }
 
     .login-card {
@@ -36,20 +35,18 @@
         backdrop-filter: blur(70px);
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 30px;
-        padding: 60px 40px;
-        max-width: 450px;
-        width: 70%;
+        padding: 3vh 35px 3vh 35px; // Padding vertical dinámico
+        max-width: 420px;
+        width: 90%;
         animation: abrirCard 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        opacity: 0; // Empieza invisible
+        opacity: 0;
     }
 
-    // efecto de entrada
     @keyframes abrirCard {
         0% {
             opacity: 0;
             transform: scale(0.5) translateY(20px);
         }
-
         100% {
             opacity: 1;
             transform: scale(1) translateY(0);
@@ -58,20 +55,20 @@
 
     .logo-container {
         text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .logo-container img {
-        height: 80px;
-        animation: pulse 3s ease-in-out infinite;
+        margin-bottom: 2vh; // Margen dinámico
+        
+        img {
+            height: 60px;
+            animation: pulse 3s ease-in-out infinite;
+        }
     }
 
     .login-title {
         font-family: 'Playfair Display', serif;
         color: $blanco;
-        font-size: 2.5rem;
+        font-size: 2rem;
         text-align: center;
-        margin-bottom: 15px;
+        margin-bottom: 0.5vh;
         letter-spacing: 2px;
     }
 
@@ -80,19 +77,43 @@
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 3px;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 600;
-        margin-bottom: 40px;
+        margin-bottom: 2.5vh;
+    }
+
+    .login-form {
+        h3 {
+            margin-bottom: 2vh !important;
+            font-size: 1.05rem;
+        }
+    }
+
+    .mb-3 {
+        margin-bottom: 1.2vh !important;
+    }
+
+    .form-label {
+        margin-bottom: 0.4vh;
+        font-size: 0.88rem;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.27);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.92rem;
+        padding: 10px 12px;
+        transition: all 0.3s ease;
     }
 
     .btn-login {
         width: 100%;
-        padding: 18px;
+        padding: 13px;
         background: linear-gradient(135deg, #a60000, $rojo);
         border: none;
         border-radius: 15px;
         color: $blanco;
-        font-size: 1.1rem;
+        font-size: 0.98rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -100,132 +121,166 @@
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
-        margin-top: 20px;
-    }
-
-    .btn-login::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba($blanco, 0.3), transparent);
-        transition: left 0.6s ease;
-    }
-
-    .btn-login:hover::before {
-        left: 100%;
-    }
-
-    .btn-login:hover {
-        transform: translateY(-3px);
-
+        margin-top: 1.5vh;
     }
 
     .divider {
         display: flex;
         align-items: center;
         text-align: center;
-        margin: 35px 0;
-    }
+        margin: 2vh 0;
 
-    .divider::before,
-    .divider::after {
-        content: '';
-        flex: 1;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+        &::before,
+        &::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-    .divider span {
-        padding: 0 15px;
-        color: $blanco;
-        font-size: 0.85rem;
+        span {
+            padding: 0 15px;
+            color: $blanco;
+            font-size: 0.82rem;
+        }
     }
-
-    .form-control {
-        background: rgba(255, 255, 255, 0.27);
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        font-size: 1rem;
-        transition: all 0.3s ease;
-    }
-
 
     .registrarse-link {
         text-align: center;
-        margin-top: 30px;
-    }
+        margin-top: 2vh;
 
-    .registrarse-link a {
-        color: $blanco;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        position: relative;
-    }
+        a {
+            color: $blanco;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.9rem;
 
-    .registrarse-link a::after {
-        content: '';
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: $rojo;
-        transition: width 0.3s ease;
-    }
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: $rojo;
+                transition: width 0.3s ease;
+            }
 
-    .registrarse-link a:hover::after {
-        width: 100%;
-    }
+            &:hover::after {
+                width: 100%;
+            }
+        }
 
-    .registrarse-link span {
-        color: rgba(255, 255, 255, 0.6);
+        span {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.88rem;
+        }
     }
 
     .forgot-password {
         text-align: right;
-        margin-top: 15px;
+        margin-top: 1vh;
+
+        a {
+            color: $blanco;
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $rojo;
+            }
+        }
     }
 
-    .forgot-password a {
-        color: $blanco;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: color 0.3s ease;
-    }
-
-    .forgot-password a:hover {
-        color: $rojo
-    }
-
-    /* Checkbox personalizado */
     .remember-me {
         display: flex;
         align-items: center;
-        margin-top: 20px;
-    }
+        margin-top: 1.2vh;
 
-    .remember-me input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-        accent-color: $rojo;
-    }
+        input[type="checkbox"] {
+            width: 17px;
+            height: 17px;
+            margin-right: 8px;
+            accent-color: $rojo;
+        }
 
-    .remember-me label {
-        color: $blanco;
-        font-size: 0.9rem;
-        cursor: pointer;
+        label {
+            color: $blanco;
+            font-size: 0.84rem;
+            cursor: pointer;
+        }
     }
 
     @media (max-width: 768px) {
+        .login-container {
+            padding: 2vh 15px;
+        }
+
         .login-card {
-            padding: 40px 30px;
+            padding: 2.5vh 25px;
+            max-width: 95%;
         }
 
         .login-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .login-card {
+            padding: 2vh 20px;
+            width: 95%;
+        }
+
+        .login-title {
+            font-size: 1.6rem;
+        }
+
+        .logo-container img {
+            height: 45px;
+        }
+
+        .btn-login {
+            padding: 11px;
+            font-size: 0.92rem;
+        }
+    }
+
+    @media (max-height: 700px) {
+        // Para pantallas con poca altura
+        .logo-container img {
+            height: 50px;
+        }about:blank#blocked
+
+        .login-title {
+            font-size: 1.7rem;
+        }
+
+        .form-label,
+        .remember-me label,
+        .forgot-password a {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (min-height: 900px) {
+        // Para pantallas muy altas, dar más espacio
+        .login-card {
+            padding: 4vh 40px;
+        }
+
+        .logo-container {
+            margin-bottom: 3vh;
+            
+            img {
+                height: 70px;
+            }
         }
     }
 }
