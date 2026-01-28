@@ -1,7 +1,7 @@
 <?php require_once '../config/config.php'; ?>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
     <div class="container">
-        <a class="navbar-brand brand" href="index.php"><img src="<?= IMAGES_URL ?>/Logo/Logo.png" alt="Logo"
+        <a class="navbar-brand brand" href="<?= PAGINAS_URL ?>/index.php"><img src="<?= IMAGES_URL ?>/Logo/Logo.png" alt="Logo"
                 class="logo-img"></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@
                 </li>
             <?php else: ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="inicioSesion.php">
+                    <a class="nav-link" href="<?= PAGINAS_URL?>/inicioSesion.php">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
                             class="bi bi-person text-white" viewBox="0 0 16 16">
                             <path

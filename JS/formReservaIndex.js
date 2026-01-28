@@ -34,7 +34,13 @@ form.addEventListener('submit', (e) => {
 
     sessionStorage.setItem("datos-reserva", JSON.stringify(datosReserva))
 
-    window.location.href = `listaHabitaciones.php?id_hotel=${datosReserva.destino}`
+    // Esto de abajo hay que hacerlo por problemas de redireccion en el index en Linux
+    let URLCorreta = window.location.href.includes("webpages/")
+    if (URLCorreta) {
+        window.location.href = `listaHabitaciones.php?id_hotel=${datosReserva.destino}`
+    } else {
+        window.location.href = `webpages/listaHabitaciones.php?id_hotel=${datosReserva.destino}`
+    }
 })
 
 
