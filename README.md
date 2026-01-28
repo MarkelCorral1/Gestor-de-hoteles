@@ -186,7 +186,7 @@ sudo apt install php php-mysql php-xml php-mbstring php-curl php-zip php-intl ph
 ### Ubicacion de
 cd /var/www/html/
 sudo rm -rf *
-sudo git clone http://localhost/DAW/Gestor-de-hoteles/webpages/
+sudo git clone https://github.com/MarkelCorral1/Gestor-de-hoteles.git
 ```
 5. **Instalar librerias composer**
 ```bash
@@ -209,10 +209,10 @@ DB_NAME=hoteles_schumacher
 DB_HOST=127.0.0.1
 
 # URL servidor
-BSE_URL=
+BSE_URL=https://hoteles-schumacher
 ```
 
-- Ajustar permisos
+- Ajustar permisos de la carpeta del servidor
 ```bash
 sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 777 /var/www/html
@@ -296,3 +296,290 @@ sudo systemctl restart apache2
 10. **Pruebas**
 - Probar entrando a:
 `https://localhost` o `https://hoteles-schumacher`
+
+## Funcionamiento
+
+### Cuenta usuario
+
+La cuenta de usuario se crea en la base de datos y se guarda como una cookie de PHP cuando inicias sesion.
+
+#### Registro
+
+En la pagina `registrarse.php`, al darle click al boton de registrarse:
+
+1. Se comprueba que las 2 contraseñas son iguales
+```js
+let password1 = encodeURIComponent(inputPassword1.value);
+let password2 = encodeURIComponent(inputPassword2.value);
+
+if (password1 !== password2) {
+   respuestaForm.innerHTML = 'Las contraseñas no coinciden.';
+   ...     
+```
+2. Se realiza un fetch a `registrarse.php` (backend)
+```js
+ fetch('../PHP/registrarse.php', {
+      method: 'POST',
+      headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: `username=${username}&password=${password1}`
+   })
+   ...
+```
+3. Se comprueba que el usuario no existe
+```php
+$yaExiste = $entityManager->createQuery('SELECT u FROM usuario u WHERE u.username = :username')
+   ->setParameter('username', $username)
+   ->getResult();
+
+   // Comprobar si el usuario ya existe
+   if ($yaExiste) {
+      echo json_encode(['estado' => 'error', 'mensaje' => 'Ya exieste un usuario con ese nombre.']);
+      exit();
+   }
+```
+4. Se crea el usuario
+```php
+$usuario = new Usuario();
+$usuario->setUsername($username);
+...
+$entityManager->persist($usuario);
+$entityManager->flush();
+```
+5. Se redirige a inicio sesion
+```php
+echo json_encode(['estado' => 'correcto', 'redireccion' => '../webpages/inicioSesion.php']);
+```
+```js
+.then(data => {
+   console.log(data);
+   
+   if (data.estado === 'error') {
+      ...
+   } else if (data.estado === 'correcto') {
+      window.location.href = data.redireccion;
+   }
+```
+
+#### Inicio sesion
+
+En la pagina `inicioSesion.php`, al darle click al boton de iniciar sesion:
+
+1. Se hace un fetch a `iniciarSesion.php`
+```js
+let username = encodeURIComponent(inputUsername.value);
+let password = encodeURIComponent(inputPassword.value);
+
+fetch('../PHP/iniciarSesion.php', {
+   method: 'POST',
+   headers: {
+         "Content-Type": "application/x-www-form-urlencoded"
+   },
+   body: `username=${username}&password=${password}`
+})
+```
+2. Se comprueba que el usuario existe
+```php
+$username = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
+
+$usuario = $entityManager->createQuery('SELECT u FROM usuario u WHERE u.username = :username')
+   ->setParameter('username', $username)
+   ->getResult();
+
+
+if (!$usuario) {
+   echo json_encode(['estado' => 'error', 'mensaje' => 'Usuario no encontrado']);
+   exit();
+}
+```
+3. Se comprueba que la contraseña es correcta
+```php
+if (password_verify($password, $usuario[0]->getPassword_hash())) {
+   ...
+```
+4. Se crea una cookie llamada usuario en PHP.
+```php
+setcookie("usuario", $usuario[0]->getUsername(), time() + 86400 * 30, "/");
+
+```
+5. Se redirige al usuario a `index.php`
+```php
+echo json_encode(['estado' => 'correcto', 'redireccion' => '../webpages/index.php']);
+```
+```js
+if (data.estado === 'error') {
+   ...
+} else if (data.estado === 'correcto') {
+   window.location.href = data.redireccion;
+}
+```
+
+### Manejo de la cookie `usuario`
+
+#### Paginas publicas
+Dependiendo de la pagina, las personas sin iniciar sesion tendran acceso a ella:
+- index.php
+- dashboard.php
+- listaHabitaciones.php
+- quienesSomos.php
+- inicioSesion.php
+- registro.php
+
+#### Paginas privadas
+En la pagina de `misReservas.php`, se requiere de cuenta. Para evitar la entrada ha esta pagina si no se tiene cuenta, se comprueba que existe la cookie `usuario`.
+```php
+if (!isset($_COOKIE["usuario"])) {
+    header('Location: index.php');
+    exit();
+}
+```
+
+##### navbar
+Ademas, en `navbar.php` dentro de la carpeta includes, solo se muestra la pagina de `misReservas.php` si se tiene cuenta (ademas del php de `cerrarSesion.php`)
+```php
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
+    <div class="container">
+    ...
+    <div class="collapse navbar-collapse" id="menu">
+    <?php if (isset($_COOKIE["usuario"])): ?>
+    ...
+      <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/misReservas.php">Mis reservas</a></li>
+      <li><a class="dropdown-item" href="<?= PHP_URL ?>/cerrarSesion.php">Cerrar sesion</a></li>
+   ...
+```
+
+Si no se tiene la sesion iniciada, en el navbar se muestra la pagina de inicio sesion.
+```php
+<?php else: ?>
+   ...
+   <a class="nav-link" href="<?= PAGINAS_URL?>/inicioSesion.php">
+   ...
+<?php endif; ?>
+```
+
+#### Paginas de admin
+Las paginas `gestionHoteles.php`, `gestionUsuarios.php`  y `admin_contacto.php` son solo para admins, por lo que al inicio de la pagina, se comprueba si el usuario es admin haciendo una consulta al ORM.
+```php
+$usuario = $entityManager->getRepository('Usuario')
+   ->findBy(['tipo' => 'admin', 'username' => $_COOKIE["usuario"]]);
+
+if (!$usuario) { // si no es admin
+   header('Location: index.php');
+   exit();
+}
+```
+
+### Guardar datos de reserva (sessionStorage)
+
+El sistema utiliza **sessionStorage** para guardar los datos de reserva del usuario durante la navegación dentro de la misma sesión del navegador. Esto permite que los datos se mantengan entre páginas sin necesidad de estar registrado.
+
+#### Estructura de datos
+
+Los datos de reserva se guardan en un objeto JSON con la siguiente estructura:
+```js
+{
+   destino: '1',                    // ID del hotel
+   fechaEntrada: '2026-02-04',      // YYYY-MM-DD
+   fechaSalida: '2026-02-11',       // YYYY-MM-DD
+   personas: 2                      // Número de personas
+}
+```
+
+#### Inicialización - `reservaSesion.js`
+
+Al cargar la página, si no existen datos previos en sessionStorage, se crean datos por defecto:
+
+```js
+if (!sessionStorage.getItem("datos-reserva")) {
+   // Fechas por defecto: hoy + 7 días de entrada, + 14 días de salida
+   let fechaEntrada = new Date()
+   fechaEntrada.setDate(fechaEntrada.getDate() + 7)
+   let fechaSalida = new Date(fechaEntrada)
+   fechaSalida.setDate(fechaSalida.getDate() + 7)
+
+   datosReserva = {
+      destino: '1',
+      fechaEntrada: fechaEntrada.toISOString().slice(0, 10),
+      fechaSalida: fechaSalida.toISOString().slice(0, 10),
+      personas: 1
+   }
+
+   sessionStorage.setItem("datos-reserva", JSON.stringify(datosReserva))
+}
+```
+
+#### Formulario en index.php - `formReservaIndex.js`
+
+En la página principal, el formulario de búsqueda se rellena automáticamente con los datos guardados al ser enviado:
+
+```js
+// Obtener datos de sessionStorage
+let datosReserva = JSON.parse(sessionStorage.getItem("datos-reserva"))
+
+// Rellenar campos si existen datos
+if (sessionStorage.getItem("datos-reserva")) {
+   let datos = JSON.parse(sessionStorage.getItem("datos-reserva"))
+   inputDestino.value = datos.destino
+   inputFechaEntrada.value = datos.fechaEntrada
+   inputFechaSalida.value = datos.fechaSalida
+   inputPersonas.value = datos.personas
+}
+```
+
+Cuando el usuario envía el formulario, se actualizan los datos en sessionStorage y se redirige a la página de habitaciones:
+
+```js
+form.addEventListener('submit', (e) => {
+   e.preventDefault()
+
+   // Actualizar datos
+   datosReserva.destino = inputDestino.value
+   datosReserva.fechaEntrada = inputFechaEntrada.value
+   datosReserva.fechaSalida = inputFechaSalida.value
+   datosReserva.personas = inputPersonas.value
+
+   // Guardar en sessionStorage
+   sessionStorage.setItem("datos-reserva", JSON.stringify(datosReserva))
+
+   // Redirigir a lista de habitaciones
+   window.location.href = `webpages/listaHabitaciones.php?id_hotel=${datosReserva.destino}`
+})
+```
+
+#### Modal de reserva - `modalReserva.js`
+
+En el modal de reserva de habitaciones, los campos se rellenan automáticamente con los datos guardados:
+
+```javascript
+let datosReserva = JSON.parse(sessionStorage.getItem("datos-reserva"))
+
+// Rellenar campos del modal
+if (datosReserva) {
+   inputFechaInicio.value = datosReserva.fechaEntrada
+   inputFechaFinal.value = datosReserva.fechaSalida
+   inputPersonas.value = datosReserva.personas
+}
+```
+
+#### Validaciones de fechas
+
+Ambos formularios implementan validaciones para asegurar que:
+- La fecha de salida sea al menos 1 día después de la entrada
+- La fecha mínima de entrada sea la actual
+- Se actualizan automáticamente los atributos `min` y `max` al cambiar cualquier fecha
+
+```js
+function fechaSalidaMinima() {
+   let fechaEntrada = new Date(inputFechaEntrada.value)
+   fechaEntrada.setDate(fechaEntrada.getDate() + 1)
+   inputFechaSalida.setAttribute("min", fechaEntrada.toISOString().slice(0, 10))
+}
+
+function fechaEntradaMaxima() {
+   let fechaSalida = new Date(inputFechaSalida.value)
+   fechaSalida.setDate(fechaSalida.getDate() - 1)
+   inputFechaEntrada.setAttribute("max", fechaSalida.toISOString().slice(0, 10))
+}
+```
