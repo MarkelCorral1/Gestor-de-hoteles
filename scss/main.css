@@ -654,6 +654,192 @@ textarea {
   font-size: 1rem;
 }
 
+.rest-grid-section {
+  padding: 15vh 10vw;
+  position: relative;
+}
+.rest-grid-section .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10vw;
+  align-items: start;
+}
+.rest-grid-section .grid-item {
+  position: relative;
+  padding-top: 4rem;
+}
+.rest-grid-section .grid-item__kanji {
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  font-size: 8rem;
+  font-family: serif;
+  color: #a60000;
+  z-index: 0;
+  line-height: 1;
+}
+.rest-grid-section .grid-item__content {
+  position: relative;
+  z-index: 1;
+}
+.rest-grid-section .grid-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.rest-grid-section .grid-item h3::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background-color: #a60000;
+}
+.rest-grid-section .grid-item p {
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+.rest-grid-section .grid-item:nth-child(even) {
+  margin-top: 15vh;
+}
+
+.rest-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rest-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.4;
+}
+.rest-hero__bg video,
+.rest-hero__bg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: grayscale(100%) contrast(120%);
+}
+.rest-hero__content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+.rest-hero__vertical-text {
+  position: absolute;
+  left: 4vw;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: #a60000;
+  font-size: 0.85rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.rest-hero__vertical-text::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 80px;
+  background-color: #a60000;
+}
+.rest-hero h1 {
+  font-size: clamp(3rem, 5vw, 5rem);
+  margin-bottom: 1rem;
+}
+.rest-hero h1 span {
+  display: block;
+  font-size: 1rem;
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+  color: #a60000;
+}
+
+.rest-menu-section {
+  padding: 10vh 5vw;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.rest-menu-section .menu-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.rest-menu-section .menu-header h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.rest-menu-section .menu-header p {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  color: #a60000;
+}
+.rest-menu-section .menu-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .rest-menu-section .menu-options {
+    grid-template-columns: 1fr;
+  }
+}
+.rest-menu-section .menu-card {
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  position: relative;
+  background: linear-gradient(to bottom, transparent 0%, rgba(20, 20, 20, 0.5) 100%);
+}
+.rest-menu-section .menu-card:hover {
+  border-color: #a60000;
+  transform: translateY(-10px);
+}
+.rest-menu-section .menu-card__jp-title {
+  font-size: 2rem;
+  color: #a60000;
+  margin-bottom: 0.5rem;
+  font-family: serif;
+}
+.rest-menu-section .menu-card h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.rest-menu-section .menu-card .price-tag {
+  font-size: 1.2rem;
+  font-family: "Manrope", sans-serif;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+  display: block;
+}
+.rest-menu-section .menu-card .details-list {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+.rest-menu-section .menu-card .details-list li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: rgba(224, 224, 224, 0.6);
+}
+
 .inicioSesion {
   position: relative;
   width: 100%;
@@ -921,7 +1107,8 @@ textarea {
   .contactogrid {
     grid-template-areas: "cabecera cabecera" "formulario card1" "formulario card1" "footer1 footer1";
     grid-template-columns: 1fr 1fr;
-    padding: 0; /* Eliminado el padding global para que el footer llegue al borde */
+    padding: 0;
+    /* Eliminado el padding global para que el footer llegue al borde */
   }
   /* Aplicamos el padding de 50px solo a las secciones de contenido */
   .cabecera,
@@ -966,7 +1153,8 @@ textarea {
   grid-area: card2;
 }
 
-.card1, .card2 {
+.card1,
+.card2 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -975,7 +1163,8 @@ textarea {
   padding-bottom: 20px;
 }
 
-.card1 h1, .card2 h1 {
+.card1 h1,
+.card2 h1 {
   font-size: 1.8rem;
   margin-bottom: 15px;
 }
@@ -997,7 +1186,8 @@ textarea {
 /* 6. Footer (Ancho completo) */
 .footer1 {
   grid-area: footer1;
-  background-color: #000000; /* Usamos tu variable de color negro */
+  background-color: #000000;
+  /* Usamos tu variable de color negro */
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1034,7 +1224,8 @@ footer h5 {
   transform: translate(-50%, -50%);
   -o-object-fit: cover;
      object-fit: cover;
-  z-index: 0; /* Por detrás de la capa oscura (::before) y del contenido */
+  z-index: 0;
+  /* Por detrás de la capa oscura (::before) y del contenido */
 }
 
 .hero-historia {
@@ -1061,7 +1252,8 @@ footer h5 {
 
 .hero-content {
   position: relative;
-  z-index: 2; /* Por encima de todo */
+  z-index: 2;
+  /* Por encima de todo */
   text-align: center;
   color: #ffffff;
   animation: fadeInUp 1s ease-out;
@@ -1416,4 +1608,24 @@ footer h5 {
   color: #2a2a2a;
   font-weight: 700;
   margin-bottom: 2rem;
+}
+
+.page-restaurant {
+  background-color: #050505;
+  color: #e0e0e0;
+  font-family: "Manrope", sans-serif;
+  overflow-x: hidden;
+}
+.page-restaurant h1,
+.page-restaurant h2,
+.page-restaurant h3,
+.page-restaurant h4 {
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+.page-restaurant p {
+  color: rgba(224, 224, 224, 0.7);
+  line-height: 1.8;
+  font-size: 0.95rem;
 }/*# sourceMappingURL=main.css.map */

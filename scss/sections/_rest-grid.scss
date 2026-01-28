@@ -1,0 +1,60 @@
+.rest-grid-section {
+    padding: 15vh 10vw;
+    position: relative;
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10vw;
+        align-items: start;
+    }
+
+    // Elemento individual (Ingrediente, Técnica, etc.)
+    .grid-item {
+        position: relative;
+        padding-top: 4rem; // Espacio para el kanji grande
+
+        // El Kanji grande de fondo (ej: 食材)
+        &__kanji {
+            position: absolute;
+            top: -2rem;
+            left: -2rem;
+            font-size: 8rem;
+            font-family: serif; // O una fuente japonesa si tienes
+            color: $rojo; // Casi invisible
+            z-index: 0;
+            line-height: 1;
+        }
+
+        &__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            &::before {
+                content: '';
+                display: block;
+                width: 30px;
+                height: 1px;
+                background-color: $color-rest-accent;
+            }
+        }
+
+        p {
+            max-width: 400px; // Texto estrecho para lectura elegante
+            margin-bottom: 2rem;
+        }
+    }
+
+    // Desplazamiento visual para romper la simetría
+    .grid-item:nth-child(even) {
+        margin-top: 15vh; // El segundo elemento baja más
+    }
+}

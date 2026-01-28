@@ -8,3 +8,20 @@ $font-secondary: "Playfair Display", serif;
 $color-text: #424242;
 
 $image-url: "http://localhost//DAW/Gestor-de-hoteles/images";
+
+// Paleta Restaurante (Inspiración Hannah)
+$color-rest-bg: #050505; // Negro profundo
+$color-rest-text: #e0e0e0; // Blanco suave
+$color-rest-accent: #a60000; // Dorado mate
+$color-rest-line: rgba(255, 255, 255, 0.1); // Líneas divisoras sutiles
+
+// Fuentes Restaurante
+$font-rest-title: 'Playfair Display', serif;
+$font-rest-body: 'Manrope', sans-serif;
+
+$breakpoints: (
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px
+);

@@ -1,0 +1,29 @@
+// --- scss/utils/_mixins.scss ---
+
+// 1. Definimos los breakpoints AQUÍ MISMO para asegurar que existen
+$breakpoints: (
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px) !default;
+
+// 2. El mixin
+@mixin respond-below($breakpoint) {
+
+    // Comprueba si existe la clave en el mapa
+    @if map-has-key($breakpoints, $breakpoint) {
+        $breakpoint-value: map-get($breakpoints, $breakpoint
+        );
+
+    @media (max-width: $breakpoint-value) {
+        @content;
+    }
+}
+
+// Si no es una clave (ej: usas 500px directamente)
+@else {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}
+}
