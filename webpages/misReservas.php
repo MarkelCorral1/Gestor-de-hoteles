@@ -27,6 +27,19 @@ if (!isset($_COOKIE["usuario"])) {
         <div class="container">
             <h1 class="reservas-titulo">Mis Reservas</h1>
             
+            <!-- Filtros -->
+            <div class="row mb-4 p-3 bg-light rounded">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="filtroCiudad" class="form-label">Filtrar por Ciudad:</label>
+                    <select id="filtroCiudad" class="form-select">
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="filtroPrecio" class="form-label">Precio Máximo (€):</label>
+                    <input type="number" id="filtroPrecio" class="form-control" placeholder="Sin límite" min="0">
+                </div>
+            </div>
+            
             <div id="mensajeError" class="reservas-error alert" style="display: none;"></div>
             
             <div id="reservasContainer" class="reservas-container row"></div>
