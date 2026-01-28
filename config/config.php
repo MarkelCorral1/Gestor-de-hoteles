@@ -12,5 +12,5 @@ define('PAGINAS_URL', BASE_URL . '/webpages');
 define('PHP_URL', BASE_URL . '/PHP');
 
 define('ROOT_PATH', dirname(__DIR__)); 
-define('INCLUDES_PATH', ROOT_PATH . '/includes'); // navbar, footer, etc.
+define('INCLUDES_PATH', ROOT_PATH . '/includes');
 define('PHP_PATH', ROOT_PATH . '/PHP');
