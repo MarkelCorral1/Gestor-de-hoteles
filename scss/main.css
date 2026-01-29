@@ -1518,6 +1518,180 @@ footer h5 {
     margin-right: 0;
   }
   .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #a60000, #a60000);
+    transform: translateX(-50%);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 100px;
+    animation: fadeIn 1s ease-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .timeline-content {
+    background: #000000;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    border: 1px solid rgba(111, 2, 2, 0.548);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+  }
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 55%;
+  }
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 55%;
+  }
+  .timeline-year {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #a60000;
+    color: #ffffff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 3px solid #000;
+  }
+  .timeline-content h3 {
+    font-family: "Playfair Display", serif;
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .timeline-content p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+  }
+  /* Vision Section */
+  .vision-section {
+    background: linear-gradient(135deg, #610000 0%, #0d0d0d 100%);
+    padding: 50px 0;
+    overflow: hidden;
+  }
+  .vision-container-wrapper {
+    position: relative;
+    padding: 40px 0;
+    /*asi las flechas quedan encima de todo */
+  }
+  .vision-container-wrapper .swiper-button-prev, .vision-container-wrapper .swiper-button-next {
+    color: #a60000;
+    z-index: 100;
+  }
+  .vision-container-wrapper .swiper-button-prev::after, .vision-container-wrapper .swiper-button-next::after {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .vision__swiper {
+    width: 100%;
+    overflow: visible !important;
+    /* Cambia el color de la bolita activa y de las normales */
+    --swiper-pagination-color: #a60000;
+    --swiper-pagination-bullet-inactive-color: #ffffff;
+    --swiper-pagination-bullet-inactive-opacity: 0.3;
+  }
+  .vision__swiper .swiper-pagination-bullet {
+    width: 5px;
+    height: 5px;
+    transition: all 0.3s ease;
+  }
+  .swiper-slide {
+    width: 700px !important;
+    transition: 0.6s ease;
+    /* Solo cuando la card está en el centro */
+  }
+  .swiper-slide .card-blur-wrapper {
+    filter: blur(10px);
+    opacity: 0.4;
+    transition: 0.6s ease;
+    transform: scale(0.85);
+  }
+  .swiper-slide.swiper-slide-active .card-blur-wrapper {
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  .vision-card {
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+    border: 1px solid rgba(243, 0, 0, 0.301);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    color: #ffffff;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .vision-icon {
+    font-size: 4rem;
+    color: #a60000;
+  }
+  .vision-card h4 {
+    font-family: "Playfair Display", serif;
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  /* Founder Section */
+  .founder-section {
+    background: #000000;
+    padding: 100px 0;
+  }
+  .founder-img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: none;
+    transform: none !important;
+  }
+  .founder-img-container img {
+    width: 100%;
+    height: 600px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .founder-quote {
+    background: #000000;
+    border-left: 5px solid #a60000;
+    padding: 30px;
+    margin: 30px 0;
+    font-style: italic;
+    color: #ffffff;
+    font-size: 1.3rem;
+    line-height: 1.8;
+  }
+}
+@media (max-width: 768px) and (max-width: 768px) {
+  .hero-historia h1 {
+    font-size: 3rem;
+  }
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .timeline-line {
     left: 20px;
   }
   .timeline-year {
