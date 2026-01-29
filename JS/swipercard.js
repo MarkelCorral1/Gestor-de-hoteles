@@ -1,28 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     const swiper = new Swiper('.vision__swiper', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        loop: true,
-        speed: 800,
-        watchSlidesProgress: true,
-        observeParents: true,
-        observer: true,
-        coverflowEffect: {
-            rotate: 35,
-            stretch: 0,
-            depth: 150,
-            modifier: 1,
-            slideShadows: false, // Las sombras propias de Swiper 8 a veces fallan, mejor gestionarlas por CSS
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
+       loop: true,
+   slidesPerView: 'auto',
+   centeredSlides: 'auto',
+   spaceBetween: 16,
+   grabCursor: true,
+   speed: 600,
+   effect: 'coverflow',
+   coverflowEffect:{
+      rotate: -20,
+      depth: 600,
+      modifier: .5,
+      slideShadows: false,
+   },
+
+   pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+   },
+
+   navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+   },
+
+   autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+   },
     });
 });

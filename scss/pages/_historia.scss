@@ -244,15 +244,15 @@
     --swiper-pagination-bullet-inactive-opacity: 0.3;
     
     .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
+        width: 5px;
+        height: 5px;
         transition: all 0.3s ease;
     }
 }
 
 
 .swiper-slide {
-    width: 500px!important; 
+    width: 700px!important; 
     transition: 0.6s ease;
 
     .card-blur-wrapper {
@@ -278,7 +278,7 @@
     padding: 40px;
     text-align: center;
     color: $blanco;
-    height: 350px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
