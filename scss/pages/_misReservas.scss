@@ -1,14 +1,8 @@
 .reservas-container {
     .reserva-card {
-        background-color: #2a2a2a;
-        color: #e0e0e0;
-        border: 1px solid #404040;
-        transition: all 0.3s ease;
-
-        &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
+        @include card-oscura();
+        height: 100%;
+        overflow: hidden;
 
         &.reserva-pasada {
             opacity: 0.75;
@@ -56,6 +50,7 @@
             background-color: #1a1a1a;
             border-top: 1px solid #404040;
             padding: 1rem;
+            margin-top: auto;
 
             .btn-cancelar {
                 background-color: $rojo;

@@ -5,13 +5,32 @@ require_once "../bootstrap.php";
 require_once '../PHP/Clases/Hotel.php';
 require_once '../PHP/Clases/HotelRepository.php';
 
+header('Content-Type: application/json');
 
-$id = $_POST['id_hotel'] ?? '';
+try {
+    $id = $_POST['id_hotel'] ?? $_GET['id_hotel'] ?? '';
 
-$hotel = $entityManager->find('Hotel', $id);
+    if (!$id) {
+        http_response_code(400);
+        echo json_encode(['estado' => 'error', 'mensaje' => 'ID de hotel no proporcionado']);
+        exit();
+    }
 
-$entityManager->remove($hotel);
-$entityManager->flush();
+    $hotel = $entityManager->find('Hotel', $id);
 
-header('Location: ' . PAGINAS_URL . '/gestionHoteles.php');
-exit();
+    if (!$hotel) {
+        http_response_code(404);
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Hotel no encontrado']);
+        exit();
+    }
+
+    $entityManager->remove($hotel);
+    $entityManager->flush();
+
+    echo json_encode(['estado' => 'success', 'mensaje' => 'Hotel eliminado correctamente']);
+
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Error al eliminar el hotel: ' . $e->getMessage()]);
+}
+?>

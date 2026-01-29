@@ -4,14 +4,6 @@ require_once '../config/config.php';
 require_once "../bootstrap.php";
 require_once PHP_PATH . "/Clases/Usuario.php";
 require_once PHP_PATH . "/Clases/UsuarioRepository.php";
-require_once PHP_PATH . "/Clases/Reserva.php";
-require_once PHP_PATH . "/Clases/ReservaRepository.php";
-require_once PHP_PATH . "/Clases/Habitacion.php";
-require_once PHP_PATH . "/Clases/HabitacionRepository.php";
-require_once PHP_PATH . "/Clases/Hotel.php";
-require_once PHP_PATH . "/Clases/HotelRepository.php";
-require_once PHP_PATH . "/Clases/Categoria.php";
-require_once PHP_PATH . "/Clases/CategoriaRepository.php";
 
 // Buscar el usuario en la base de datos y comprobar si es admin
 $usuario = $entityManager->getRepository('Usuario')
@@ -38,42 +30,13 @@ if (!$usuario) { // si no es admin
 <body>
     <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
 
-        <div class="container min-vh-100">
+        <div class="container min-vh-100 py-5">
             <h1>Gestión de Hoteles</h1>
-            <div class="row">
-                <?php
-                $hoteles = $entityManager->getRepository('Hotel')->findAll();
-                foreach ($hoteles as $hotel) :
-                ?>
-                    <div class="hotel col-lg-3 col-md-4 col-sm-6 p-3 border rounded">
-                        <h4><?= $hotel->getCiudad() ?>, <?= $hotel->getPais() ?></h4>
-                        <p class="tipo"><?= $hotel->getDescripcion() ?></p>
-
-                        <div class="d-flex justify-content-center gap-2 mb-3">
-                            <button
-                                class="btn btn-primary btn-editar w-50"
-                                data-bs-toggle="modal"
-                                data-bs-target="#editarHotelModal"
-                                data-id="<?= $hotel->getId_hotel() ?>"
-                                data-pais="<?= $hotel->getPais() ?>"
-                                data-ciudad="<?= $hotel->getCiudad() ?>"
-                                data-descripcion="<?= $hotel->getDescripcion() ?>">
-                                Editar
-                            </button>
-                            
-                            <div class="w-50">
-                                <form action="<?= PHP_URL ?>/eliminarHotel.php" method="post">
-                                    <input type="hidden" name="id_hotel" value="<?= $hotel->getId_hotel() ?>">
-                                    <button type="submit" class="btn btn-danger w-100">Eliminar</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
+            <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
+            <div id="hotelesContainer" class="row"></div>
         </div>
-
+        
+        <!-- MODAL EDICION -->
         <div class="modal fade" id="editarHotelModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <form method="POST" action="<?= PHP_URL ?>/editarHotel.php" class="modal-content">
@@ -119,6 +82,7 @@ if (!$usuario) { // si no es admin
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= JS_URL ?>/rellenarModalHotel.js"></script>
+    <script src="<?= JS_URL ?>/gestionHoteles.js"></script>
 </body>
 
 </html>
