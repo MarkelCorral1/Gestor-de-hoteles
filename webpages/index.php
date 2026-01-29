@@ -240,7 +240,7 @@ require_once PHP_PATH . "/Clases/HotelRepository.php";
                         Maridajes exclusivos, técnica impecable y sabores sublimes diseñados para redefinir tu mañana
                     </p>
                     <div class="d-flex gap-3">
-                        <a class="btn btn-outline-dark btn-lg px-4 rounded-pill" href="#">Saber más</a>
+                        <a class="btn btn-outline-dark btn-lg px-4 rounded-pill" href="apex.php">Saber más</a>
                     </div>
                 </div>
 

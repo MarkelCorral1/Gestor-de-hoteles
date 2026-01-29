@@ -14,7 +14,13 @@ require_once '../config/config.php';
 </head>
 
 <body class="page-restaurant">
-
+    <nav class="navbar navbar-expand-lg navbar fixed-top">
+        <div class="container">
+            <a class="navbar-brand brand" href="index.php">
+                <img src="<?= IMAGES_URL ?>/Logo/Logo.png" alt="Logo" class="logo-img">
+            </a>
+        </div>
+    </nav>
     <!-- Hero -->
     <section class="rest-hero">
         <div class="rest-hero__bg">
