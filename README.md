@@ -583,3 +583,15 @@ function fechaEntradaMaxima() {
    inputFechaEntrada.setAttribute("max", fechaSalida.toISOString().slice(0, 10))
 }
 ```
+
+### Crear reserva
+
+Las reservas se realizan en la pagina `listaHabitaciones.php` y consta de 2 partes:
+- Comprobar disponibilidad
+- Realizar reserva
+
+#### Comprobar disponibilidad
+
+Al darle click al boton de reservar en la pagina `listaHabitaciones.php`, se abre un modal el cual contiene un form que se autorellena con los datos guardados en `sessionStorage`, y se mostra un boton de comprobr disponibilidad 
+
+SEGUIR SEGUIR SEGUIR SEGUIR SEGUIR
