@@ -1,0 +1,22 @@
+.page-restaurant {
+    background-color: $color-rest-bg;
+    color: $color-rest-text;
+    font-family: $font-rest-body;
+    overflow-x: hidden; // Vital para efectos de scroll horizontal si los hubiera
+
+    // Reset específico para dar sensación de 'calma'
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: $font-rest-title;
+        font-weight: 300; // Letra fina
+        letter-spacing: 0.05em;
+    }
+
+    p {
+        color: rgba($color-rest-text, 0.7);
+        line-height: 1.8;
+        font-size: 0.95rem;
+    }
+}

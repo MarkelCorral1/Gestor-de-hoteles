@@ -1,9 +1,9 @@
 <?php
-    require_once '../config/config.php';
+require_once '../config/config.php';
 
-    require_once "../bootstrap.php";
-    require_once PHP_PATH . "/Clases/Hotel.php";
-    require_once PHP_PATH . "/Clases/HotelRepository.php";
+require_once "../bootstrap.php";
+require_once PHP_PATH . "/Clases/Hotel.php";
+require_once PHP_PATH . "/Clases/HotelRepository.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@
     </head>
 
     <body>
-        <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
+        <?php include INCLUDES_PATH . '/navbar.php'; ?> <!-- NAVBAR -->
 
         <section class="hero-container position-relative">
             <!-- Carrusel de Fondo -->
@@ -41,11 +41,13 @@
                             style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Gym\ Shumaccer.png');"></div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <div class="hero-slide" style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Hotel.png');"></div>
+                        <div class="hero-slide" style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Hotel.png');">
+                        </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
                         <div class="hero-slide"
-                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Restaurante\ shumacker.png');"></div>
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Restaurante\ shumacker.png');">
+                        </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
                         <div class="hero-slide"
@@ -57,7 +59,8 @@
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <div class="hero-slide" style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Vestibulo.png');">
+                        <div class="hero-slide"
+                            style="background-image: url('<?= IMAGES_URL ?>/Carrousel/Vestibulo.png');">
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
@@ -181,170 +184,179 @@
     </div>
 </section>
 
-<!-- SECCIÓN: RESTAURANTE GOURMET -->
-<section id="acercadelRestaurante" class="bg-dark text-white overflow-hidden">
-    <div class="container">
-        <div class="row align-items-center min-vh-75 py-5">
-            
-            <!-- Lado Izquierdo: Imágenes Circulares -->
-            <div class="col-md-6 position-relative d-flex justify-content-center align-items-center">
-                <!-- Imagen Principal -->
-                <div class="rounded-circle overflow-hidden shadow-lg border border-3 border-secondary" style="width: 350px; height: 350px;">
-                    <img src="<?= IMAGES_URL ?>/Restaurante/comida1.webp" class="w-100 h-100 object-fit-cover" alt="Restaurante">
-                </div>
-                <!-- Imagen Decorativa Flotante (Opcional para dar estilo) -->
-                <div class="rounded-circle overflow-hidden position-absolute border border-4 border-dark shadow d-none d-lg-block" 
-                    style="width: 150px; height: 150px; bottom: -20px; right: 50px;">
-                    <img src="<?= IMAGES_URL ?>/Restaurante/comida2.png" class="w-100 h-100 object-fit-cover" alt="Plato">
-                </div>
-            </div>
+        <!-- SECCIÓN: RESTAURANTE GOURMET -->
+        <section id="acercadelRestaurante" class="bg-dark text-white overflow-hidden">
+            <div class="container">
+                <div class="row align-items-center min-vh-75 py-5">
 
-            <!-- Lado Derecho: Contenido -->
-            <div class="col-md-6 p-lg-5 text-start">
-                <h3 class="display-3 fw-bold text-white">Gastronomia de excepción.</h3>
-                <img src="<?= IMAGES_URL ?>/Restaurante/michellin.png" alt="michellin" class="img-fluid" width="65px">
-                <p class="lead fw-normal text-secondary mb-4">
-                    Descubre la esencia culinaria detrás de Apex. Cocina de vanguardia diseñada para paladares exigentes.
-                    Perfeccion tecnica y sabores incomparables en cada plato.
-                </p>
-                <div class="d-flex gap-3">
-                    <a class="btn btn-outline-light btn-lg px-4 rounded-pill" href="#">Saber más</a>
-                    <a class="btn btn-outline-danger btn-lg px-4 rounded-pill" href="#">Reservar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
- <div class="container">
-        <div class="row align-items-center min-vh-75 py-5">
-            <!-- Lado Izquierdo: Contenido -->
-            <div class="col-md-6 p-lg-5 text-start">
-                <span class="text-danger fw-bold text-uppercase tracking-wider">Experiencia Gastronómica</span>
-                <h3 class="display-3 fw-bold text-dark mb-4">Brunch <span class="text-outline">Apex</span></h3>
-                <p class="lead fw-normal text-secondary mb-4">
-                Un brunch de vanguardia donde la alta cocina se fusiona con la sofisticación matutina.
-                Maridajes exclusivos, técnica impecable y sabores sublimes diseñados para redefinir tu mañana
-                </p>
-                <div class="d-flex gap-3">
-                    <a class="btn btn-outline-dark btn-lg px-4 rounded-pill" href="#">Saber más</a>
-                    <a class="btn btn-danger btn-lg px-4 rounded-pill" href="#">Reservar</a>
-                </div>
-            </div>
-
-            <!-- Lado Derecho: Composición de Imágenes -->
-            <div class="col-md-6">
-                <div class="img-container-floating d-flex justify-content-center align-items-center">
-                    
-                    <!-- Imagen Principal (Centro) -->
-                    <div class="hover-card float-1 rounded-circle border border-3 border-white" 
-                        style="width: 320px; height: 320px; z-index: 5;">
-                        <img src="<?= IMAGES_URL ?>/Brunch/desayuno4.png" class="w-100 h-100 object-fit-cover" alt="Plato Principal">
+                    <!-- Lado Izquierdo: Imágenes Circulares -->
+                    <div class="col-md-6 position-relative d-flex justify-content-center align-items-center">
+                        <!-- Imagen Principal -->
+                        <div class="rounded-circle overflow-hidden shadow-lg border border-3 border-secondary"
+                            style="width: 350px; height: 350px;">
+                            <img src="<?= IMAGES_URL ?>/Restaurante/comida1.webp" class="w-100 h-100 object-fit-cover"
+                                alt="Restaurante">
+                        </div>
+                        <!-- Imagen Decorativa Flotante (Opcional para dar estilo) -->
+                        <div class="rounded-circle overflow-hidden position-absolute border border-4 border-dark shadow d-none d-lg-block"
+                            style="width: 150px; height: 150px; bottom: -20px; right: 50px;">
+                            <img src="<?= IMAGES_URL ?>/Restaurante/comida2.png" class="w-100 h-100 object-fit-cover"
+                                alt="Plato">
+                        </div>
                     </div>
 
-                    <!-- Imagen 2 (Arriba Izquierda) -->
-                    <div class="hover-card float-2 rounded-circle position-absolute border border-4 border-white d-none d-lg-block" 
-                        style="width: 160px; height: 160px; top: 10%; left: 5%; z-index: 4;">
-                        <img src="<?= IMAGES_URL ?>/Brunch/desayuno2.png" class="w-100 h-100 object-fit-cover" alt="Detalle 1">
-                    </div>
-
-                    <!-- Imagen 3 (Abajo Derecha) -->
-                    <div class="hover-card float-3 rounded-circle position-absolute border border-4 border-white d-none d-lg-block" 
-                        style="width: 180px; height: 180px; bottom: 5%; right: 5%; z-index: 6;">
-                        <img src="<?= IMAGES_URL ?>/Brunch/desayuno3.png" class="w-100 h-100 object-fit-cover" alt="Detalle 2">
+                    <!-- Lado Derecho: Contenido -->
+                    <div class="col-md-6 p-lg-5 text-start">
+                        <h3 class="display-3 fw-bold text-white">Gastronomia de excepción.</h3>
+                        <img src="<?= IMAGES_URL ?>/Restaurante/michellin.png" alt="michellin" class="img-fluid"
+                            width="65px">
+                        <p class="lead fw-normal text-secondary mb-4">
+                            Descubre la esencia culinaria detrás de Apex. Cocina de vanguardia diseñada para paladares
+                            exigentes.
+                            Perfeccion tecnica y sabores incomparables en cada plato.
+                        </p>
+                        <div class="d-flex gap-3">
+                            <a class="btn btn-outline-light btn-lg px-4 rounded-pill" href="gastronomia.php">Saber
+                                más</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- SECCIÓN: CONFERENCIAS Y EVENTOS -->
-<section class="bg-dark py-5 overflow-hidden">
-    <div class="container py-5">
-        <div class="row mb-5">
-            <div class="col-lg-6">
-                <span class="text-danger fw-bold text-uppercase tracking-widest">Elite</span>
-                <h2 class="display-3 fw-bold text-white">Centros de <span class="text-outline-white">Impacto</span></h2>
-            </div>
-        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-75 py-5">
+                <!-- Lado Izquierdo: Contenido -->
+                <div class="col-md-6 p-lg-5 text-start">
+                    <span class="text-danger fw-bold text-uppercase tracking-wider">Experiencia Gastronómica</span>
+                    <h3 class="display-3 fw-bold text-dark mb-4">Brunch <span class="text-outline">Apex</span></h3>
+                    <p class="lead fw-normal text-secondary mb-4">
+                        Un brunch de vanguardia donde la alta cocina se fusiona con la sofisticación matutina.
+                        Maridajes exclusivos, técnica impecable y sabores sublimes diseñados para redefinir tu mañana
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a class="btn btn-outline-dark btn-lg px-4 rounded-pill" href="apex.php">Saber más</a>
+                    </div>
+                </div>
 
-        <!-- Galería Interactiva de Conferencias -->
-        <div class="apex-gallery-container">
-            
-            <div class="apex-card">
-                <img src="<?= IMAGES_URL ?>/salas/salas1.jpg" alt="Summit Hall">
-                <div class="apex-card-content">
-                    <h4 class="fw-bold">Summit Hall</h4>
-                    <p class="small text-secondary">Con la mejor tecnología del mercado</p>
-                    <button class="btn btn-sm btn-outline-danger rounded-pill">Ver detalles</button>
+                <!-- Lado Derecho: Composición de Imágenes -->
+                <div class="col-md-6">
+                    <div class="img-container-floating d-flex justify-content-center align-items-center">
+
+                        <!-- Imagen Principal (Centro) -->
+                        <div class="hover-card float-1 rounded-circle border border-3 border-white"
+                            style="width: 320px; height: 320px; z-index: 5;">
+                            <img src="<?= IMAGES_URL ?>/Brunch/desayuno4.png" class="w-100 h-100 object-fit-cover"
+                                alt="Plato Principal">
+                        </div>
+
+                        <!-- Imagen 2 (Arriba Izquierda) -->
+                        <div class="hover-card float-2 rounded-circle position-absolute border border-4 border-white d-none d-lg-block"
+                            style="width: 160px; height: 160px; top: 10%; left: 5%; z-index: 4;">
+                            <img src="<?= IMAGES_URL ?>/Brunch/desayuno2.png" class="w-100 h-100 object-fit-cover"
+                                alt="Detalle 1">
+                        </div>
+
+                        <!-- Imagen 3 (Abajo Derecha) -->
+                        <div class="hover-card float-3 rounded-circle position-absolute border border-4 border-white d-none d-lg-block"
+                            style="width: 180px; height: 180px; bottom: 5%; right: 5%; z-index: 6;">
+                            <img src="<?= IMAGES_URL ?>/Brunch/desayuno3.png" class="w-100 h-100 object-fit-cover"
+                                alt="Detalle 2">
+                        </div>
+                    </div>
                 </div>
             </div>
- 
-            <div class="apex-card">
-                <img src="<?= IMAGES_URL ?>/salas/videojuegos.jpg" alt="The Boardroom">
-                <div class="apex-card-content">
-                    <h4 class="fw-bold">Sala de videojuegos</h4>
-                    <p class="small text-secondary">Totalmente equipada con todo lo que te puedes imaginar</p>
+        </div>
+        </section>
+
+        <!-- SECCIÓN: CONFERENCIAS Y EVENTOS -->
+        <section class="bg-dark py-5 overflow-hidden">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="col-lg-6">
+                        <span class="text-danger fw-bold text-uppercase tracking-widest">Elite</span>
+                        <h2 class="display-3 fw-bold text-white">Centros de <span
+                                class="text-outline-white">Impacto</span></h2>
+                    </div>
+                </div>
+
+                <!-- Galería Interactiva de Conferencias -->
+                <div class="apex-gallery-container">
+
+                    <div class="apex-card">
+                        <img src="<?= IMAGES_URL ?>/salas/salas1.jpg" alt="Summit Hall">
+                        <div class="apex-card-content">
+                            <h4 class="fw-bold">Summit Hall</h4>
+                            <p class="small text-secondary">Con la mejor tecnología del mercado</p>
+                            <button class="btn btn-sm btn-outline-danger rounded-pill">Ver detalles</button>
+                        </div>
+                    </div>
+
+                    <div class="apex-card">
+                        <img src="<?= IMAGES_URL ?>/salas/videojuegos.jpg" alt="The Boardroom">
+                        <div class="apex-card-content">
+                            <h4 class="fw-bold">Sala de videojuegos</h4>
+                            <p class="small text-secondary">Totalmente equipada con todo lo que te puedes imaginar</p>
+                        </div>
+                    </div>
+
+                    <div class="apex-card">
+                        <img src="<?= IMAGES_URL ?>/salas/casino.jpg" alt="Apex Lounge">
+                        <div class="apex-card-content">
+                            <h4 class="fw-bold">Apex Casino</h4>
+                            <p class="small text-secondary"> </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </section>
 
-            <div class="apex-card">
-                <img src="<?= IMAGES_URL ?>/salas/casino.jpg" alt="Apex Lounge">
-                <div class="apex-card-content">
-                    <h4 class="fw-bold">Apex Casino</h4>
-                    <p class="small text-secondary"> </p>
+        <!-- SECCIÓN: CINEMA  -->
+        <section class="bg-white py-5">
+            <div class="container py-5">
+                <div class="row mb-5 text-end">
+                    <div class="col-lg-12">
+                        <span class="text-danger fw-bold text-uppercase">Entertainment Studio</span>
+                        <h2 class="display-3 fw-bold text-dark">Apex <span class="text-danger">Cinema</span></h2>
+                    </div>
+                </div>
+
+                <div class="apex-gallery-container" style="height: 600px;">
+
+                    <!-- Tarjeta 1: Cine Interior -->
+                    <div class="apex-card shadow-lg">
+                        <img src="<?= IMAGES_URL ?>/cinema/interior1.PNG" alt="Indoor Cinema">
+                        <div class="apex-card-content">
+                            <h3 class="fw-bold">Indoor Luxury</h3>
+                            <p>Sonido Dolby Atmos y asientos de cuero calefactados.</p>
+                            <a href="#" class="text-white fw-bold text-decoration-none small">RESERVAR SESIÓN PRIVADA
+                                →</a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Cine Exterior -->
+                    <div class="apex-card shadow-lg">
+                        <img src="<?= IMAGES_URL ?>/cinema/exterior3.jpg" alt="Outdoor Cinema">
+                        <div class="apex-card-content">
+                            <h3 class="fw-bold">Sky Cinema</h3>
+                            <p>Cine bajo las estrellas con servicio de catering gourmet.</p>
+                            <a href="#" class="text-white fw-bold text-decoration-none small">VER CARTELERA →</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </section>
 
-        </div>
-    </div>
-</section>
-
-<!-- SECCIÓN: CINEMA  -->
-<section class="bg-white py-5">
-    <div class="container py-5">
-        <div class="row mb-5 text-end">
-            <div class="col-lg-12">
-                <span class="text-danger fw-bold text-uppercase">Entertainment Studio</span>
-                <h2 class="display-3 fw-bold text-dark">Apex <span class="text-danger">Cinema</span></h2>
-            </div>
-        </div>
-
-        <div class="apex-gallery-container" style="height: 600px;">
-            
-            <!-- Tarjeta 1: Cine Interior -->
-            <div class="apex-card shadow-lg">
-                <img src="<?= IMAGES_URL ?>/cinema/interior1.PNG" alt="Indoor Cinema">
-                <div class="apex-card-content">
-                    <h3 class="fw-bold">Indoor Luxury</h3>
-                    <p>Sonido Dolby Atmos y asientos de cuero calefactados.</p>
-                    <a href="#" class="text-white fw-bold text-decoration-none small">RESERVAR SESIÓN PRIVADA →</a>
+        <!-- SALUD Y BIENESTAR -->
+        <section class="seccion-bienestar">
+            <div class="container">
+                <!-- Título de la sección -->
+                <div class="mb-5">
+                    <h2 class="text-outline-white d-block">SALUD &</h2>
+                    <h2 class="display-4 fw-bold text-white">BIENESTAR</h2>
                 </div>
-            </div>
-
-            <!-- Tarjeta 2: Cine Exterior -->
-            <div class="apex-card shadow-lg">
-                <img src="<?= IMAGES_URL ?>/cinema/exterior3.jpg" alt="Outdoor Cinema">
-                <div class="apex-card-content">
-                    <h3 class="fw-bold">Sky Cinema</h3>
-                    <p>Cine bajo las estrellas con servicio de catering gourmet.</p>
-                    <a href="#" class="text-white fw-bold text-decoration-none small">VER CARTELERA →</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- SALUD Y BIENESTAR -->
-<section class="seccion-bienestar">
-    <div class="container">
-        <!-- Título de la sección -->
-        <div class="mb-5">
-            <h2 class="text-outline-white d-block">SALUD &</h2>
-            <h2 class="display-4 fw-bold text-white">BIENESTAR</h2>
-        </div>
 
         <div class="row">
             <!-- Slide 1: Gimnasio -->
@@ -380,71 +392,78 @@
     </div>
 </section>
 
-<!-- Separador Estético entre Secciones -->
-<div class="container my-5 py-5">
-    <hr class="separador-lujo">
-</div>
-
-<!-- Sección Testimonios (Carrusel Bootstrap) -->
-<section class="testimonios-section pb-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <span class="subtituloTestimonios">EXPERIENCIAS EXCLUSIVAS</span>
-            <h2 class="display-5 fw-bold text-white">Testimonios de nuestros huéspedes</h2>
+        <!-- Separador Estético entre Secciones -->
+        <div class="container my-5 py-5">
+            <hr class="separador-lujo">
         </div>
 
-        <!-- Carrusel de testimonios -->
-        <div id="carouselTestimonios" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                
-                <!-- Testimonio 1 -->
-                <div class="carousel-item active">
-                    <div class="testimonio-card">
-                        <span class="quote-mark">“</span>
-                        <p class="testimonio-text">Una experiencia que redefine el lujo. El Estándar 7 no es solo una categoría, es una forma de entender la hospitalidad. El gimnasio en Dubái es simplemente de otro mundo.</p>
-                        <div class="testimonio-autor">
-                            <h5 class="text-white mb-0">Alexander Vaughan</h5>
-                            <small class="text-danger">CEO de TechGlobal</small>
-                        </div>
-                    </div>
+        <!-- Sección Testimonios (Carrusel Bootstrap) -->
+        <section class="testimonios-section pb-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <span class="subtituloTestimonios">EXPERIENCIAS EXCLUSIVAS</span>
+                    <h2 class="display-5 fw-bold text-white">Testimonios de nuestros huéspedes</h2>
                 </div>
 
-                <!-- Testimonio 2 -->
-                <div class="carousel-item">
-                    <div class="testimonio-card">
-                        <span class="quote-mark">“</span>
-                        <p class="testimonio-text">La atención al detalle es impecable. Desde la temperatura de la piscina infinita hasta la selección de vinos. Es, sin duda, la joya de la corona de los hoteles boutique.</p>
-                        <div class="testimonio-autor">
-                            <h5 class="text-white mb-0">Elena Rossi</h5>
-                            <small class="text-danger">Diseñadora de Interiores</small>
+                <!-- Carrusel de testimonios -->
+                <div id="carouselTestimonios" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <!-- Testimonio 1 -->
+                        <div class="carousel-item active">
+                            <div class="testimonio-card">
+                                <span class="quote-mark">“</span>
+                                <p class="testimonio-text">Una experiencia que redefine el lujo. El Estándar 7 no es
+                                    solo una categoría, es una forma de entender la hospitalidad. El gimnasio en Dubái
+                                    es simplemente de otro mundo.</p>
+                                <div class="testimonio-autor">
+                                    <h5 class="text-white mb-0">Alexander Vaughan</h5>
+                                    <small class="text-danger">CEO de TechGlobal</small>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Testimonio 2 -->
+                        <div class="carousel-item">
+                            <div class="testimonio-card">
+                                <span class="quote-mark">“</span>
+                                <p class="testimonio-text">La atención al detalle es impecable. Desde la temperatura de
+                                    la piscina infinita hasta la selección de vinos. Es, sin duda, la joya de la corona
+                                    de los hoteles boutique.</p>
+                                <div class="testimonio-autor">
+                                    <h5 class="text-white mb-0">Elena Rossi</h5>
+                                    <small class="text-danger">Diseñadora de Interiores</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonio 3 -->
+                        <div class="carousel-item">
+                            <div class="testimonio-card">
+                                <span class="quote-mark">“</span>
+                                <p class="testimonio-text">La zona de videojuegos es una experiencia única. El diseño
+                                    moderno y la tecnología de vanguardia hacen que cada juego sea una aventura
+                                    inolvidable.</p>
+                                <div class="testimonio-autor">
+                                    <h5 class="text-white mb-0">Jose Paco</h5>
+                                    <small class="text-danger">Diseñador de Videojuegos</small>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Controles del Carrusel -->
+                    <div class="carousel-indicators position-relative mt-4">
+                        <button type="button" data-bs-target="#carouselTestimonios" data-bs-slide-to="0"
+                            class="active"></button>
+                        <button type="button" data-bs-target="#carouselTestimonios" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#carouselTestimonios" data-bs-slide-to="2"></button>
                     </div>
                 </div>
-
-                <!-- Testimonio 3 -->
-                <div class="carousel-item">
-                    <div class="testimonio-card">
-                        <span class="quote-mark">“</span>
-                        <p class="testimonio-text">La zona de videojuegos es una experiencia única. El diseño moderno y la tecnología de vanguardia hacen que cada juego sea una aventura inolvidable.</p>
-                        <div class="testimonio-autor">
-                            <h5 class="text-white mb-0">Jose Paco</h5>
-                            <small class="text-danger">Diseñador de Videojuegos</small>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
-
-            <!-- Controles del Carrusel -->
-            <div class="carousel-indicators position-relative mt-4">
-                <button type="button" data-bs-target="#carouselTestimonios" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#carouselTestimonios" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselTestimonios" data-bs-slide-to="2"></button>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
 
 
@@ -460,8 +479,8 @@
             </div>
         </section>
 
-        <?php include INCLUDES_PATH  . '/footer.php'; ?> <!-- FOOTER -->
-        
+        <?php include INCLUDES_PATH . '/footer.php'; ?> <!-- FOOTER -->
+
         <div class="modal fade" id="bookingModal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -493,7 +512,7 @@
         <script src="cdn.jsdelivr.net"></script>
         <script src="<?= JS_URL ?>/reservaSesion.js"></script>
         <script src="<?= JS_URL ?>/formReservaIndex.js"></script>
-    
+
 
     </body>
 

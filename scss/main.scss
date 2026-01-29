@@ -1,27 +1,33 @@
-@use 'variables' as *;
+@import 'variables';
+@import 'mixins';
 
 // Base
-@use 'base/base';
+@import 'base/base';
 
 // Layout
-@use 'layout/navbar';
-@use 'layout/footer';
-@use 'layout/categories';
+@import 'layout/navbar';
+@import 'layout/footer';
+@import 'layout/categories';
 
 // Components
-@use 'components/buttons';
-@use 'components/cards';
-@use 'components/gallery';
-@use 'components/forms';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/gallery';
+@import 'components/forms';
 
 // Sections
-@use 'sections/hero';
-@use 'sections/about';
-@use 'sections/wellness';
-@use 'sections/testimonios';
+@import 'sections/hero';
+@import 'sections/about';
+@import 'sections/wellness';
+@import 'sections/testimonios';
+@import 'sections/rest-grid';
+@import 'sections/rest-hero';
+@import 'sections/rest-menu';
 
 // Pages
-@use 'pages/login';
-@use 'pages/contacto';
-@use 'pages/historia';
-@use 'pages/misReservas';
+@import 'pages/login';
+@import 'pages/contacto';
+@import 'pages/historia';
+@import 'pages/misReservas';
+@import 'pages/restaurant';
+@import 'pages/brunch';
