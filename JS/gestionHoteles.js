@@ -4,6 +4,9 @@ let listaHoteles;
 document.addEventListener('DOMContentLoaded', () => {
     // Cargar los hoteles cuando se carga la página
     cargarHoteles();
+
+    // Envio del formulario de edicion
+    document.getElementById('editarHotelForm').addEventListener('submit', editarHotel);
 });
 
 function cargarHoteles() {
@@ -85,9 +88,11 @@ function mostrarError(mensaje) {
 }
 
 function eliminarHotel(id_hotel) {
-    if (confirm('¿Estás seguro de que deseas eliminar este hotel?')) {
-        fetch(`../PHP/eliminarHotel.php?id_hotel=${encodeURIComponent(id_hotel)}`, {
-            method: 'POST'
+    if (confirm('Se borraran todas las reservas asociadas al hotel, ¿Estás seguro de que deseas eliminar este hotel?')) {
+        fetch(`../PHP/eliminarHotel.php`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/x-www-form-urlencoded"},
+            body: `id_hotel=${encodeURIComponent(id_hotel)}`
         })
             .then(response => {
                 if (!response.ok) {
@@ -96,8 +101,6 @@ function eliminarHotel(id_hotel) {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
-
                 if (data.estado === 'error') {
                     mostrarError(data.mensaje);
                     return;
@@ -110,4 +113,47 @@ function eliminarHotel(id_hotel) {
                 mostrarError('Error al eliminar el hotel');
             });
     }
+}
+
+function editarHotel(e) {
+    e.preventDefault();
+    
+    const formularioHotel = document.getElementById('editarHotelForm');
+
+    if (!formularioHotel.reportValidity()) { // Si los datos no son correctos
+        return;
+    }
+    
+    // El objeto FormData funciona como si obtuvieramos los valores 1 a 1
+    // y los pusieramos luego en el body del fetch, pero es menos tedioso
+    // y acaba siendo menos propenso a errores.
+    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects
+    const formData = new FormData(formularioHotel);
+
+    fetch('../PHP/editarHotel.php', {
+        method: 'POST',
+        body: formData  
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.estado === 'error') {
+                mostrarError(data.mensaje);
+                return;
+            }
+
+            // Cerrar el modal
+            bootstrap.Modal.getInstance(document.getElementById('editarHotelModal')).hide();
+
+            // Recargar los hoteles
+            cargarHoteles();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            mostrarError('Error al editar el hotel');
+        });
 }

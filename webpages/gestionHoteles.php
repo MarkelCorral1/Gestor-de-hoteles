@@ -35,11 +35,11 @@ if (!$usuario) { // si no es admin
             <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
             <div id="hotelesContainer" class="row"></div>
         </div>
-        
+
         <!-- MODAL EDICION -->
         <div class="modal fade" id="editarHotelModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-            <form method="POST" action="<?= PHP_URL ?>/editarHotel.php" class="modal-content">
+            <form id="editarHotelForm" class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Editar hotel</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>

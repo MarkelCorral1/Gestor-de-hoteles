@@ -8,10 +8,9 @@ require_once '../PHP/Clases/HotelRepository.php';
 header('Content-Type: application/json');
 
 try {
-    $id = $_POST['id_hotel'] ?? $_GET['id_hotel'] ?? '';
+    $id = $_POST['id_hotel'] ?? '';
 
     if (!$id) {
-        http_response_code(400);
         echo json_encode(['estado' => 'error', 'mensaje' => 'ID de hotel no proporcionado']);
         exit();
     }
@@ -19,7 +18,6 @@ try {
     $hotel = $entityManager->find('Hotel', $id);
 
     if (!$hotel) {
-        http_response_code(404);
         echo json_encode(['estado' => 'error', 'mensaje' => 'Hotel no encontrado']);
         exit();
     }
