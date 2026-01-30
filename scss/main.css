@@ -1764,6 +1764,13 @@ footer h5 {
   border-color: #730000;
   color: #ffffff;
 }
+.reservas-container .reserva-card .card-footer .btn-editar {
+  background-color: rgb(166.5, 111, 0);
+  color: #ffffff;
+}
+.reservas-container .reserva-card .card-footer .btn-editar:hover {
+  background-color: rgb(115.5, 77, 0);
+}
 
 .reservas-vacio {
   text-align: center;

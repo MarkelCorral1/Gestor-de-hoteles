@@ -46,6 +46,7 @@
                             </li>
                             <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/gestionUsuarios.php">Gestion usuarios</a></li>
                             <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/gestionHoteles.php">Gestion hoteles</a></li>
+                            <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/gestionReservas.php">Gestion reservas</a></li>
                             <li><a class="dropdown-item" href="<?= PAGINAS_URL ?>/admin_contacto.php">Ver mensajes</a></li>
                         <?php endif ?>
                     </ul>

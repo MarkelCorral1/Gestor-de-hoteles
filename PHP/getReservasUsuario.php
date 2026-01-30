@@ -16,29 +16,26 @@ require_once '../PHP/Clases/CategoriaRepository.php';
 header('Content-Type: application/json');
 
 try {
-    // Verificar que el usuario es admin
-    $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(
-        ['username' => $_COOKIE['usuario'], 'tipo' => 'admin']);
+    // Obtener el usuario
+    $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(['username' => $_COOKIE['usuario']]);
     
     if (!$usuario) {
-        http_response_code(403);
-        echo json_encode(['estado' => 'error', 'mensaje' => 'Acceso denegado']);
+        http_response_code(404);
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Usuario no encontrado']);
         exit();
     }
 
-    // Obtener todas las reservas
-    $reservas = $entityManager->getRepository(Reserva::class)->findAll();
+    // Obtener todas las reservas del usuario
+    $reservas = $entityManager->getRepository(Reserva::class)->findBy(['id_usuario' => $usuario->getId_usuario()]);
 
     $data = [];
     foreach ($reservas as $reserva) {
         $habitacion = $reserva->getId_habitacion();
         $hotel = $habitacion->getId_hotel();
         $categoria = $habitacion->getId_categoria();
-        $usuario_reserva = $reserva->getId_usuario();
 
         array_push($data, [
             'id_reserva' => $reserva->getId_reserva(),
-            'usuario' => $usuario_reserva->getUsername(),
             'hotel_ciudad' => $hotel->getCiudad(),
             'categoria_nombre' => $categoria->getNombre(),
             'id_habitacion' => $habitacion->getId_habitacion(),

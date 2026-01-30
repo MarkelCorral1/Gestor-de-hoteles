@@ -13,11 +13,30 @@ require_once '../PHP/Clases/CategoriaRepository.php';
 require_once '../PHP/Clases/Reserva.php';
 require_once '../PHP/Clases/ReservaRepository.php';
 
-$id = $_POST['id_reserva'] ?? '';
-$reserva = $entityManager->find('Reserva', $id);
+header('Content-Type: application/json');
 
-$entityManager->remove($reserva);
-$entityManager->flush();
+try {
+    $id = $_POST['id_reserva'] ?? '';
 
-header('Location: ' . PAGINAS_URL . '/gestionUsuarios.php');
-exit();
+    if (!$id) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'ID de reserva no proporcionado']);
+        exit();
+    }
+
+    $reserva = $entityManager->find('Reserva', $id);
+
+    if (!$reserva) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Reserva no encontrada']);
+        exit();
+    }
+
+    $entityManager->remove($reserva);
+    $entityManager->flush();
+
+    echo json_encode(['estado' => 'success', 'mensaje' => 'Reserva eliminada correctamente']);
+
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Error al eliminar la reserva: ' . $e->getMessage()]);
+}
+?>

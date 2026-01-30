@@ -66,6 +66,15 @@
                     color: $blanco;
                 }
             }
+
+            .btn-editar {
+                background-color: lighten(#8d5e00, 5%);
+                color: $blanco;
+
+                &:hover {
+                    background-color: darken(#8d5e00, 5%);
+                }
+            }
         }
     }
 }
