@@ -51,7 +51,7 @@ CREATE TABLE reserva (
     fecha_final DATE NOT NULL,
     numero_personas INT NOT NULL,
     precio_total DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_habitacion) REFERENCES habitacion(id_habitacion) ON DELETE CASCADE,
     CHECK (fecha_final > fecha_inicio)
 );

@@ -5,23 +5,41 @@ require_once "../bootstrap.php";
 require_once '../PHP/Clases/Usuario.php';
 require_once '../PHP/Clases/UsuarioRepository.php';
 
+header('Content-Type: application/json');
 
-$id = $_POST['id_usuario'] ?? '';
-$username = $_POST['username'] ?? '';
-$tipo = $_POST['tipo'] ?? '';
+try {
+    $id = $_POST['id_usuario'] ?? '';
+    $username = $_POST['username'] ?? '';
+    $tipo = $_POST['tipo'] ?? '';
 
-// No cambiar a un username ya existente si no es el mismo usuario
-$existe = $entityManager->getRepository('Usuario')->findBy(['username' => $username]);
-if ($existe && $existe[0]->getId_Usuario() != $id) {
-    header('Location: ' . PAGINAS_URL . '/gestionUsuarios.php');
-    exit();
+    if (!$id || !$username || !$tipo) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Faltan datos requeridos']);
+        exit();
+    }
+
+    // No cambiar a un username ya existente si no es el mismo usuario
+    $existe = $entityManager->getRepository('Usuario')->findBy(['username' => $username]);
+    if ($existe && $existe[0]->getId_usuario() != $id) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'El nombre de usuario ya existe']);
+        exit();
+    }
+
+    $usuario = $entityManager->find('Usuario', $id);
+
+    if (!$usuario) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Usuario no encontrado']);
+        exit();
+    }
+
+    $usuario->setUsername($username);
+    $usuario->setTipo($tipo);
+
+    $entityManager->flush();
+
+    echo json_encode(['estado' => 'success', 'mensaje' => 'Usuario actualizado correctamente']);
+
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Error al actualizar el usuario: ' . $e->getMessage()]);
 }
-
-$usuario = $entityManager->find('Usuario', $id);
-$usuario->setUsername($username);
-$usuario->setTipo($tipo);
-
-$entityManager->flush();
-
-header('Location: ' . PAGINAS_URL . '/gestionUsuarios.php');
-exit();
+?>

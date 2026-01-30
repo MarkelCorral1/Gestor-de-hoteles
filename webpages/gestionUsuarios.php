@@ -37,60 +37,22 @@ if (!$usuario) { // si no es admin
 </head>
 <style>
     .admin-user {
-        background-color: #aeffe9;
-    }
-
-    .normal-user {
-        background-color: #e1fff8;
-    }
-
-    .reservas {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: #590000;
     }
 </style>
 
 <body>
     <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
 
-        <div class="container min-vh-100">
+        <div class="container min-vh-100 py-5">
             <h1>Gestión de Usuarios</h1>
-            <div class="row">
-                <?php
-                $usuarios = $entityManager->getRepository('Usuario')->findAll();
-                foreach ($usuarios as $usuario) :
-                    $tipoUsuario = $usuario->getTipo() === 'admin' ? 'admin-user' : 'normal-user';
-                ?>
-                    <div class="usuario <?= $tipoUsuario ?> col-lg-3 col-md-4 col-sm-6 p-3 border rounded">
-                        <h2><?= $usuario->getUsername() ?></h2>
-                        <p class="tipo"><?= $usuario->getTipo() ?></p>
-
-                        <div class="d-flex justify-content-center gap-2 mb-3">
-                            <button
-                                class="btn btn-primary btn-editar w-50"
-                                data-bs-toggle="modal"
-                                data-bs-target="#editarUsuarioModal"
-                                data-id="<?= $usuario->getId_usuario() ?>"
-                                data-username="<?= $usuario->getUsername() ?>"
-                                data-tipo="<?= $usuario->getTipo() ?>">
-                                Editar
-                            </button>
-                            
-                            <div class="w-50">
-                                <form action="<?= PHP_URL ?>/eliminarUsuario.php" method="post">
-                                    <input type="hidden" name="id_usuario" value="<?= $usuario->getId_usuario() ?>">
-                                    <button type="submit" class="btn btn-danger w-100">Eliminar</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
+            <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
+            <div id="usuariosContainer" class="row"></div>
         </div>
 
         <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-            <form method="POST" action="<?= PHP_URL ?>/editarUsuario.php" class="modal-content">
+            <form id="editarUsuarioForm" class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Editar usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -131,7 +93,7 @@ if (!$usuario) { // si no es admin
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= JS_URL ?>/rellenarModalUsuario.js"></script>
-    <script src="<?= JS_URL ?>/rellenarModalReserva.js"></script>
+    <script src="<?= JS_URL ?>/gestionUsuarios.js"></script>
 </body>
 
 </html>
