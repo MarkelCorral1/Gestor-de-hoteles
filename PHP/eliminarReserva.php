@@ -16,6 +16,17 @@ require_once '../PHP/Clases/ReservaRepository.php';
 header('Content-Type: application/json');
 
 try {
+    // Verificar que el usuario es admin
+    $usuario = $entityManager->getRepository(Usuario::class)->findOneBy([
+        'username' => $_COOKIE['usuario'],
+        'tipo' => 'admin'
+    ]);
+    
+    if (!$usuario) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Acceso denegado']);
+        exit();
+    }
+
     $id = $_POST['id_reserva'] ?? '';
 
     if (!$id) {

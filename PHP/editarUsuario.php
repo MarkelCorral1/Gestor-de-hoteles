@@ -8,6 +8,17 @@ require_once '../PHP/Clases/UsuarioRepository.php';
 header('Content-Type: application/json');
 
 try {
+    // Verificar que el usuario es admin
+    $usuario_admin = $entityManager->getRepository(Usuario::class)->findOneBy([
+        'username' => $_COOKIE['usuario'],
+        'tipo' => 'admin'
+    ]);
+    
+    if (!$usuario_admin) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'Acceso denegado']);
+        exit();
+    }
+
     $id = $_POST['id_usuario'] ?? '';
     $username = $_POST['username'] ?? '';
     $tipo = $_POST['tipo'] ?? '';
