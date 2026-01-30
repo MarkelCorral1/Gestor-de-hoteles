@@ -27,7 +27,7 @@ if (!$usuario) { // si no es admin
         rel="stylesheet">
     <link rel="stylesheet" href="<?= CSS_URL ?>">
 </head>
-<body>
+<body class="pagina-gestion">
     <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
 
         <div class="container min-vh-100 py-5">

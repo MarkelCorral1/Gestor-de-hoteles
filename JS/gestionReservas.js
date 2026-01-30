@@ -94,7 +94,7 @@ function mostrarReservas(reservas) {
                                 </div>
 
                             </div>
-                            <div class="d-flex gestion-hoteles-botones gap-2 card-footer">
+                            <div class="d-flex gestion-botones gap-2 card-footer">
                                 <button
                                     class="btn btn-editar w-50"
                                     data-bs-toggle="modal"

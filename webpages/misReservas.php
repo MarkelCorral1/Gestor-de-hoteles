@@ -20,7 +20,7 @@ if (!isset($_COOKIE["usuario"])) {
     <title>Mis Reservas - Schumacher Hotels</title>
 </head>
 
-<body>
+<body class="pagina-gestion">
     <?php include INCLUDES_PATH . '/navbar.php'; ?>
 
     <section class="min-vh-100 py-5">
@@ -28,7 +28,7 @@ if (!isset($_COOKIE["usuario"])) {
             <h1 class="reservas-titulo">Mis Reservas</h1>
             
             <!-- Filtros -->
-            <div class="row mb-4 p-3 bg-light rounded">
+            <div class="row mb-4 p-3 bg-dark text-white rounded">
                 <div class="col-md-6 mb-3 mb-md-0">
                     <label for="filtroCiudad" class="form-label">Filtrar por Ciudad:</label>
                     <select id="filtroCiudad" class="form-select">

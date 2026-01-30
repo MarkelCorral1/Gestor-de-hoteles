@@ -44,11 +44,11 @@ function mostrarHoteles(hoteles) {
     hoteles.forEach(hotel => {
         html += `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="gestion-hotel-card">
+                <div class="gestion-card">
                     <h5>${hotel.ciudad}, ${hotel.pais}</h5>
                     <p class="descripcion">${hotel.descripcion}</p>
 
-                    <div class="d-flex gestion-hoteles-botones gap-2 mt-3">
+                    <div class="d-flex gestion-botones gap-2 mt-3">
                         <button
                             class="btn btn-editar w-50"
                             data-bs-toggle="modal"

@@ -37,11 +37,11 @@ if (!$usuario) { // si no es admin
 </head>
 <style>
     .admin-user {
-        background-color: #590000;
+        background-color: #590000 !important;
     }
 </style>
 
-<body>
+<body class="pagina-gestion">
     <?php include INCLUDES_PATH  . '/navbar.php'; ?> <!-- NAVBAR -->
 
         <div class="container min-vh-100 py-5">

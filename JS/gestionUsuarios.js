@@ -45,10 +45,10 @@ function mostrarUsuarios(usuarios) {
         const tipoClass = usuario.tipo === 'admin' ? 'admin-user' : 'normal-user';
         html += `
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="gestion-hotel-card ${tipoClass}">
+                <div class="gestion-card ${tipoClass}">
                     <h5>${usuario.username}</h5>
                     <p class="px-3"><strong>Tipo:</strong> ${usuario.tipo}</p>
-                    <div class="d-flex gestion-hoteles-botones gap-2 mt-3">
+                    <div class="d-flex gestion-botones gap-2 mt-3">
                         <button
                             class="btn btn-editar w-50"
                             data-bs-toggle="modal"
