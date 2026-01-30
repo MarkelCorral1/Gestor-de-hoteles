@@ -16,11 +16,29 @@
     }
 }
 
-/* Pagina de la historia, he puesto el navbar diferente para que sea transparente */
-.home-page {
+/* Pagina de la historia y gastronomia, he puesto el navbar diferente para que sea transparente */
+.home-page, .page-restaurant, .apex-page {
     .navbar {
         background-color: transparent !important;
         box-shadow: none !important;
-        backdrop-filter: blur(5px); // Cristal suave para que se lea el menú
+
+        // Esto de abajo le da un efecto blur al navbar de mas a menos
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; // Se coloca detrás del logo (para que el logo no se vea difuminado)
+
+            // El blur base que quieres aplicar
+            backdrop-filter: blur(5px);
+
+            // La máscara: hace que el efecto sea visible arriba (black) y desaparezca abajo (transparent)
+            mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+
+            background: rgba(255, 255, 255, 0.025); 
+        }
     }
 }

@@ -9,10 +9,22 @@ require_once '../config/config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brunch - Hotel Schumacher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="<?= CSS_URL ?>">
 </head>
 
-<body>
+<body class="apex-page">
+    <nav class="navbar navbar-expand-lg navbar fixed-top">
+        <div class="container">
+            <a class="navbar-brand brand" href="<?= PAGINAS_URL ?>/index.php">
+                <img src="<?= IMAGES_URL ?>/Logo/Logo.png" alt="Logo" class="logo-img">
+            </a>
+        </div>
+    </nav>
+
     <!-- HERO SECTION -->
     <section class="brunch-hero">
         <div class="hero-overlay">
@@ -236,6 +248,9 @@ require_once '../config/config.php';
             </div>
         </div>
     </section>
+
+    <?php include INCLUDES_PATH . '/footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

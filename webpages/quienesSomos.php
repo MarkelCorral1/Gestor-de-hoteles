@@ -24,7 +24,7 @@ require_once '../config/config.php';
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar fixed-top">
             <div class="container">
-                <a class="navbar-brand brand" href="index.php">
+                <a class="navbar-brand brand" href="<?= PAGINAS_URL ?>/index.php">
                     <img src="<?= IMAGES_URL ?>/Logo/Logo.png" alt="Logo" class="logo-img">
                 </a>
             </div>

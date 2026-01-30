@@ -52,12 +52,24 @@ h3,
   }
 }
 
-/* Pagina de la historia, he puesto el navbar diferente para que sea transparente */
-.home-page .navbar {
+/* Pagina de la historia y gastronomia, he puesto el navbar diferente para que sea transparente */
+.home-page .navbar, .page-restaurant .navbar, .apex-page .navbar {
   background-color: transparent !important;
   box-shadow: none !important;
+}
+.home-page .navbar::before, .page-restaurant .navbar::before, .apex-page .navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
+  -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .img-footer {

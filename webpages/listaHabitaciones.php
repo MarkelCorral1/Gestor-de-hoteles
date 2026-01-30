@@ -26,7 +26,7 @@ $hotel = $entityManager->find('Hotel', $id_hotel);
     <title>Habitaciones</title>
 </head>
 
-<body style="font-family: 'Roboto';">
+<body>
 
     <?php include INCLUDES_PATH . '/navbar.php'; ?>
 
