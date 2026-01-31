@@ -1,5 +1,6 @@
 let respuestaForm = document.getElementById('respuesta-form');
 
+let inputEmail = document.getElementById('email');
 let inputUsername = document.getElementById('username');
 let inputPassword1 = document.getElementById('password-1');
 let inputPassword2 = document.getElementById('password-2');
@@ -7,6 +8,7 @@ let inputPassword2 = document.getElementById('password-2');
 document.getElementById('sessionStart').addEventListener('submit', (e) => {
     e.preventDefault();
     
+    let email = encodeURIComponent(inputEmail.value);
     let username = encodeURIComponent(inputUsername.value);
     let password1 = encodeURIComponent(inputPassword1.value);
     let password2 = encodeURIComponent(inputPassword2.value);
@@ -28,7 +30,7 @@ document.getElementById('sessionStart').addEventListener('submit', (e) => {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: `username=${username}&password=${password1}`
+            body: `email=${email}&username=${username}&password=${password1}`
         })
         .then(response => response.json())
         .then(data => {

@@ -21,9 +21,10 @@ try {
 
     $id = $_POST['id_usuario'] ?? '';
     $username = $_POST['username'] ?? '';
+    $email = $_POST['email'] ?? '';
     $tipo = $_POST['tipo'] ?? '';
 
-    if (!$id || !$username || !$tipo) {
+    if (!$id || !$username || !$email || !$tipo) {
         echo json_encode(['estado' => 'error', 'mensaje' => 'Faltan datos requeridos']);
         exit();
     }
@@ -35,6 +36,13 @@ try {
         exit();
     }
 
+    // No cambiar a un email ya existente si no es el mismo usuario
+    $existe_email = $entityManager->getRepository('Usuario')->findBy(['email' => $email]);
+    if ($existe_email && $existe_email[0]->getId_usuario() != $id) {
+        echo json_encode(['estado' => 'error', 'mensaje' => 'El email ya existe']);
+        exit();
+    }
+
     $usuario = $entityManager->find('Usuario', $id);
 
     if (!$usuario) {
@@ -43,6 +51,7 @@ try {
     }
 
     $usuario->setUsername($username);
+    $usuario->setEmail($email);
     $usuario->setTipo($tipo);
 
     $entityManager->flush();

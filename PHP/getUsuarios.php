@@ -25,6 +25,7 @@ try {
         array_push($data, [
             'id_usuario' => $usuario->getId_usuario(),
             'username' => $usuario->getUsername(),
+            'email' => $usuario->getEmail(),
             'tipo' => $usuario->getTipo()
         ]);
     }

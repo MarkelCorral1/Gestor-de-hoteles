@@ -12,6 +12,8 @@ class Usuario {
     /** @ORM\Column(type="string") */
     private $password_hash;
     /** @ORM\Column(type="string") */
+    private $email;
+    /** @ORM\Column(type="string") */
     private $tipo;
     
     
@@ -24,6 +26,9 @@ class Usuario {
     public function getPassword_hash(): string {
         return $this->password_hash;
     }
+    public function getEmail(): string {
+        return $this->email;
+    }
     public function getTipo(): string {
         return $this->tipo;
     }
@@ -34,6 +39,9 @@ class Usuario {
     public function setPassword_hash($password_hash): void {
         $password_hash = password_hash($password_hash, PASSWORD_DEFAULT);
         $this->password_hash = $password_hash;
+    }
+    public function setEmail($email): void {
+        $this->email = $email;
     }
     public function setTipo($tipo): void {
         $this->tipo = $tipo;

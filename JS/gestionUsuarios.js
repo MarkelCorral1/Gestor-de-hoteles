@@ -47,7 +47,10 @@ function mostrarUsuarios(usuarios) {
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="gestion-card ${tipoClass}">
                     <h5>${usuario.username}</h5>
-                    <p class="px-3"><strong>Tipo:</strong> ${usuario.tipo}</p>
+                    <div class="h-100">
+                        <p class="px-3 text-break"><strong>Email:</strong> ${usuario.email}</p>
+                        <p class="px-3"><strong>Tipo:</strong> ${usuario.tipo}</p>
+                    </div>
                     <div class="d-flex gestion-botones gap-2 mt-3">
                         <button
                             class="btn btn-editar w-50"
@@ -55,6 +58,7 @@ function mostrarUsuarios(usuarios) {
                             data-bs-target="#editarUsuarioModal"
                             data-id="${usuario.id_usuario}"
                             data-username="${usuario.username}"
+                            data-email="${usuario.email}"
                             data-tipo="${usuario.tipo}">
                             Editar
                         </button>

@@ -7,6 +7,7 @@ CREATE TABLE usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     tipo ENUM('normal', 'admin') NOT NULL
 );
 
@@ -150,8 +151,8 @@ INSERT INTO habitacion (id_hotel, id_categoria) VALUES
 (14, 1), (14, 2), (14, 3), (14, 4), (14, 5);
 
 -- Usuarios
-INSERT INTO usuario (username, password_hash, tipo) VALUES
-('alejandro', '$2y$10$YDPv2YaTk0qcqeLY92.Dfe4BH5L7m714ODm8lDESIkPDMeezKNX86', 'admin'),
-('markel', '$2y$10$OsaU/zhjCbo34swdOQX53OXibvKq/UrphsDKB/tXdLLV99VHaikhK', 'admin'),
-('eli', '$2y$10$/8AYuxWjhY8vXIMWdQ0qqeqzIVItnhlgYqPjjbGB.2E26v4EVdStW', 'admin'),
-('unai', '$2y$10$hQybb9tCI75J46pl6bfmN.9aVwN7g1OYiCV4lrNBsJzl7MwHN6SOq', 'admin');
+INSERT INTO usuario (username, password_hash, email, tipo) VALUES
+('alejandro', '$2y$10$YDPv2YaTk0qcqeLY92.Dfe4BH5L7m714ODm8lDESIkPDMeezKNX86', 'alejandro.schumacher@gmail.com', 'admin'),
+('markel', '$2y$10$OsaU/zhjCbo34swdOQX53OXibvKq/UrphsDKB/tXdLLV99VHaikhK', 'markel.schumacher@gmail.com', 'admin'),
+('eli', '$2y$10$/8AYuxWjhY8vXIMWdQ0qqeqzIVItnhlgYqPjjbGB.2E26v4EVdStW', 'eli.schumacher@gmail.com', 'admin'),
+('unai', '$2y$10$hQybb9tCI75J46pl6bfmN.9aVwN7g1OYiCV4lrNBsJzl7MwHN6SOq', 'unai.schumacher@gmail.com', 'admin');

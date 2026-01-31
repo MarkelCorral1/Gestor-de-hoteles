@@ -42,7 +42,7 @@ if (isset($_COOKIE["usuario"])) {
 
                 <div class="mb-3">
                         <label for="username" class="session-label">Correo Electronico</label>
-                        <input type="text" class="form-control session-control" id="correo" name="correo" placeholder="usuario@gmail.com" required>
+                        <input type="text" class="form-control session-control" id="email" name="email" placeholder="usuario@gmail.com" required>
                     </div>
 
                     <div class="mb-3">

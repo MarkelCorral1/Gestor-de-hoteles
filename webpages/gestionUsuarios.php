@@ -68,6 +68,11 @@ if (!$usuario) { // si no es admin
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" id="edit-email" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label">Tipo</label>
                         <select name="tipo" id="edit-tipo" class="form-select">
                             <option value="admin">Admin</option>
