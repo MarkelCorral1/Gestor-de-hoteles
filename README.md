@@ -586,12 +586,234 @@ function fechaEntradaMaxima() {
 
 ### Crear reserva
 
-Las reservas se realizan en la pagina `listaHabitaciones.php` y consta de 2 partes:
+Las reservas se realizan en la página `listaHabitaciones.php` y consta de 2 pasos principales:
 - Comprobar disponibilidad
-- Realizar reserva
+- Confirmar y crear la reserva
 
-#### Comprobar disponibilidad
+#### Paso 1: Comprobar disponibilidad
 
-Al darle click al boton de reservar en la pagina `listaHabitaciones.php`, se abre un modal el cual contiene un form que se autorellena con los datos guardados en `sessionStorage`, y se mostra un boton de comprobr disponibilidad 
+Al hacer clic en el botón "Reservar" en `listaHabitaciones.php`, se abre un modal que contiene un formulario autorelleno con los datos guardados en `sessionStorage`:
 
-SEGUIR SEGUIR SEGUIR SEGUIR SEGUIR
+```html
+<div id="reserva-paso-1">
+    <form id="form-reserva">
+        <input type="hidden" name="id_hotel" id="reserva-id-hotel" value="<?= $hotel->getId_hotel() ?>">
+        <input type="hidden" name="id_categoria" id="reserva-id-categoria" value="1">
+        <label for="reserva-fecha-inicio">Fecha de entrada</label>
+        <input type="date" name="fecha_inicio" class="form-control" id="reserva-fecha-inicio" required>
+        <label for="reserva-fecha-final">Fecha de salida</label>
+        <input type="date" name="fecha_final" class="form-control" id="reserva-fecha-final" required>
+        <label for="reserva-personas">Número de personas</label>
+        <select name="numero_personas" class="form-select" id="reserva-personas" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <button type="button" class="btn btn-primary" onclick="fetchDisponibilidad()">
+            Comprobar disponibilidad
+        </button>
+    </form>
+    <div id="respuesta-reserva" class="mt-3"></div>
+</div>
+```
+
+El formulario se autorellena mediante `modalReserva.js`:
+
+```js
+let datosReserva = JSON.parse(sessionStorage.getItem("datos-reserva"))
+
+// Rellenar campos del modal
+if (datosReserva) {
+    inputFechaInicio.value = datosReserva.fechaEntrada;
+    inputFechaFinal.value = datosReserva.fechaSalida;
+    inputPersonas.value = datosReserva.personas;
+}
+```
+
+Al hacer clic en "Comprobar disponibilidad", se ejecuta la función `fetchDisponibilidad()`:
+
+```js
+function fetchDisponibilidad() {
+    let id_hotel = encodeURIComponent(inputIdHotel.value)
+    let id_categoria = encodeURIComponent(inputIdCategoria.value)
+    let fecha_inicio = encodeURIComponent(inputFechaInicio.value)
+    let fecha_final = encodeURIComponent(inputFechaFinal.value)
+    let numero_personas = encodeURIComponent(inputPersonas.value)
+
+    fetch(`../PHP/comprobarDisponibilidad.php?id_hotel=${id_hotel}&id_categoria=${id_categoria}&fecha_inicio=${fecha_inicio}&fecha_final=${fecha_final}&numero_personas=${numero_personas}`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado === 'error') {
+                // Mostrar error
+                respuestaForm.innerHTML = data.mensaje;
+                respuestaForm.classList.add('bg-danger', 'border-danger', 'mt-3', 'p-2', 'border', 'rounded');
+            } else {
+                // Mostrar paso 2
+                document.getElementById('reserva-paso-1').style.display = 'none';
+                document.getElementById('reserva-paso-2').style.display = 'block';
+            }
+        })
+}
+```
+
+El backend (`comprobarDisponibilidad.php`) realiza varias validaciones:
+
+1. **Comprueba que la fecha de salida es posterior a la entrada:**
+```php
+$fecha_inicio = new DateTime($fecha_inicio);
+$fecha_final = new DateTime($fecha_final);
+
+if ($fecha_inicio >= $fecha_final) {
+    echo json_encode(['estado' => 'error', 'mensaje' => 'La fecha de salida debe ser posterior a la fecha de entrada.']);
+    exit();
+}
+```
+
+2. **Busca una habitación disponible:**
+```php
+$habitacionDisponible = $entityManager->getRepository(Reserva::class)
+    ->obtenerHabitacionDisponible($fecha_inicio->format('Y-m-d'), $fecha_final->format('Y-m-d'), $id_hotel, $id_categoria);
+
+if (!$habitacionDisponible) {
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Reserva no disponible en las fechas seleccionadas.']);
+    exit();
+}
+```
+
+3. **Verifica que hay suficientes camas:**
+```php
+if ($numero_personas > $habitacionDisponible->getId_categoria()->getCamas()) {
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Número de personas mayor a capacidad de la habitación.']);
+    exit();
+}
+```
+
+4. **Calcula el precio total:**
+```php
+$precio_total = $habitacionDisponible->getId_categoria()->getPrecio_base()
+    * $fecha_inicio->diff($fecha_final)->days;
+```
+
+5. **Guarda datos temporales en cookies** (con expiración de 30 días):
+```php
+setcookie("id_habitacion", $habitacionDisponible->getId_habitacion(), time() + 86400 * 30, "/");
+setcookie("fecha_inicio", $fecha_inicio->format('Y-m-d'), time() + 86400 * 30, "/");
+setcookie("fecha_final", $fecha_final->format('Y-m-d'), time() + 86400 * 30, "/");
+setcookie("numero_personas", $numero_personas, time() + 86400 * 30, "/");
+```
+
+Si todo es correcto, devuelve:
+```php
+echo json_encode(['estado' => 'success',
+    'mensaje' => 'Reserva disponible.',
+    'reserva' => [
+        'fecha_inicio' => $fecha_inicio->format('Y-m-d'),
+        'fecha_final' => $fecha_final->format('Y-m-d'),
+        'numero_personas' => $numero_personas,
+        'precio_total' => $precio_total
+    ]
+]);
+```
+
+#### Paso 2: Confirmar y crear la reserva
+
+Una vez verificada la disponibilidad, se muestra el resumen de la reserva:
+
+```html
+<div id="reserva-paso-2" style="display: none;">
+    <div class="alert alert-success">¡Disponibilidad confirmada!</div>
+    <div class="p-3 mb-3">
+        <p><b>Hotel:</b> <?= $hotel->getCiudad() ?></p>
+        <p><b>Fecha inicio:</b> <span id="resumen-fecha-inicio"></span></p>
+        <p><b>Fecha final:</b> <span id="resumen-fecha-fin"></span></p>
+        <p><b>Personas:</b> <span id="resumen-personas"></span></p>
+        <hr>
+        <h4 class="text-end">Total: <span id="resumen-precio-total"></span>€</h4>
+    </div>
+    <form action="<?= PHP_URL ?>/crearReserva.php" method="post">
+        <input type="hidden" name="id_hotel" value="<?= $hotel->getId_hotel() ?>">
+        <input type="hidden" name="fecha_inicio" id="final-inicio">
+        <input type="hidden" name="fecha_final" id="final-final">
+        <input type="hidden" name="num_personas" id="final-personas">
+        
+        <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-secondary" onclick="volverAPaso1()">
+                Modificar
+            </button>
+            <button type="submit" class="btn btn-success flex-grow-1">
+                Confirmar y Reservar
+            </button>
+        </div>
+    </form>
+</div>
+```
+
+Al hacer clic en "Confirmar y Reservar", se realiza un POST a `crearReserva.php` que realiza las siguientes acciones:
+
+1. **Obtiene los datos del usuario autenticado:**
+```php
+$usuario = $_COOKIE['usuario'] ?? '';
+$id_habitacion = $_COOKIE['id_habitacion'] ?? '';
+$fecha_inicio = $_COOKIE['fecha_inicio'] ?? '';
+$fecha_final = $_COOKIE['fecha_final'] ?? '';
+$numero_personas = $_COOKIE['numero_personas'] ?? '1';
+```
+
+2. **Vuelve a realizar las verificaciones:**
+```php
+$fecha_inicio = new DateTime($fecha_inicio);
+$fecha_final = new DateTime($fecha_final);
+
+if ($fecha_inicio >= $fecha_final) {
+    header('Location: ' . PAGINAS_URL . '/listaHabitaciones.php?error=fechas_invalidas');
+    exit();
+}
+...
+```
+
+3. **Obtiene los datos del usuario**, si no hay usuario redirige al inicio de sesión
+```php
+$usuario = $entityManager->getRepository(Usuario::class)->findOneBy(['username' => $usuario]);
+if (!$usuario) {
+    header('Location: ' . PAGINAS_URL . '/inicioSesion.php?error=usuario_no_encontrado');
+    exit();
+}
+```
+
+4. **Obtiene la habitación:**
+```php
+$habitacion = $entityManager->find(Habitacion::class, $id_habitacion);
+```
+
+5. **Calcula otra vez el precio total y crea la reserva:**
+```php
+$precio_total = $habitacion->getId_categoria()->getPrecio_base()
+    * $fecha_inicio->diff($fecha_final)->days;
+```
+
+6. **Crea la reserva:**
+```php
+$reserva = new Reserva();
+$reserva->setId_usuario($usuario);
+$reserva->setId_habitacion($habitacion);
+$reserva->setFecha_inicio($fecha_inicio);
+$reserva->setFecha_final($fecha_final);
+$reserva->setNumero_personas($numero_personas);
+$reserva->setPrecio_total($precio_total);
+$entityManager->persist($reserva);
+$entityManager->flush();
+```
+
+7. **Limpia las cookies temporales:**
+```php
+setcookie("id_habitacion", "", time() - 3600, "/");
+setcookie("fecha_inicio", "", time() - 3600, "/");
+setcookie("fecha_final", "", time() - 3600, "/");
+setcookie("numero_personas", "", time() - 3600, "/");
+```
+
+8. **Redirige a la página de mis reservas:**
+```php
+header('Location: ' . PAGINAS_URL . '/misReservas.php');
+```
