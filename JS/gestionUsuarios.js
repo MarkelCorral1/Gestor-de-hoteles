@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Envio del formulario de edicion
     document.getElementById('editarUsuarioForm').addEventListener('submit', editarUsuario);
+
+    // Agregar event listeners a los filtros
+    document.getElementById('filtroTipo').addEventListener('change', aplicarFiltros);
+    document.getElementById('filtroUsername').addEventListener('input', aplicarFiltros);
+    document.getElementById('filtroEmail').addEventListener('input', aplicarFiltros);
 });
 
 function cargarUsuarios() {
@@ -87,6 +92,38 @@ function mostrarError(mensaje) {
             errorDiv.textContent = '';
             errorDiv.style.display = 'none';
         }, 5000);
+    }
+}
+
+function aplicarFiltros() {
+    const tipoSeleccionado = document.getElementById('filtroTipo').value;
+    const username = document.getElementById('filtroUsername').value;
+    const email = document.getElementById('filtroEmail').value;
+    
+    let usuariosFiltrados = listaUsuarios;
+    
+    // Filtrar por tipo
+    if (tipoSeleccionado) {
+        usuariosFiltrados = usuariosFiltrados.filter(u => u.tipo === tipoSeleccionado);
+    }
+
+    // Filtrar por usuario
+    if (username) {
+        usuariosFiltrados = usuariosFiltrados.filter(u => u.username.includes(username));
+    }
+    
+    // Filtrar por precio minimo
+    if (email) {
+        usuariosFiltrados = usuariosFiltrados.filter(u => u.email.includes(email));
+    }
+
+    if (usuariosFiltrados.length === 0) { // Si no hay usuarios
+        document.getElementById('usuariosContainer').innerHTML = '';
+        document.getElementById('mensajeVacio').innerHTML = '<h5>No hay usuarios que coincidan con los filtros aplicados.</h5>';
+        document.getElementById('mensajeVacio').style.display = 'block';
+    } else {
+        document.getElementById('mensajeVacio').style.display = 'none';
+        mostrarUsuarios(usuariosFiltrados);
     }
 }
 

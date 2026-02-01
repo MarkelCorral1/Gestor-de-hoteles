@@ -46,8 +46,31 @@ if (!$usuario) { // si no es admin
 
         <div class="container min-vh-100 py-5">
             <h1>Gestión de Usuarios</h1>
+
+            <!-- Filtros -->
+            <div class="row mb-4 p-3 bg-dark text-white rounded">
+                <div class="col-lg-4 mb-3">
+                    <label for="filtroTipo" class="form-label">Filtrar por Tipo:</label>
+                    <select id="filtroTipo" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="admin">Admin</option>
+                        <option value="normal">Normal</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <label for="filtroUsername" class="form-label">Filtrar por Nombre:</label>
+                    <input type="text" id="filtroUsername" class="form-control">
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <label for="filtroEmail" class="form-label">Filtrar por Email:</label>
+                    <input type="text" id="filtroEmail" class="form-control">
+                </div>
+            </div>
+
             <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
             <div id="usuariosContainer" class="row"></div>
+
+            <div id="mensajeVacio" class="reservas-vacio" style="display: none;"></div>
         </div>
 
         <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-hidden="true">
