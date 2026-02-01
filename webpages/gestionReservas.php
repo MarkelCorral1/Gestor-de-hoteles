@@ -32,8 +32,32 @@ if (!$usuario) { // si no es admin
 
         <div class="container min-vh-100 py-5">
             <h1>Gestión de Reservas</h1>
+
+            <!-- Filtros -->
+            <div class="row mb-4 p-3 bg-dark text-white rounded">
+                <div class="col-lg-4 mb-3">
+                    <label for="filtroCiudad" class="form-label">Filtrar por Ciudad:</label>
+                    <select id="filtroCiudad" class="form-select">
+                    </select>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <label for="filtroUsuario" class="form-label">Filtrar por Usuario:</label>
+                    <input type="text" id="filtroUsuario" class="form-control">
+                </div>
+                <div class="col-lg-2 col-6">
+                    <label for="filtroPrecioMinimo" class="form-label">Precio Minimo (€):</label>
+                    <input type="number" id="filtroPrecioMinimo" class="form-control" placeholder="Sin límite" min="0">
+                </div>
+                <div class="col-lg-2 col-6">
+                    <label for="filtroPrecioMaximo" class="form-label">Precio Máximo (€):</label>
+                    <input type="number" id="filtroPrecioMaximo" class="form-control" placeholder="Sin límite" min="0">
+                </div>
+            </div>
+
             <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
             <div id="reservasContainer" class="reservas-container row"></div>
+
+            <div id="mensajeVacio" class="reservas-vacio" style="display: none;"></div>
         </div>
 
         <!-- MODAL EDICION -->

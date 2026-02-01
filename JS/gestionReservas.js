@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Envio del formulario de edicion
     document.getElementById('editarReservaForm').addEventListener('submit', editarReserva);
+
+    // Agregar event listeners a los filtros
+    document.getElementById('filtroCiudad').addEventListener('change', aplicarFiltros);
+    document.getElementById('filtroUsuario').addEventListener('input', aplicarFiltros);
+    document.getElementById('filtroPrecioMinimo').addEventListener('input', aplicarFiltros);
+    document.getElementById('filtroPrecioMaximo').addEventListener('input', aplicarFiltros);
 });
 
 function cargarReservas() {
@@ -25,6 +31,9 @@ function cargarReservas() {
 
             // Almacenar todas las reservas
             listaReservas = data.reservas;
+
+            // Rellenar los filtros
+            rellenarFiltros(data.reservas);
 
             // Mostrar las reservas
             mostrarReservas(data.reservas);
@@ -127,6 +136,61 @@ function mostrarError(mensaje) {
             errorDiv.textContent = '';
             errorDiv.style.display = 'none';
         }, 5000);
+    }
+}
+
+function rellenarFiltros(reservas) {
+    // --- Filtro de ciudad --- //
+    const selectCiudad = document.getElementById('filtroCiudad');
+    selectCiudad.innerHTML = `<option value="">Todas las ciudades</option>`
+
+    // Obtener ciudades únicas
+    const ciudades = new Set(reservas.map(r => r.hotel_ciudad));
+    
+    // Añadir las ciudades al filtro
+    ciudades.forEach(ciudad => {
+        const option = document.createElement('option');
+        option.value = ciudad;
+        option.textContent = ciudad;
+        selectCiudad.appendChild(option);
+    });
+}
+
+function aplicarFiltros() {
+    const ciudadSeleccionada = document.getElementById('filtroCiudad').value;
+    const usuario = document.getElementById('filtroUsuario').value;
+    const precioMinimo = document.getElementById('filtroPrecioMinimo').value;
+    const precioMaximo = document.getElementById('filtroPrecioMaximo').value;
+    
+    let reservasFiltradas = listaReservas;
+    
+    // Filtrar por ciudad
+    if (ciudadSeleccionada) {
+        reservasFiltradas = reservasFiltradas.filter(r => r.hotel_ciudad === ciudadSeleccionada);
+    }
+
+    // Filtrar por usuario
+    if (usuario) {
+        reservasFiltradas = reservasFiltradas.filter(r => r.usuario.includes(usuario));
+    }
+    
+    // Filtrar por precio minimo
+    if (precioMinimo) {
+        reservasFiltradas = reservasFiltradas.filter(r => r.precio_total >= precioMinimo);
+    }
+
+    // Filtrar por precio maximo
+    if (precioMaximo) {
+        reservasFiltradas = reservasFiltradas.filter(r => r.precio_total <= precioMaximo);
+    }
+    
+    if (reservasFiltradas.length === 0) { // Si no hay reservas
+        document.getElementById('reservasContainer').innerHTML = '';
+        document.getElementById('mensajeVacio').innerHTML = '<h5>No hay reservas que coincidan con los filtros aplicados.</h5>';
+        document.getElementById('mensajeVacio').style.display = 'block';
+    } else {
+        document.getElementById('mensajeVacio').style.display = 'none';
+        mostrarReservas(reservasFiltradas);
     }
 }
 
