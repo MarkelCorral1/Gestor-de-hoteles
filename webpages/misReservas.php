@@ -29,14 +29,18 @@ if (!isset($_COOKIE["usuario"])) {
             
             <!-- Filtros -->
             <div class="row mb-4 p-3 bg-dark text-white rounded">
-                <div class="col-md-6 mb-3 mb-md-0">
+                <div class="col-lg-6 mb-3">
                     <label for="filtroCiudad" class="form-label">Filtrar por Ciudad:</label>
                     <select id="filtroCiudad" class="form-select">
                     </select>
                 </div>
-                <div class="col-md-6">
-                    <label for="filtroPrecio" class="form-label">Precio Máximo (€):</label>
-                    <input type="number" id="filtroPrecio" class="form-control" placeholder="Sin límite" min="0">
+                <div class="col-lg-3 col-6">
+                    <label for="filtroPrecioMinimo" class="form-label">Precio Minimo (€):</label>
+                    <input type="number" id="filtroPrecioMinimo" class="form-control" placeholder="Sin límite" min="0">
+                </div>
+                <div class="col-lg-3 col-6">
+                    <label for="filtroPrecioMaximo" class="form-label">Precio Máximo (€):</label>
+                    <input type="number" id="filtroPrecioMaximo" class="form-control" placeholder="Sin límite" min="0">
                 </div>
             </div>
             

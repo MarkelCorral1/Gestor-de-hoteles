@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Agregar event listeners a los filtros
     document.getElementById('filtroCiudad').addEventListener('change', aplicarFiltros);
-    document.getElementById('filtroPrecio').addEventListener('input', aplicarFiltros);
+    document.getElementById('filtroPrecioMinimo').addEventListener('input', aplicarFiltros);
+    document.getElementById('filtroPrecioMaximo').addEventListener('input', aplicarFiltros);
 });
 
 function cargarReservas() {
@@ -128,6 +129,7 @@ function mostrarError(mensaje) {
 }
 
 function rellenarFiltros(reservas) {
+    // --- Filtro de ciudad --- //
     const selectCiudad = document.getElementById('filtroCiudad');
     selectCiudad.innerHTML = `<option value="">Todas las ciudades</option>`
 
@@ -145,7 +147,8 @@ function rellenarFiltros(reservas) {
 
 function aplicarFiltros() {
     const ciudadSeleccionada = document.getElementById('filtroCiudad').value;
-    const precioMaximo = document.getElementById('filtroPrecio').value;
+    const precioMinimo = document.getElementById('filtroPrecioMinimo').value;
+    const precioMaximo = document.getElementById('filtroPrecioMaximo').value;
     
     let reservasFiltradas = listaReservas;
     
@@ -154,6 +157,11 @@ function aplicarFiltros() {
         reservasFiltradas = reservasFiltradas.filter(r => r.hotel_ciudad === ciudadSeleccionada);
     }
     
+    // Filtrar por precio minimo
+    if (precioMinimo) {
+        reservasFiltradas = reservasFiltradas.filter(r => r.precio_total >= precioMinimo);
+    }
+
     // Filtrar por precio maximo
     if (precioMaximo) {
         reservasFiltradas = reservasFiltradas.filter(r => r.precio_total <= precioMaximo);
