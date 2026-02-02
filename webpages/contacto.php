@@ -12,7 +12,7 @@
 <body>
     <?php include INCLUDES_PATH . '/navbar.php'; ?>
 
-    <div class="contactogrid">
+    <div class="contactogrid pt-4">
 
         <div class="formulario">
             <div class="container-form">
