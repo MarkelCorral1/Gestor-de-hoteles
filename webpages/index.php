@@ -216,7 +216,7 @@ require_once PHP_PATH . "/Clases/HotelRepository.php";
                             Perfeccion tecnica y sabores incomparables en cada plato.
                         </p>
                         <div class="d-flex gap-3">
-                            <a class="btn btn-outline-light btn-lg px-4 rounded-pill" href="gastronomia.php">Saber
+                            <a class="btn btn-outline-light btn-lg px-4 rounded-pill" href="<?= PAGINAS_URL ?>/gastronomia.php">Saber
                                 más</a>
                         </div>
                     </div>
@@ -235,7 +235,7 @@ require_once PHP_PATH . "/Clases/HotelRepository.php";
                         Maridajes exclusivos, técnica impecable y sabores sublimes diseñados para redefinir tu mañana
                     </p>
                     <div class="d-flex gap-3">
-                        <a class="btn btn-outline-dark btn-lg px-4 rounded-pill" href="apex.php">Saber más</a>
+                        <a class="btn btn-outline-dark btn-lg px-4 rounded-pill" href="<?= PAGINAS_URL ?>/apex.php">Saber más</a>
                     </div>
                 </div>
 
