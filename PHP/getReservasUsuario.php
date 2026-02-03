@@ -15,6 +15,15 @@ require_once '../PHP/Clases/CategoriaRepository.php';
 
 header('Content-Type: application/json');
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    http_response_code(405);
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Método HTTP no permitido']);
+    exit();
+}
+
 try {
     // Obtener el usuario
     $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(['username' => $_COOKIE['usuario']]);

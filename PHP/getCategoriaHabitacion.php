@@ -9,6 +9,15 @@ require_once 'Clases/CategoriaRepository.php';
 
 header('Content-Type: application/json');
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    http_response_code(405);
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Método HTTP no permitido']);
+    exit();
+}
+
 try {
     $nombreCategoria = $_GET['categoria'] ?? 'stroll';
 
