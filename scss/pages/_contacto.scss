@@ -1,144 +1,112 @@
-/* 1. Reset inicial */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@use 'variables' as *;
 
-/* 2. Contenedor Principal (Grid) */
+
 .contactogrid {
     display: grid;
-    /* Móvil primero */
-    grid-template-areas:
-        "cabecera"
-        "formulario"
-        "card1"
-        "card2"
-        "footer1";
-    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "cabecera cabecera"
+        "formulario card1"
+        "api-hoteles api-hoteles";
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 60px;
 
-    color: $blanco;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("#{$image-url}/Carrousel/Zona de trofeos.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-/* 3. Configuración para Escritorio */
-@media (min-width: 768px) {
-    .contactogrid {
-        grid-template-areas:
-            "cabecera cabecera"
-            "formulario card1"
-            "formulario card1"
-            "footer1 footer1";
-        grid-template-columns: 1fr 1fr;
-        padding: 0;
-        /* Eliminado el padding global para que el footer llegue al borde */
-    }
-
-    /* Aplicamos el padding de 50px solo a las secciones de contenido */
-    .cabecera,
-    .formulario,
-    .card1,
-    .card2 {
-        padding-left: 50px;
-        padding-right: 50px;
+    @media (max-width: 992px) {
+        grid-template-columns: 1fr;
+        grid-template-areas: "cabecera" "formulario" "card1" "api-hoteles";
     }
 }
 
-/* 4. Áreas del Grid */
 .cabecera {
     grid-area: cabecera;
     text-align: center;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding: 80px 20px 40px;
+    .hero-subtitle {
+        color: $rojo;
+        letter-spacing: 5px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 10px;
+    }
 }
 
 .formulario {
     grid-area: formulario;
-    padding-top: 20px;
-    padding-bottom: 20px;
     display: flex;
-    justify-content: end;
-}
+    justify-content: center;
+    padding: 0 20px;
 
-.formulario .container-form {
-    width: 100%;
-    max-width: 500px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 12px;
+    .container-form {
+        width: 100%;
+        max-width: 600px;
+        background: $glass;
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba($blanco, 0.1);
+        padding: 40px;
+        border-radius: 20px;
+        background-color: #000;
+    }
 }
 
 .card1 {
     grid-area: card1;
-}
-
-.card2 {
-    grid-area: card2;
-}
-
-.card1,
-.card2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.card1 h1,
-.card2 h1 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-/* 5. Tarjetas y Elementos */
-.contactogrid .card {
-    width: 100%;
-    max-width: 400px;
-    background-color: rgba(236, 53, 81, 0.8);
-    color: #000;
-    border: none;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-textarea {
-    resize: none;
-}
-
-/* 6. Footer (Ancho completo) */
-.footer1 {
-    grid-area: footer1;
-    background-color: $negro;
-    /* Usamos tu variable de color negro */
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-/* Estilos específicos del componente footer (sin tocar el PHP) */
-footer {
-    background-color: $negro;
-    color: #ccc;
-    width: 100%;
-
-    h5 {
-        color: $rojo;
+    padding: 0 20px;
+    #map {
+        height: 450px;
+        width: 100%;
+        border-radius: 20px;
+        border: 1px solid rgba($rojo, 0.5);
     }
 }
 
-.img-footer {
-    height: 50px;
-    width: auto;
+// SECCIÓN HOTELES: OCUPA TODO EL ANCHO
+.api-hoteles-section {
+    grid-area: api-hoteles;
+    grid-column: 1 / -1; // Esto hace que ocupe todo el ancho
+    background-color: #000;
+    padding: 80px 40px;
+    width: 100%;
 }
 
-#boton-contacto {
-    background-color: #dc3545;
-    border-color: #000;
+.hotel-card-api {
+    background: $glass;
+    border: 1px solid rgba($blanco, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    height: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    h3 { 
+        font-family: 'Playfair Display', serif; 
+        color: $rojo; 
+        margin-top: 10px;
+    }
+    p { color: rgba($blanco, 0.7); }
+
+    &:hover {
+        border-color: $rojo;
+        background: rgba($rojo, 0.05);
+    }
+}
+
+.btn-enviar {
+    background: linear-gradient(135deg, $rojo, #7a0000);
+    color: $blanco;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    transition: 0.3s;
+    &:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba($rojo, 0.4); }
+}
+
+.form-control {
+    background: rgba($blanco, 0.05) !important;
+    border: 1px solid rgba($blanco, 0.1) !important;
+    color: $blanco !important;
+    &:focus { border-color: $rojo !important; box-shadow: none !important; }
 }
