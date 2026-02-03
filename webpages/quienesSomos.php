@@ -96,9 +96,9 @@ require_once '../config/config.php';
                 <div class="timeline-item">
                     <div class="timeline-year">2012</div>
                     <div class="timeline-content">
-                        <h3>Primer Hotel - Dubai</h3>
+                        <h3>Primer Hotel - Madrid</h3>
                         <p>
-                            Se inaugura el primer Schumacher en Dubai, revolucionando la industria hotelera con servicios
+                            Se inaugura el primer Schumacher en Madrid, revolucionando la industria hotelera con servicios
                             nunca antes vistos: helipuerto privado, pista de carreras F1 en miniatura, y suites diseñadas
                             por ingenieros aeroespaciales para maximizar el descanso y recuperación.
                         </p>
@@ -110,7 +110,7 @@ require_once '../config/config.php';
                     <div class="timeline-content">
                         <h3>Expansión Global</h3>
                         <p>
-                            La franquicia se expande estratégicamente a París, Nueva York y Tokio. Cada hotel es diseñado
+                            La franquicia se expande estratégicamente. Cada hotel es diseñado
                             específicamente para su ubicación, manteniendo el Estándar 7 pero adaptándose a la cultura
                             local. Se introduce el concepto de "tiempo de pit stop": check-in en menos de 90 segundos.
                         </p>
@@ -134,9 +134,8 @@ require_once '../config/config.php';
                     <div class="timeline-content">
                         <h3>Reconocimiento Mundial</h3>
                         <p>
-                            Los siete hoteles Schumacher son oficialmente reconocidos con el Estándar 7 estrellas por
-                            organizaciones internacionales de hospitalidad. Se establecen en Madrid, Maldivas y Zúrich,
-                            completando la red global de excelencia.
+                            Los hoteles Schumacher son oficialmente reconocidos con el Estándar 7 estrellas por
+                            organizaciones internacionales de hospitalidad.
                         </p>
                     </div>
                 </div>
@@ -146,7 +145,7 @@ require_once '../config/config.php';
                     <div class="timeline-content">
                         <h3>El Legado Continúa</h3>
                         <p>
-                            Con siete propiedades en las capitales más estratégicas del mundo, Schumacher Hotels se
+                            Con 14 propiedades, Schumacher Hotels se
                             consolida como la franquicia de lujo más exclusiva del planeta. Más de 500,000 huéspedes
                             VIP han experimentado el Estándar 7.
                         </p>

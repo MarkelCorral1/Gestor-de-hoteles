@@ -84,9 +84,9 @@ require_once PHP_PATH . "/Clases/HotelRepository.php";
             <div class="hero-overlay d-flex align-items-center">
                 <div class="container text-center text-white">
                     <span class="subtitle">COLECCIÓN PRIVADA</span>
-                    <h1 class="display-4 mt-3">Siete Hoteles. Un Solo Estándar.</h1>
+                    <h1 class="display-4 mt-3">Varios hoteles. Un Solo Estándar.</h1>
                     <p class="lead mt-3">
-                        Schumacher es una franquicia exclusiva de siete hoteles siete estrellas en los destinos más
+                        Schumacher es una franquicia exclusiva de hoteles siete estrellas en los destinos más
                         icónicos del mundo.
                     </p>
 
