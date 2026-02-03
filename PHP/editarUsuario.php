@@ -7,6 +7,15 @@ require_once '../PHP/Clases/UsuarioRepository.php';
 
 header('Content-Type: application/json');
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['estado' => 'error', 'mensaje' => 'Método HTTP no permitido']);
+    exit();
+}
+
 try {
     // Verificar que el usuario es admin
     $usuario_admin = $entityManager->getRepository(Usuario::class)->findOneBy([
