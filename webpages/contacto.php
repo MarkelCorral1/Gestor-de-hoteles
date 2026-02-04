@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="<?= CSS_URL ?>">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
+<body id="pagina-contacto">
+    
+
     <?php include INCLUDES_PATH . '/navbar.php'; ?>
 
     <div class="contactogrid"> 
@@ -102,7 +105,7 @@
         };
 
         const map = L.map('map').setView([40.4167, -3.7037], 13);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap'
         }).addTo(map);
         

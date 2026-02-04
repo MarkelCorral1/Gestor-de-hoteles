@@ -1093,27 +1093,25 @@ textarea {
   }
 }
 
-.contactogrid {
+#pagina-contacto .contactogrid {
   display: grid;
   grid-template-areas: "cabecera cabecera" "formulario card1" "api-hoteles api-hoteles";
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  background-color: #000000;
   padding-bottom: 60px;
 }
 @media (max-width: 992px) {
-  .contactogrid {
+  #pagina-contacto .contactogrid {
     grid-template-columns: 1fr;
     grid-template-areas: "cabecera" "formulario" "card1" "api-hoteles";
   }
 }
-
-.cabecera {
+#pagina-contacto .cabecera {
   grid-area: cabecera;
   text-align: center;
   padding: 80px 20px 40px;
 }
-.cabecera .hero-subtitle {
+#pagina-contacto .cabecera .hero-subtitle {
   color: #a60000;
   letter-spacing: 5px;
   font-size: 0.8rem;
@@ -1121,14 +1119,13 @@ textarea {
   display: block;
   margin-bottom: 10px;
 }
-
-.formulario {
+#pagina-contacto .formulario {
   grid-area: formulario;
   display: flex;
   justify-content: center;
   padding: 0 20px;
 }
-.formulario .container-form {
+#pagina-contacto .formulario .container-form {
   width: 100%;
   max-width: 600px;
   background: rgba(255, 255, 255, 0.05);
@@ -1137,28 +1134,26 @@ textarea {
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 40px;
   border-radius: 20px;
+  background-color: #000;
 }
-
-.card1 {
+#pagina-contacto .card1 {
   grid-area: card1;
   padding: 0 20px;
 }
-.card1 #map {
+#pagina-contacto .card1 #map {
   height: 450px;
   width: 100%;
   border-radius: 20px;
   border: 1px solid rgba(166, 0, 0, 0.5);
 }
-
-.api-hoteles-section {
+#pagina-contacto .api-hoteles-section {
   grid-area: api-hoteles;
   grid-column: 1/-1;
   background-color: #000;
   padding: 80px 40px;
   width: 100%;
 }
-
-.hotel-card-api {
+#pagina-contacto .hotel-card-api {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px;
@@ -1167,20 +1162,19 @@ textarea {
   text-align: center;
   transition: all 0.3s ease;
 }
-.hotel-card-api h3 {
+#pagina-contacto .hotel-card-api h3 {
   font-family: "Playfair Display", serif;
   color: #a60000;
   margin-top: 10px;
 }
-.hotel-card-api p {
+#pagina-contacto .hotel-card-api p {
   color: rgba(255, 255, 255, 0.7);
 }
-.hotel-card-api:hover {
+#pagina-contacto .hotel-card-api:hover {
   border-color: #a60000;
   background: rgba(166, 0, 0, 0.05);
 }
-
-.btn-enviar {
+#pagina-contacto .btn-enviar {
   background: linear-gradient(135deg, #a60000, #7a0000);
   color: #ffffff;
   border: none;
@@ -1191,17 +1185,16 @@ textarea {
   border-radius: 10px;
   transition: 0.3s;
 }
-.btn-enviar:hover {
+#pagina-contacto .btn-enviar:hover {
   transform: scale(1.02);
   box-shadow: 0 10px 20px rgba(166, 0, 0, 0.4);
 }
-
-.form-control {
+#pagina-contacto .form-control {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: #ffffff !important;
 }
-.form-control:focus {
+#pagina-contacto .form-control:focus {
   border-color: #a60000 !important;
   box-shadow: none !important;
 }
